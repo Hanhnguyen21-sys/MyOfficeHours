@@ -51,7 +51,7 @@
 
        <!-- Large Navigation Buttons-->
        <HBox fx:id="actionBtn" prefHeight="21.0" prefWidth="502.0" styleClass="dashboard-nav-container" stylesheets="@../../Styles/Dashboard.css">
-           <Button fx:id="officeHoursBtn1" mnemonicParsing="false" styleClass="dashboard-nav-buttons" stylesheets="@../../Styles/Dashboard.css" text="Office Hour" />
+           <Button fx:id="officeHoursBtn1" mnemonicParsing="false" styleClass="dashboard-nav-buttons" stylesheets="@../../Styles/Dashboard.css" text="Office Hours" />
            <Button fx:id="scheduleBtn1" mnemonicParsing="false" styleClass="dashboard-nav-buttons" stylesheets="@../../Styles/Dashboard.css" text="Schedule" />
            <Button fx:id="reportBtn1" mnemonicParsing="false" styleClass="dashboard-nav-buttons" stylesheets="@../../Styles/Dashboard.css" text="Report" />
            <padding>
