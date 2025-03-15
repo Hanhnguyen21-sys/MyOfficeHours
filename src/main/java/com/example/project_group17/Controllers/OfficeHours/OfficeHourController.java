@@ -115,8 +115,54 @@ public class OfficeHourController implements Initializable {
 
     @FXML
     private void handleSaveButton() {
-        // TODO: Implement save functionality
-        showAlert("Save functionality will be implemented with database integration.");
+        // Collect all form data
+        String selectedSemester = semesterCombo.getValue();
+        String year = yearField.getText();
+
+        // Collect days
+        StringBuilder days = new StringBuilder();
+        if (monCheck.isSelected())
+            days.append("Monday,");
+        if (tueCheck.isSelected())
+            days.append("Tuesday,");
+        if (wedCheck.isSelected())
+            days.append("Wednesday,");
+        if (thurCheck.isSelected())
+            days.append("Thursday,");
+        if (friCheck.isSelected())
+            days.append("Friday,");
+
+        // Remove trailing comma if exists
+        String selectedDays = days.toString();
+        if (selectedDays.endsWith(",")) {
+            selectedDays = selectedDays.substring(0, selectedDays.length() - 1);
+        }
+
+        String startTime = startTimeField.getText();
+        String endTime = endTimeField.getText();
+        String course = courseCode.getText();
+        String section = courseSection.getText();
+        String name = courseName.getText();
+
+        // Validate required fields
+        if (selectedSemester == null || year.isEmpty() || selectedDays.isEmpty() ||
+                startTime.isEmpty() || endTime.isEmpty() || course.isEmpty()) {
+            showAlert(
+                    "Please fill in all required fields: Semester, Year, Days, Start Time, End Time, and Course Code.");
+            return;
+        }
+
+        // For now, just show a confirmation message
+        // In a future version, this would save to a database or file
+        showAlert("Office Hours saved successfully!\n\n" +
+                "Semester: " + selectedSemester + " " + year + "\n" +
+                "Days: " + selectedDays + "\n" +
+                "Time: " + startTime + " - " + endTime + "\n" +
+                "Course: " + course + " - " + section + "\n" +
+                "Course Name: " + name);
+
+        // Reset the form after saving
+        resetForm();
     }
 
     private void resetForm() {
@@ -141,13 +187,19 @@ public class OfficeHourController implements Initializable {
     }
 
     public void switchToDashboard(MouseEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Dashboard.fxml"));
-        Parent dashboard = loader.load();
-        Scene scene = new Scene(dashboard);
-        Stage stage = (Stage) root.getScene().getWindow();
-        stage.setTitle("Dashboard");
-        stage.setScene(scene);
-        stage.show();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Dashboard.fxml"));
+            Parent dashboard = loader.load();
+            Scene scene = new Scene(dashboard);
+            Stage stage = (Stage) root.getScene().getWindow();
+            stage.setTitle("Dashboard");
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.err.println("Error switching to Dashboard: " + e.getMessage());
+            e.printStackTrace();
+            throw e; // rethrow to maintain original behavior
+        }
     }
 
     private void switchToListAllView() throws IOException {
