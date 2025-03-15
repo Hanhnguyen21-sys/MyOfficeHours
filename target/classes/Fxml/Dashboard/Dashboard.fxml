@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Scene?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
@@ -9,91 +8,69 @@
 <?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<Scene xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1"
-       fx:controller="com.example.project_group17.Controllers.Dashboard.DashboardController">
-    <AnchorPane fx:id="root1" prefHeight="400.0" prefWidth="600.0">
-        <children>
-            <AnchorPane prefHeight="400.0" prefWidth="120.0" style="-fx-background-color: #D9EAFD;">
-                <children>
-                    <Label layoutX="10.0" layoutY="29.0" text="My Office Hours">
-                        <font>
-                            <Font name="Segoe UI Bold" size="13.0"/>
-                        </font>
-                    </Label>
-                    <Line endX="-14.199996948242188" endY="0.5999946594238281" layoutX="124.0" layoutY="53.0"
-                          startX="-114.99998474121094" startY="0.5999946594238281" stroke="#133e87"/>
-                    <MenuButton fx:id="dashboardBtn1" layoutX="16.0" layoutY="75.0" mnemonicParsing="false"
-                                style="-fx-background-color: #133E87;" text="Dashboard" textFill="WHITE">
-                        <items>
-                            <MenuItem fx:id="officeHoursMenuItem" mnemonicParsing="false" text="Office Hours"/>
-                            <MenuItem fx:id="scheduleMenuItem" mnemonicParsing="false" text="Schedule"/>
-                            <MenuItem fx:id="reportMenuItem" mnemonicParsing="false" text="Report"/>
-                        </items>
-                        <font>
-                            <Font name="Segoe UI Bold" size="11.0"/>
-                        </font>
-                    </MenuButton>
-                </children>
-            </AnchorPane>
-            <Button fx:id="officeHoursBtn1" layoutX="145.0" layoutY="71.0" mnemonicParsing="false" prefHeight="35.0"
-                    prefWidth="91.0" style="-fx-background-color: #133E87;" text="Office Hours" textFill="WHITE">
-                <font>
-                    <Font name="Segoe UI Bold" size="12.0"/>
-                </font>
-            </Button>
-            <Button fx:id="scheduleBtn1" layoutX="300.0" layoutY="71.0" mnemonicParsing="false" prefHeight="35.0"
-                    prefWidth="98.0" style="-fx-background-color: #133E87;" text="Schedule" textFill="WHITE">
-                <font>
-                    <Font name="Segoe UI Bold" size="12.0"/>
-                </font>
-            </Button>
-            <Button fx:id="reportBtn1" layoutX="460.0" layoutY="71.0" mnemonicParsing="false" prefHeight="35.0"
-                    prefWidth="91.0" style="-fx-background-color: #133E87;" text="Report" textFill="WHITE">
-                <font>
-                    <Font name="Segoe UI Bold" size="12.0"/>
-                </font>
-            </Button>
-            <Label layoutX="139.0" layoutY="25.0" text="Dashboard">
-                <font>
-                    <Font name="Segoe UI Bold" size="19.0"/>
-                </font>
-            </Label>
-            <TreeTableView layoutX="135.0" layoutY="180.0" prefHeight="183.0" prefWidth="287.0"
-                           style="-fx-background-color: #E8E4E4;">
-                <columns>
-                    <TreeTableColumn prefWidth="103.20001220703125"
-                                     style="-fx-background-color: #E8E4E4; -fx-border-color: #cccccc; -fx-border-width: 0 1 1 0;"
-                                     text="Student's Name"/>
-                    <TreeTableColumn prefWidth="64.80003356933594"
-                                     style="-fx-background-color: #E8E4E4; -fx-border-color: #cccccc; -fx-border-width: 0 1 1 0;"
-                                     text="Time Slot"/>
-                    <TreeTableColumn prefWidth="60.0"
-                                     style="-fx-background-color: #E8E4E4; -fx-border-color: #cccccc; -fx-border-width: 0 1 1 0;"
-                                     text="Course"/>
-                    <TreeTableColumn prefWidth="56.80003662109374"
-                                     style="-fx-background-color: #E8E4E4; -fx-border-color: #cccccc; -fx-border-width: 0 0 1 0;"
-                                     text="Reason"/>
-                </columns>
-            </TreeTableView>
-            <TextField layoutX="135.0" layoutY="144.0" prefHeight="26.0" prefWidth="287.0"/>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8e4e4" height="14.0" layoutX="409.0" layoutY="30.0"
-                       stroke="TRANSPARENT" strokeType="INSIDE" width="154.0"/>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8e4e4" height="138.0" layoutX="448.0" layoutY="203.0"
-                       stroke="TRANSPARENT" strokeType="INSIDE" width="128.0"/>
-            <Label layoutX="485.0" layoutY="180.0" text="Calendar">
-                <font>
-                    <Font name="Segoe UI Bold" size="13.0"/>
-                </font>
-            </Label>
-            <Circle fill="#f77171" layoutX="576.0" layoutY="37.0" radius="7.0" stroke="TRANSPARENT"
-                    strokeType="INSIDE"/>
-        </children>
-    </AnchorPane>
-</Scene>
+<AnchorPane fx:id="root1" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_group17.Controllers.Dashboard.DashboardController">
+    <children>
+      <VBox prefHeight="400.0" prefWidth="128.0" style="-fx-background-color: #D9EAFD;" styleClass="left-sidebar" stylesheets="@../../Styles/OfficeHours.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="My Office Hours" />
+            <Line endX="29.792892456054688" endY="7.748603820800781E-7" startX="-100.0" />
+                <MenuButton fx:id="menuBtn" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #133E87;" text="Menu" textFill="WHITE">
+                    <items>
+                        <MenuItem fx:id="dashboardItem1" mnemonicParsing="false" text="Dashboard" />
+                        <MenuItem fx:id="officeHoursMenuItem" mnemonicParsing="false" text="Office Hours" />
+                        <MenuItem fx:id="scheduleMenuItem" mnemonicParsing="false" text="Schedule" />
+                        <MenuItem fx:id="reportMenuItem" mnemonicParsing="false" text="Report" />
+                    </items>
+                    <font>
+                        <Font name="Segoe UI Bold" size="11.0" />
+                    </font>
+                </MenuButton>
+         </children>
+      </VBox>
+        <Button fx:id="officeHoursBtn1" layoutX="162.0" layoutY="70.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: #133E87; -fx-cursor: hand" text="Office Hours" textFill="WHITE">
+            <font>
+                <Font name="Segoe UI Bold" size="12.0" />
+            </font>
+        </Button>
+        <Button fx:id="scheduleBtn1" layoutX="317.0" layoutY="70.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="98.0" style="-fx-background-color: #133E87; -fx-cursor: hand" text="Schedule" textFill="WHITE">
+            <font>
+                <Font name="Segoe UI Bold" size="12.0" />
+            </font>
+        </Button>
+        <Button fx:id="reportBtn1" layoutX="477.0" layoutY="70.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: #133E87; -fx-cursor: hand" text="Report" textFill="WHITE">
+            <font>
+                <Font name="Segoe UI Bold" size="12.0" />
+            </font>
+        </Button>
+        <Label layoutX="156.0" layoutY="24.0" text="Dashboard">
+            <font>
+                <Font name="Segoe UI Bold" size="19.0" />
+            </font>
+        </Label>
+        <TreeTableView layoutX="152.0" layoutY="179.0" prefHeight="183.0" prefWidth="287.0" style="-fx-background-color: #E8E4E4;">
+            <columns>
+                <TreeTableColumn prefWidth="103.20001220703125" style="-fx-background-color: #E8E4E4; -fx-border-color: #cccccc; -fx-border-width: 0 1 1 0;" text="Student's Name" />
+                <TreeTableColumn prefWidth="64.80003356933594" style="-fx-background-color: #E8E4E4; -fx-border-color: #cccccc; -fx-border-width: 0 1 1 0;" text="Time Slot" />
+                <TreeTableColumn prefWidth="60.0" style="-fx-background-color: #E8E4E4; -fx-border-color: #cccccc; -fx-border-width: 0 1 1 0;" text="Course" />
+                <TreeTableColumn prefWidth="56.80003662109374" style="-fx-background-color: #E8E4E4; -fx-border-color: #cccccc; -fx-border-width: 0 0 1 0;" text="Reason" />
+            </columns>
+        </TreeTableView>
+        <TextField layoutX="152.0" layoutY="143.0" prefHeight="26.0" prefWidth="287.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8e4e4" height="14.0" layoutX="406.0" layoutY="32.0" stroke="TRANSPARENT" strokeType="INSIDE" width="154.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8e4e4" height="138.0" layoutX="461.0" layoutY="202.0" stroke="TRANSPARENT" strokeType="INSIDE" width="128.0" />
+        <Label layoutX="498.0" layoutY="179.0" text="Calendar">
+            <font>
+                <Font name="Segoe UI Bold" size="13.0" />
+            </font>
+        </Label>
+        <Circle fill="#f77171" layoutX="576.0" layoutY="39.0" radius="7.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+    </children>
 
-
+</AnchorPane>
