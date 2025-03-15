@@ -9,6 +9,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,6 +25,7 @@ public class DashboardController implements Initializable {
     public MenuItem officeHoursMenuItem;
     public MenuItem scheduleMenuItem;
     public MenuItem reportMenuItem;
+    public MenuItem dashboardMenuItem;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -47,15 +49,14 @@ public class DashboardController implements Initializable {
         });
         */
 
-        //switch back to dashboard when click
-        dashboardBtn1.setOnAction(event -> {
+        // Handle the Dashboard menu item click
+        dashboardMenuItem.setOnAction(event -> {
             try {
                 switchToDashboard();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         });
-
         // Handle the Office Hours menu item click
         officeHoursMenuItem.setOnAction(event -> {
             try {

@@ -1,10 +1,10 @@
 package com.example.project_group17.Controllers.OfficeHours;
+
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -17,7 +17,6 @@ import java.util.ResourceBundle;
 
 public class OfficeHourController implements Initializable {
     public AnchorPane root;
-    public MenuButton dashboardBtn;
     public VBox mainContainer;
     public VBox topForm;
     public VBox semesterGroup;
@@ -48,20 +47,41 @@ public class OfficeHourController implements Initializable {
     public TextField courseName;
     public Button cancelBtn;
     public Button saveBtn;
+    public MenuItem officeHoursMenuItem;
+    public MenuItem scheduleMenuItem;
+    public MenuItem reportMenuItem;
+    public MenuItem dashboardMenuItem;
+    public Label dashboardLabel;
 
     private String[] semester = {"Spring","Summer","Fall","Winter"};
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
+        //Left-bar Menu Control
+        // Handle the Dashboard menu item click
+        dashboardMenuItem.setOnAction(event -> {
+            try {
+                switchToDashboard();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        // Handle the Office Hours menu item click
+        officeHoursMenuItem.setOnAction(event -> {
+            try {
+                switchToOfficeHours();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
         // semester choices
         semesterCombo.getItems().addAll(semester);
         semesterCombo.setValue("Spring");
         //switch back to dashboard when click
-        dashboardBtn.setOnMouseClicked(event -> {
+        dashboardLabel.setOnMouseClicked(event -> {
             try {
-                switchToDashboard(event);
+                switchToDashboard();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -96,13 +116,27 @@ public class OfficeHourController implements Initializable {
         friCheck.setSelected(false);
     }
 
-    public void switchToDashboard(MouseEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Dashboard.fxml"));
+    // Method to switch to the Office Hours page
+    private void switchToOfficeHours() throws IOException {
+        // Load the Office Hours FXML
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/OfficeHours/OfficeHours.fxml"));
+        Parent officeHours = loader.load();
+
+        // Get the current stage (window) and set the scene to the Office Hours page
+        Scene officeHoursScene = new Scene(officeHours);
+        Stage stage = (Stage) root.getScene().getWindow();
+        stage.setTitle("Office Hours");
+        stage.setScene(officeHoursScene);
+        stage.show();
+    }
+
+    public void switchToDashboard() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Dashboard/Dashboard.fxml"));
         Parent dashboard = loader.load();
-        Scene scene = new Scene(dashboard);
+        Scene dashboardScene = new Scene(dashboard);
         Stage stage = (Stage)root.getScene().getWindow();
         stage.setTitle("Dashboard");
-        stage.setScene(scene);
+        stage.setScene(dashboardScene);
         stage.show();
     }
 }

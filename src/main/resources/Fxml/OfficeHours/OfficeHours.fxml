@@ -1,41 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="510.0" prefWidth="664.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_group17.Controllers.OfficeHours.OfficeHourController">
-    <VBox layoutY="1.0" prefHeight="400.0" prefWidth="188.0" styleClass="left-sidebar" stylesheets="@../../Styles/OfficeHours.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="My Office Hours" />
-        <Line endX="29.792892456054688" endY="7.748603820800781E-7" startX="-100.0" />
-        <MenuButton fx:id="dashboardBtn" mnemonicParsing="false" prefHeight="26.0" prefWidth="132.0" styleClass="nav-btn" stylesheets="@../../Styles/OfficeHours.css" text="Dashboard" textFill="#FFFFFF">
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_group17.Controllers.OfficeHours.OfficeHourController">
+   <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="500.0" prefWidth="130.0" style="-fx-background-color: #D9EAFD;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+         <Label layoutX="10.0" layoutY="29.0" style="-fx-text-fill: #133E87; -fx-font-weight:bold;" text="My Office Hours">
+            <font>
+               <Font name="Segoe UI Bold" size="13.0" />
+            </font>
+         </Label>
+         <Line endX="-14.199996948242188" endY="0.5999946594238281" layoutX="124.0" layoutY="53.0" startX="-114.99998474121094" startY="0.5999946594238281" stroke="#133e87" />
+         <MenuButton layoutX="16.0" layoutY="75.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="85.0" style="-fx-background-color: #133E87;" text="Menu" textFill="WHITE">
             <items>
-                <RadioMenuItem mnemonicParsing="false" text="Office Hours">
-                    <toggleGroup>
-                        <ToggleGroup fx:id="myGroup" />
-                    </toggleGroup>
-                </RadioMenuItem>
-                <RadioMenuItem mnemonicParsing="false" text="Schedule" toggleGroup="$myGroup" />
-                <RadioMenuItem mnemonicParsing="false" text="Report" toggleGroup="$myGroup" />
+               <MenuItem fx:id="dashboardMenuItem" mnemonicParsing="false" text="Dashboard" />
+               <MenuItem fx:id="officeHoursMenuItem" mnemonicParsing="false" text="Office Hours" />
+               <MenuItem fx:id="scheduleMenuItem" mnemonicParsing="false" text="Schedule" />
+               <MenuItem fx:id="reportMenuItem" mnemonicParsing="false" text="Report" />
             </items>
-            <graphic>
-                <FontAwesomeIconView glyphName="HOME" size="20" styleClass="icon" text="" />
-            </graphic>
-        </MenuButton>
-    </VBox>
+            <font>
+               <Font name="Segoe UI Bold" size="11.0" />
+            </font>
+         </MenuButton>
+      </children>
+   </AnchorPane>
     <VBox layoutX="153.0" layoutY="121.0" prefHeight="186.0" prefWidth="504.0" styleClass="formContainer" stylesheets="@../../Styles/OfficeHours.css">
         <VBox fx:id="topForm" prefHeight="168.0" prefWidth="420.0">
             <HBox prefHeight="43.0" prefWidth="423.0" styleClass="form-row" stylesheets="@../../Styles/OfficeHours.css">
@@ -97,7 +98,7 @@
     <VBox fx:id="titleSection" layoutX="153.0" layoutY="17.0" prefHeight="75.0" prefWidth="502.0">
         <Label styleClass="page-header" stylesheets="@../../Styles/OfficeHours.css" text="Entry Office Hours" />
         <HBox fx:id="breadcrumb" prefHeight="32.0" prefWidth="502.0" styleClass="breadcrumb-container" stylesheets="@../../Styles/OfficeHours.css">
-            <Label onMouseClicked="#switchToDashboard" styleClass="breadcrumb-item" stylesheets="@../../Styles/OfficeHours.css" text="Dashboard" />
+            <Label fx:id="dashboardLabel" onMouseClicked="#switchToDashboard" styleClass="breadcrumb-item" stylesheets="@../../Styles/OfficeHours.css" text="Dashboard" />
             <Label styleClass="breadcrumb-separator" stylesheets="@../../Styles/OfficeHours.css" text="&gt;" />
             <Label stylesheets="@../../Styles/OfficeHours.css" text="Office Hours">
                 <styleClass>
