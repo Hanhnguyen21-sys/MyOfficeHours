@@ -15,6 +15,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller for the Office Hours List view.
+ * Displays and manages the table of office hours entries.
+ */
 public class OfficeHoursListController implements Initializable {
     @FXML
     private AnchorPane root;
@@ -41,16 +45,15 @@ public class OfficeHoursListController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Set up table columns
+        // Set up table columns and button actions
         setupTableColumns();
-
-        // Set up button actions
         setupButtonActions();
-
-        // Load initial data
         loadOfficeHours();
     }
 
+    /**
+     * Configures the table columns to display office hours data
+     */
     private void setupTableColumns() {
         semesterColumn.setCellValueFactory(cellData -> cellData.getValue().semesterProperty());
         yearColumn.setCellValueFactory(cellData -> cellData.getValue().yearProperty());
@@ -59,6 +62,9 @@ public class OfficeHoursListController implements Initializable {
         courseColumn.setCellValueFactory(cellData -> cellData.getValue().courseProperty());
     }
 
+    /**
+     * Sets up event handlers for all buttons
+     */
     private void setupButtonActions() {
         // Dashboard button
         dashboardBtn.setOnMouseClicked(event -> {
@@ -112,17 +118,28 @@ public class OfficeHoursListController implements Initializable {
         });
     }
 
+    /**
+     * Loads office hours data into the table
+     * TODO: Implement database integration
+     */
     private void loadOfficeHours() {
         // TODO: Load office hours from database
         // This will be implemented when we add database functionality
     }
 
+    /**
+     * Deletes the selected office hours entry
+     * TODO: Implement database integration
+     */
     private void deleteOfficeHours(OfficeHours officeHours) {
         // TODO: Implement delete functionality
         // This will be implemented when we add database functionality
         showAlert("Delete functionality will be implemented with database integration.");
     }
 
+    /**
+     * Shows an alert dialog with the given message
+     */
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
@@ -131,6 +148,9 @@ public class OfficeHoursListController implements Initializable {
         alert.showAndWait();
     }
 
+    /**
+     * Switches the view to the dashboard
+     */
     public void switchToDashboard(MouseEvent event) throws IOException {
         System.out.println("Loading dashboard FXML from: /Fxml/Dashboard/Dashboard.fxml");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Dashboard/Dashboard.fxml"));
@@ -142,6 +162,9 @@ public class OfficeHoursListController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Switches to the new office hours form view
+     */
     private void switchToNewOfficeHoursView() throws IOException {
         System.out.println("Loading new office hours FXML from: /Fxml/OfficeHours/OfficeHours.fxml");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/OfficeHours/OfficeHours.fxml"));
@@ -153,12 +176,16 @@ public class OfficeHoursListController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Switches to the edit office hours form view
+     * 
+     * @param officeHours The office hours entry to edit
+     */
     private void switchToEditOfficeHoursView(OfficeHours officeHours) throws IOException {
         System.out.println("Loading edit office hours FXML from: /Fxml/OfficeHours/OfficeHours.fxml");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/OfficeHours/OfficeHours.fxml"));
         Parent editOfficeHoursView = loader.load();
         OfficeHourController controller = loader.getController();
-        // TODO: Set the office hours data in the controller for editing
         Scene scene = new Scene(editOfficeHoursView);
         Stage stage = (Stage) root.getScene().getWindow();
         stage.setTitle("Edit Office Hours");
