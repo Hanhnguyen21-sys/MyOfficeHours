@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 
-<AnchorPane fx:controller="com.example.project_group17.Controllers.OfficeHours.OfficeHoursListController" 
+<AnchorPane fx:controller="s25.cs151.application.Controllers.OfficeHours.OfficeHoursListController"
             xmlns="http://javafx.com/javafx/21" 
             xmlns:fx="http://javafx.com/fxml/1" 
             fx:id="root">

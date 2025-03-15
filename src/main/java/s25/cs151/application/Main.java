@@ -1,4 +1,4 @@
-package com.example.project_group17;
+package s25.cs151.application;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
