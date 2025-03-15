@@ -20,8 +20,9 @@ public class DashboardController implements Initializable {
     public Button reportBtn1;
 
     // Dashboard button and dropdown menu
-    public MenuButton dashboardBtn1;
+    public MenuButton menuBtn;
     public MenuItem officeHoursMenuItem;
+    public MenuItem dashBoardMenuItem;
     public MenuItem scheduleMenuItem;
     public MenuItem reportMenuItem;
 
@@ -48,7 +49,7 @@ public class DashboardController implements Initializable {
          */
 
         // switch back to dashboard when click
-        dashboardBtn1.setOnAction(event -> {
+        dashBoardMenuItem.setOnAction(event -> {
             try {
                 switchToDashboard();
             } catch (IOException e) {
@@ -93,7 +94,7 @@ public class DashboardController implements Initializable {
     }
 
     public void switchToDashboard() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Dashboard.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Dashboard/Dashboard.fxml"));
         Parent dashboard = loader.load();
         Scene dashboardScene = new Scene(dashboard);
         Stage stage = (Stage) root1.getScene().getWindow();
