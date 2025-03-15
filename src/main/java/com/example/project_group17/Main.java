@@ -13,8 +13,8 @@ public class Main extends Application {
         Parent root =  FXMLLoader.load(getClass().getResource("/Fxml/Dashboard/Dashboard.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("My JavaFX App");
         primaryStage.show();
+
     }
 
     public static void main(String[] args) {

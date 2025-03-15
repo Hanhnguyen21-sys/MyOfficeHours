@@ -22,6 +22,7 @@ public class DashboardController implements Initializable {
     // Dashboard button and dropdown menu
     public MenuButton menuBtn;
     public MenuItem officeHoursMenuItem;
+    public MenuItem dashBoardMenuItem;
     public MenuItem scheduleMenuItem;
     public MenuItem reportMenuItem;
     public MenuItem dashboardItem1;
@@ -53,7 +54,7 @@ public class DashboardController implements Initializable {
         // switch back to dashboard when click
 
         // Handle the Dashboard menu item click
-        dashboardItem1.setOnAction(event -> {
+        dashBoardMenuItem.setOnAction(event -> {
             try {
                 switchToDashboard();
             } catch (IOException e) {
