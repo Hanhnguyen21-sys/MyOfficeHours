@@ -132,8 +132,8 @@ public class OfficeHoursListController implements Initializable {
     }
 
     public void switchToDashboard(MouseEvent event) throws IOException {
-        System.out.println("Loading dashboard FXML from: /Fxml/Dashboard.fxml");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Dashboard.fxml"));
+        System.out.println("Loading dashboard FXML from: /Fxml/Dashboard/Dashboard.fxml");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Dashboard/Dashboard.fxml"));
         Parent dashboard = loader.load();
         Scene scene = new Scene(dashboard);
         Stage stage = (Stage) root.getScene().getWindow();
