@@ -10,8 +10,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-
-        Parent root = FXMLLoader.load(getClass().getResource("/Fxml/Dashboard/Dashboard.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Dashboard/Dashboard.fxml"));
+        Parent root = loader.load();
         Scene scene = new Scene(root);
         stage.setTitle("Dashboard");
         stage.setScene(scene);
@@ -22,4 +22,3 @@ public class Main extends Application {
         launch(args);
     }
 }
-

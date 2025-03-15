@@ -1,5 +1,6 @@
 package com.example.project_group17.Controllers.OfficeHours;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -53,12 +54,12 @@ public class OfficeHourController implements Initializable {
     public MenuItem dashboardMenuItem;
     public Label dashboardLabel;
 
-    private String[] semester = {"Spring","Summer","Fall","Winter"};
+    private String[] semester = { "Spring", "Summer", "Fall", "Winter" };
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        //Left-bar Menu Control
+        // Left-bar Menu Control
         // Handle the Dashboard menu item click
         dashboardMenuItem.setOnAction(event -> {
             try {
@@ -78,7 +79,7 @@ public class OfficeHourController implements Initializable {
         // semester choices
         semesterCombo.getItems().addAll(semester);
         semesterCombo.setValue("Spring");
-        //switch back to dashboard when click
+        // switch back to dashboard when click
         dashboardLabel.setOnMouseClicked(event -> {
             try {
                 switchToDashboard();
@@ -87,11 +88,13 @@ public class OfficeHourController implements Initializable {
             }
         });
         // "Cancel" button is used to refresh the form
-        cancelBtn.setOnAction(e-> resetForm());
+        cancelBtn.setOnAction(e -> resetForm());
 
-        // "Save" button is used to show successfully saved message and save the information
+        // "Save" button is used to show successfully saved message and save the
+        // information
         // "New Office Hours" button is used to show up the form
-        // "List All" button is used to show up table containing all office hours of users
+        // "List All" button is used to show up table containing all office hours of
+        // users
 
     }
 
@@ -108,7 +111,7 @@ public class OfficeHourController implements Initializable {
         courseCode.setText("");
         courseName.setText("");
 
-        //clear checkboxes
+        // clear checkboxes
         monCheck.setSelected(false);
         tueCheck.setSelected(false);
         wedCheck.setSelected(false);
@@ -134,10 +137,9 @@ public class OfficeHourController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Dashboard/Dashboard.fxml"));
         Parent dashboard = loader.load();
         Scene dashboardScene = new Scene(dashboard);
-        Stage stage = (Stage)root.getScene().getWindow();
+        Stage stage = (Stage) root.getScene().getWindow();
         stage.setTitle("Dashboard");
         stage.setScene(dashboardScene);
         stage.show();
     }
 }
-
