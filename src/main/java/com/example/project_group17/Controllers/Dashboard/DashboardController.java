@@ -37,17 +37,17 @@ public class DashboardController implements Initializable {
         });
 
         /*
-        // Handle the Schedule button click
-        scheduleBtn1.setOnMouseClicked(event -> {
-            // Implement functionality for schedule
-        });
-        // Handle the Report button click
-        reportBtn1.setOnMouseClicked(event -> {
-            // Implement functionality for report
-        });
-        */
+         * // Handle the Schedule button click
+         * scheduleBtn1.setOnMouseClicked(event -> {
+         * // Implement functionality for schedule
+         * });
+         * // Handle the Report button click
+         * reportBtn1.setOnMouseClicked(event -> {
+         * // Implement functionality for report
+         * });
+         */
 
-        //switch back to dashboard when click
+        // switch back to dashboard when click
         dashboardBtn1.setOnAction(event -> {
             try {
                 switchToDashboard();
@@ -66,15 +66,16 @@ public class DashboardController implements Initializable {
         });
 
         /*
-        // Handle the Schedule menu item click
-        scheduleMenuItem.setOnAction(event -> {
-            // Implement functionality for schedule
-        });
-
-        // Handle the Report menu item click
-        reportMenuItem.setOnAction(event -> {
-            // Implement functionality for report
-        }); */
+         * // Handle the Schedule menu item click
+         * scheduleMenuItem.setOnAction(event -> {
+         * // Implement functionality for schedule
+         * });
+         * 
+         * // Handle the Report menu item click
+         * reportMenuItem.setOnAction(event -> {
+         * // Implement functionality for report
+         * });
+         */
     }
 
     // Method to switch to the Office Hours page
@@ -95,7 +96,7 @@ public class DashboardController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Dashboard/Dashboard.fxml"));
         Parent dashboard = loader.load();
         Scene dashboardScene = new Scene(dashboard);
-        Stage stage = (Stage)root1.getScene().getWindow();
+        Stage stage = (Stage) root1.getScene().getWindow();
         stage.setTitle("Dashboard");
         stage.setScene(dashboardScene);
         stage.show();

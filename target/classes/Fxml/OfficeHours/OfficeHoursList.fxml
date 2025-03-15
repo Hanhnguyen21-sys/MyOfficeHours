@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane fx:controller="com.example.project_group17.Controllers.OfficeHours.OfficeHoursListController" 
+            xmlns="http://javafx.com/javafx/21" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:id="root">
+    
+    <VBox spacing="20" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0">
+        <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+        
+        <!-- Header -->
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <MenuButton fx:id="dashboardBtn" text="Dashboard" style="-fx-font-size: 14px;"/>
+            <Label text="Office Hours List" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+        </HBox>
+        
+        <!-- Table View -->
+        <TableView fx:id="officeHoursTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="semesterColumn" text="Semester" prefWidth="100"/>
+                <TableColumn fx:id="yearColumn" text="Year" prefWidth="80"/>
+                <TableColumn fx:id="daysColumn" text="Days" prefWidth="150"/>
+                <TableColumn fx:id="timeColumn" text="Time" prefWidth="120"/>
+                <TableColumn fx:id="courseColumn" text="Course" prefWidth="200"/>
+            </columns>
+        </TableView>
+        
+        <!-- Action Buttons -->
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <Button fx:id="newBtn" text="New Office Hours" style="-fx-font-size: 14px;"/>
+            <Button fx:id="editBtn" text="Edit" style="-fx-font-size: 14px;"/>
+            <Button fx:id="deleteBtn" text="Delete" style="-fx-font-size: 14px;"/>
+        </HBox>
+    </VBox>
+</AnchorPane> 

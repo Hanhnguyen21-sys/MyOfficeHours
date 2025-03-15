@@ -1,4 +1,6 @@
 package com.example.project_group17.Controllers.OfficeHours;
+
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -49,16 +51,15 @@ public class OfficeHourController implements Initializable {
     public Button cancelBtn;
     public Button saveBtn;
 
-    private String[] semester = {"Spring","Summer","Fall","Winter"};
+    private String[] semester = { "Spring", "Summer", "Fall", "Winter" };
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
         // semester choices
         semesterCombo.getItems().addAll(semester);
         semesterCombo.setValue("Spring");
-        //switch back to dashboard when click
+
+        // switch back to dashboard when click
         dashboardBtn.setOnMouseClicked(event -> {
             try {
                 switchToDashboard(event);
@@ -66,13 +67,56 @@ public class OfficeHourController implements Initializable {
                 throw new RuntimeException(e);
             }
         });
+
         // "Cancel" button is used to refresh the form
-        cancelBtn.setOnAction(e-> resetForm());
+        cancelBtn.setOnAction(e -> resetForm());
 
-        // "Save" button is used to show successfully saved message and save the information
-        // "New Office Hours" button is used to show up the form
-        // "List All" button is used to show up table containing all office hours of users
+        // "List All" button is used to show up table containing all office hours
+        listAllBtn.setOnAction(e -> {
+            try {
+                switchToListAllView();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
 
+        // "New" button is used to show up the form
+        newBtn.setOnAction(e -> {
+            try {
+                switchToNewOfficeHoursView();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+    }
+
+    @FXML
+    private void handleNewButton() {
+        try {
+            switchToNewOfficeHoursView();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    private void handleListAllButton() {
+        try {
+            switchToListAllView();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    private void handleCancelButton() {
+        resetForm();
+    }
+
+    @FXML
+    private void handleSaveButton() {
+        // TODO: Implement save functionality
+        showAlert("Save functionality will be implemented with database integration.");
     }
 
     private void resetForm() {
@@ -88,7 +132,7 @@ public class OfficeHourController implements Initializable {
         courseCode.setText("");
         courseName.setText("");
 
-        //clear checkboxes
+        // clear checkboxes
         monCheck.setSelected(false);
         tueCheck.setSelected(false);
         wedCheck.setSelected(false);
@@ -100,10 +144,37 @@ public class OfficeHourController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Dashboard.fxml"));
         Parent dashboard = loader.load();
         Scene scene = new Scene(dashboard);
-        Stage stage = (Stage)root.getScene().getWindow();
+        Stage stage = (Stage) root.getScene().getWindow();
         stage.setTitle("Dashboard");
         stage.setScene(scene);
         stage.show();
     }
-}
 
+    private void switchToListAllView() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/OfficeHours/OfficeHoursList.fxml"));
+        Parent listView = loader.load();
+        Scene scene = new Scene(listView);
+        Stage stage = (Stage) root.getScene().getWindow();
+        stage.setTitle("Office Hours List");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    private void switchToNewOfficeHoursView() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/OfficeHours/OfficeHours.fxml"));
+        Parent newOfficeHoursView = loader.load();
+        Scene scene = new Scene(newOfficeHoursView);
+        Stage stage = (Stage) root.getScene().getWindow();
+        stage.setTitle("New Office Hours");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+}
