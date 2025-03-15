@@ -25,9 +25,12 @@ public class DashboardController implements Initializable {
     public MenuItem dashBoardMenuItem;
     public MenuItem scheduleMenuItem;
     public MenuItem reportMenuItem;
+    public MenuItem dashboardItem1;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         // Handle the Office Hours button click
         officeHoursBtn1.setOnMouseClicked(event -> {
             try {
@@ -49,6 +52,8 @@ public class DashboardController implements Initializable {
          */
 
         // switch back to dashboard when click
+
+        // Handle the Dashboard menu item click
         dashBoardMenuItem.setOnAction(event -> {
             try {
                 switchToDashboard();
@@ -56,7 +61,6 @@ public class DashboardController implements Initializable {
                 throw new RuntimeException(e);
             }
         });
-
         // Handle the Office Hours menu item click
         officeHoursMenuItem.setOnAction(event -> {
             try {
@@ -71,7 +75,7 @@ public class DashboardController implements Initializable {
          * scheduleMenuItem.setOnAction(event -> {
          * // Implement functionality for schedule
          * });
-         * 
+         *
          * // Handle the Report menu item click
          * reportMenuItem.setOnAction(event -> {
          * // Implement functionality for report

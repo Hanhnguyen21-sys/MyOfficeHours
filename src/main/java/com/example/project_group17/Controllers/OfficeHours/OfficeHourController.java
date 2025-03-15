@@ -6,7 +6,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -51,6 +50,12 @@ public class OfficeHourController implements Initializable {
     public Button cancelBtn;
     public Button saveBtn;
 
+    public Label dashboardLabel;
+    public MenuItem dashboardItem;
+    public MenuItem officehoursItem;
+    public MenuItem scheduleItem;
+    public MenuItem reportItem;
+
     private String[] semester = { "Spring", "Summer", "Fall", "Winter" };
 
     @Override
@@ -58,11 +63,20 @@ public class OfficeHourController implements Initializable {
         // semester choices
         semesterCombo.getItems().addAll(semester);
         semesterCombo.setValue("Spring");
+        //handle MenuItems when chosen
+        dashboardItem.setOnAction(event -> {
+            try {
+                switchToDashboard();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        officehoursItem.setOnAction(e->resetForm());
 
         // switch back to dashboard when click
-        dashboardBtn.setOnMouseClicked(event -> {
+        dashboardLabel.setOnMouseClicked(event -> {
             try {
-                switchToDashboard(event);
+                switchToDashboard();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -186,20 +200,14 @@ public class OfficeHourController implements Initializable {
         friCheck.setSelected(false);
     }
 
-    public void switchToDashboard(MouseEvent event) throws IOException {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Dashboard/Dashboard.fxml"));
-            Parent dashboard = loader.load();
-            Scene scene = new Scene(dashboard);
-            Stage stage = (Stage) root.getScene().getWindow();
-            stage.setTitle("Dashboard");
-            stage.setScene(scene);
-            stage.show();
-        } catch (Exception e) {
-            System.err.println("Error switching to Dashboard: " + e.getMessage());
-            e.printStackTrace();
-            throw e; // rethrow to maintain original behavior
-        }
+    public void switchToDashboard() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Dashboard/Dashboard.fxml"));
+        Parent dashboard = loader.load();
+        Scene dashboardScene = new Scene(dashboard);
+        Stage stage = (Stage) root.getScene().getWindow();
+        stage.setTitle("Dashboard");
+        stage.setScene(dashboardScene);
+        stage.show();
     }
 
     private void switchToListAllView() throws IOException {
