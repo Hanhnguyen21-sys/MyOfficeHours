@@ -97,6 +97,7 @@ public class DashboardController implements Initializable {
         stage.show();
     }
 
+    // Method to switch to Dashboard page
     public void switchToDashboard() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Dashboard/Dashboard.fxml"));
         Parent dashboard = loader.load();

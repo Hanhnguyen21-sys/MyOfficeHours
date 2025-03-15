@@ -12,7 +12,7 @@
 # Any other instruction that users need to know:
 ## Running the Application
 
-1. Make sure you have Java 21 or higher installed
+1. Make sure you have Java 23 or higher installed
 2. Run `mvn clean compile` to build the project
 3. Run `mvn javafx:run` to start the application
 
