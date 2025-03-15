@@ -93,7 +93,7 @@ public class DashboardController implements Initializable {
     }
 
     public void switchToDashboard() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Dashboard/Dashboard.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Dashboard.fxml"));
         Parent dashboard = loader.load();
         Scene dashboardScene = new Scene(dashboard);
         Stage stage = (Stage) root1.getScene().getWindow();
