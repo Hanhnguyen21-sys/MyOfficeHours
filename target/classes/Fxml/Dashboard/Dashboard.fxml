@@ -1,76 +1,160 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="root1" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_group17.Controllers.Dashboard.DashboardController">
-    <children>
-      <VBox prefHeight="400.0" prefWidth="128.0" style="-fx-background-color: #D9EAFD;" styleClass="left-sidebar" stylesheets="@../../Styles/OfficeHours.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="My Office Hours" />
-            <Line endX="29.792892456054688" endY="7.748603820800781E-7" startX="-100.0" />
-                <MenuButton fx:id="menuBtn" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #133E87;" text="Menu" textFill="WHITE">
-                    <items>
-                        <MenuItem fx:id="dashboardItem1" mnemonicParsing="false" text="Dashboard" />
-                        <MenuItem fx:id="officeHoursMenuItem" mnemonicParsing="false" text="Office Hours" />
-                        <MenuItem fx:id="scheduleMenuItem" mnemonicParsing="false" text="Schedule" />
-                        <MenuItem fx:id="reportMenuItem" mnemonicParsing="false" text="Report" />
-                    </items>
-                    <font>
-                        <Font name="Segoe UI Bold" size="11.0" />
-                    </font>
-                </MenuButton>
-         </children>
-      </VBox>
-        <Button fx:id="officeHoursBtn1" layoutX="162.0" layoutY="70.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: #133E87; -fx-cursor: hand" text="Office Hours" textFill="WHITE">
-            <font>
-                <Font name="Segoe UI Bold" size="12.0" />
-            </font>
-        </Button>
-        <Button fx:id="scheduleBtn1" layoutX="317.0" layoutY="70.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="98.0" style="-fx-background-color: #133E87; -fx-cursor: hand" text="Schedule" textFill="WHITE">
-            <font>
-                <Font name="Segoe UI Bold" size="12.0" />
-            </font>
-        </Button>
-        <Button fx:id="reportBtn1" layoutX="477.0" layoutY="70.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: #133E87; -fx-cursor: hand" text="Report" textFill="WHITE">
-            <font>
-                <Font name="Segoe UI Bold" size="12.0" />
-            </font>
-        </Button>
-        <Label layoutX="156.0" layoutY="24.0" text="Dashboard">
-            <font>
-                <Font name="Segoe UI Bold" size="19.0" />
-            </font>
-        </Label>
-        <TreeTableView layoutX="152.0" layoutY="179.0" prefHeight="183.0" prefWidth="287.0" style="-fx-background-color: #E8E4E4;">
-            <columns>
-                <TreeTableColumn prefWidth="103.20001220703125" style="-fx-background-color: #E8E4E4; -fx-border-color: #cccccc; -fx-border-width: 0 1 1 0;" text="Student's Name" />
-                <TreeTableColumn prefWidth="64.80003356933594" style="-fx-background-color: #E8E4E4; -fx-border-color: #cccccc; -fx-border-width: 0 1 1 0;" text="Time Slot" />
-                <TreeTableColumn prefWidth="60.0" style="-fx-background-color: #E8E4E4; -fx-border-color: #cccccc; -fx-border-width: 0 1 1 0;" text="Course" />
-                <TreeTableColumn prefWidth="56.80003662109374" style="-fx-background-color: #E8E4E4; -fx-border-color: #cccccc; -fx-border-width: 0 0 1 0;" text="Reason" />
-            </columns>
-        </TreeTableView>
-        <TextField layoutX="152.0" layoutY="143.0" prefHeight="26.0" prefWidth="287.0" />
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8e4e4" height="14.0" layoutX="406.0" layoutY="32.0" stroke="TRANSPARENT" strokeType="INSIDE" width="154.0" />
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8e4e4" height="138.0" layoutX="461.0" layoutY="202.0" stroke="TRANSPARENT" strokeType="INSIDE" width="128.0" />
-        <Label layoutX="498.0" layoutY="179.0" text="Calendar">
-            <font>
-                <Font name="Segoe UI Bold" size="13.0" />
-            </font>
-        </Label>
-        <Circle fill="#f77171" layoutX="576.0" layoutY="39.0" radius="7.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-    </children>
 
+<AnchorPane fx:id="root1" prefHeight="510.0" prefWidth="664.0" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_group17.Controllers.Dashboard.DashboardController">
+   <VBox layoutY="1.0" prefHeight="400.0" prefWidth="188.0" styleClass="left-panel" stylesheets="@../../Styles/Dashboard.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="My Office Hours" />
+       <Line endX="29.792892456054688" endY="7.748603820800781E-7" startX="-100.0" />
+       <MenuButton fx:id="menuBtn" mnemonicParsing="false" prefHeight="26.0" prefWidth="132.0" styleClass="menu-btn" stylesheets="@../../Styles/Dashboard.css" text="Menu" textFill="#FFFFFF">
+           <items>
+               <RadioMenuItem fx:id="dashBoardMenuItem" mnemonicParsing="false" text="Dashboard">
+                   <toggleGroup>
+                       <ToggleGroup fx:id="myGroup" />
+                   </toggleGroup>
+               </RadioMenuItem>
+               <RadioMenuItem fx:id="officeHoursMenuItem" mnemonicParsing="false" text="Office Hours" toggleGroup="$myGroup" />
+               <RadioMenuItem fx:id="scheduleMenuItem" mnemonicParsing="false" text="Schedule" toggleGroup="$myGroup" />
+               <RadioMenuItem fx:id="reportMenuItem" mnemonicParsing="false" text="Report" toggleGroup="$myGroup" />
+           </items>
+       </MenuButton>
+   </VBox>
+   <VBox fx:id="titleSection" layoutX="153.0" layoutY="17.0" prefHeight="75.0" prefWidth="502.0">
+       <Label styleClass="page-header" stylesheets="@../../Styles/Dashboard.css" text="Dashboard" />
+       <HBox fx:id="actionBtn" prefHeight="21.0" prefWidth="502.0" styleClass="dashboard-nav-container" stylesheets="@../../Styles/Dashboard.css">
+           <Button fx:id="officeHoursBtn1" mnemonicParsing="false" styleClass="dashboard-nav-buttons" stylesheets="@../../Styles/Dashboard.css" text="Office Hour" />
+           <Button fx:id="scheduleBtn1" mnemonicParsing="false" styleClass="dashboard-nav-buttons" stylesheets="@../../Styles/Dashboard.css" text="Schedule" />
+           <Button fx:id="reportBtn1" mnemonicParsing="false" styleClass="dashboard-nav-buttons" stylesheets="@../../Styles/Dashboard.css" text="Report" />
+           <padding>
+               <Insets bottom="5.0" top="5.0" />
+           </padding>
+       </HBox>
+   </VBox>
+   <HBox layoutX="153.0" layoutY="115.0" prefHeight="380.0" prefWidth="502.0" styleClass="dashboard-content-container" stylesheets="@../../Styles/Dashboard.css">
+       <children>
+           <VBox prefHeight="370.0" prefWidth="350.0" styleClass="dashboard-partition-content-container" stylesheets="@../../Styles/Dashboard.css">
+               <children>
+                   <TextField prefHeight="60.0" prefWidth="270.0" />
+                   <TreeTableView prefHeight="332.0" prefWidth="270.0" styleClass="tree-table" stylesheets="@../../Styles/Dashboard.css">
+                       <columns>
+                           <TreeTableColumn prefWidth="87.20000779628754" style="-fx-background-color: #e8e8e8; -fx-border-color: #cccccc; -fx-border-width: 0 1 1 0;" text="Student Name" />
+                    <TreeTableColumn prefWidth="74.39997100830078" style="-fx-background-color: #e8e8e8; -fx-border-color: #cccccc; -fx-border-width: 0 1 1 0;" text="Time Slot" />
+                    <TreeTableColumn prefWidth="47.20001220703125" style="-fx-background-color: #e8e8e8; -fx-border-color: #cccccc; -fx-border-width: 0 1 1 0;" text="Course" />
+                    <TreeTableColumn prefWidth="58.39997253417971" style="-fx-background-color: #e8e8e8; -fx-border-color: #cccccc; -fx-border-width: 0 1 1 0;" text="Reason" />
+                       </columns>
+                   </TreeTableView>
+               </children>
+           </VBox>
+           <VBox prefHeight="360.0" prefWidth="258.0" styleClass="dashboard-partition-content-container" stylesheets="@../../Styles/Dashboard.css">
+           <children>
+              <Label styleClass="dashboard-label" stylesheets="@../../Styles/Dashboard.css" text="Calendar" />
+              <GridPane prefHeight="168.0" prefWidth="196.0" styleClass="calendar" stylesheets="@../../Styles/Dashboard.css">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                </rowConstraints>
+                 <children>
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.rowIndex="1" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.rowIndex="2" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.rowIndex="3" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.rowIndex="4" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.rowIndex="5" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day-pane" stylesheets="@../../Styles/Dashboard.css">
+                       <children>
+                          <Label layoutX="3.0" layoutY="8.0" styleClass="calendar-week-label" stylesheets="@../../Styles/Dashboard.css" text="Mon" />
+                       </children></Pane>
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day-pane" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="1">
+                       <children>
+                          <Label layoutX="5.0" layoutY="8.0" styleClass="calendar-week-label" stylesheets="@../../Styles/Dashboard.css" text="Tue" />
+                       </children></Pane>
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day-pane" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="2">
+                       <children>
+                          <Label layoutX="3.0" layoutY="8.0" styleClass="calendar-week-label" stylesheets="@../../Styles/Dashboard.css" text="Wed" />
+                       </children></Pane>
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day-pane" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="3">
+                       <children>
+                          <Label layoutX="4.0" layoutY="8.0" styleClass="calendar-week-label" stylesheets="@../../Styles/Dashboard.css" text="Thu" />
+                       </children></Pane>
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day-pane" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="4">
+                       <children>
+                          <Label layoutX="7.0" layoutY="8.0" styleClass="calendar-week-label" stylesheets="@../../Styles/Dashboard.css" text="Fri" />
+                       </children></Pane>
+                    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="day-pane" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="5">
+                       <children>
+                          <Label layoutX="6.0" layoutY="8.0" styleClass="calendar-week-label" stylesheets="@../../Styles/Dashboard.css" text="Sat" />
+                       </children></Pane>
+                    <Pane prefHeight="29.0" prefWidth="94.0" styleClass="day-pane" stylesheets="@../../Styles/Dashboard.css" GridPane.columnIndex="6">
+                       <children>
+                          <Label layoutX="6.0" layoutY="8.0" styleClass="calendar-week-label" stylesheets="@../../Styles/Dashboard.css" text="Sun" />
+                       </children></Pane>
+                 </children>
+              </GridPane>
+              <Label styleClass="dashboard-label" stylesheets="@../../Styles/Dashboard.css" text="Notifications" />
+              <Pane prefHeight="96.0" prefWidth="135.0" styleClass="notifications" stylesheets="@../../Styles/Dashboard.css" />
+           </children></VBox>
+       </children>
+   </HBox>
 </AnchorPane>
+

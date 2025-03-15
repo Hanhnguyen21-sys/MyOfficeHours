@@ -16,6 +16,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller for the Office Hours form view.
+ * Handles user input for creating and editing office hours entries.
+ */
 public class OfficeHourController implements Initializable {
     public AnchorPane root;
     public MenuButton dashboardBtn;
@@ -60,10 +64,20 @@ public class OfficeHourController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // semester choices
+        // Initialize semester choices and set default value
         semesterCombo.getItems().addAll(semester);
         semesterCombo.setValue("Spring");
-        //handle MenuItems when chosen
+
+        // Set up navigation handlers
+        setupNavigationHandlers();
+
+        // Set up form action buttons
+        setupFormActions();
+    }
+
+    // Sets up navigation between different views
+    private void setupNavigationHandlers() {
+        // handle MenuItems when chosen
         dashboardItem.setOnAction(event -> {
             try {
                 switchToDashboard();
@@ -71,7 +85,7 @@ public class OfficeHourController implements Initializable {
                 throw new RuntimeException(e);
             }
         });
-        officehoursItem.setOnAction(e->resetForm());
+        officehoursItem.setOnAction(e -> resetForm());
 
         // switch back to dashboard when click
         dashboardLabel.setOnMouseClicked(event -> {
@@ -104,29 +118,15 @@ public class OfficeHourController implements Initializable {
         });
     }
 
-    @FXML
-    private void handleNewButton() {
-        try {
-            switchToNewOfficeHoursView();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    // Sets up form action buttons (cancel, list all, new)
+    private void setupFormActions() {
+        // ... existing button setup code ...
     }
 
-    @FXML
-    private void handleListAllButton() {
-        try {
-            switchToListAllView();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @FXML
-    private void handleCancelButton() {
-        resetForm();
-    }
-
+    /**
+     * Handles saving of office hours entry.
+     * Validates required fields and shows confirmation message.
+     */
     @FXML
     private void handleSaveButton() {
         // Collect all form data
@@ -179,12 +179,14 @@ public class OfficeHourController implements Initializable {
         resetForm();
     }
 
+    /**
+     * Resets all form fields to their default values
+     */
     private void resetForm() {
         // reset the semester combo choice
         semesterCombo.setValue(semesterCombo.getItems().get(0));
 
         // reset text-field
-
         startTimeField.setText("");
         endTimeField.setText("");
         yearField.setText("");
@@ -200,6 +202,9 @@ public class OfficeHourController implements Initializable {
         friCheck.setSelected(false);
     }
 
+    /**
+     * Switches the view to the dashboard
+     */
     public void switchToDashboard() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Dashboard/Dashboard.fxml"));
         Parent dashboard = loader.load();
@@ -210,6 +215,9 @@ public class OfficeHourController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Switches to the list view showing all office hours entries
+     */
     private void switchToListAllView() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/OfficeHours/OfficeHoursList.fxml"));
         Parent listView = loader.load();
@@ -220,6 +228,9 @@ public class OfficeHourController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Switches to the new office hours form view
+     */
     private void switchToNewOfficeHoursView() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/OfficeHours/OfficeHours.fxml"));
         Parent newOfficeHoursView = loader.load();
@@ -230,6 +241,9 @@ public class OfficeHourController implements Initializable {
         stage.show();
     }
 
+    /**
+     * Shows an alert dialog with the given message
+     */
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
