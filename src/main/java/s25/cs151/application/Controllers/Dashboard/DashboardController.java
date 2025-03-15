@@ -1,4 +1,4 @@
-package com.example.project_group17.Controllers.Dashboard;
+package s25.cs151.application.Controllers.Dashboard;
 
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;

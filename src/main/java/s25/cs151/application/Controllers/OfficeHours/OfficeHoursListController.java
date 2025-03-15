@@ -1,6 +1,6 @@
-package com.example.project_group17.Controllers.OfficeHours;
+package s25.cs151.application.Controllers.OfficeHours;
 
-import com.example.project_group17.Models.OfficeHours;
+import s25.cs151.application.Models.OfficeHours;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;

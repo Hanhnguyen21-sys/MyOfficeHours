@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
+<!-- Imports -->
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -21,8 +21,11 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane fx:id="root1" prefHeight="510.0" prefWidth="664.0" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_group17.Controllers.Dashboard.DashboardController">
-   <VBox layoutY="1.0" prefHeight="400.0" prefWidth="188.0" styleClass="left-panel" stylesheets="@../../Styles/Dashboard.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+<!-- Anchor Pane -->
+<AnchorPane fx:id="root1" prefHeight="510.0" prefWidth="664.0" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.Dashboard.DashboardController">
+
+    <!-- Left Panel with Navigation Bar -->
+    <VBox layoutY="1.0" prefHeight="400.0" prefWidth="188.0" styleClass="left-panel" stylesheets="@../../Styles/Dashboard.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="My Office Hours" />
        <Line endX="29.792892456054688" endY="7.748603820800781E-7" startX="-100.0" />
        <MenuButton fx:id="menuBtn" mnemonicParsing="false" prefHeight="26.0" prefWidth="132.0" styleClass="menu-btn" stylesheets="@../../Styles/Dashboard.css" text="Menu" textFill="#FFFFFF">
@@ -38,8 +41,15 @@
            </items>
        </MenuButton>
    </VBox>
+
+
+    <!-- Top Panel with Title and Navigation Buttons-->
    <VBox fx:id="titleSection" layoutX="153.0" layoutY="17.0" prefHeight="75.0" prefWidth="502.0">
+
+       <!-- Page Title -->
        <Label styleClass="page-header" stylesheets="@../../Styles/Dashboard.css" text="Dashboard" />
+
+       <!-- Large Navigation Buttons-->
        <HBox fx:id="actionBtn" prefHeight="21.0" prefWidth="502.0" styleClass="dashboard-nav-container" stylesheets="@../../Styles/Dashboard.css">
            <Button fx:id="officeHoursBtn1" mnemonicParsing="false" styleClass="dashboard-nav-buttons" stylesheets="@../../Styles/Dashboard.css" text="Office Hour" />
            <Button fx:id="scheduleBtn1" mnemonicParsing="false" styleClass="dashboard-nav-buttons" stylesheets="@../../Styles/Dashboard.css" text="Schedule" />
@@ -49,23 +59,31 @@
            </padding>
        </HBox>
    </VBox>
+
+    <!-- Dashboard Content-->
    <HBox layoutX="153.0" layoutY="115.0" prefHeight="380.0" prefWidth="502.0" styleClass="dashboard-content-container" stylesheets="@../../Styles/Dashboard.css">
        <children>
+
+           <!-- Right Side of Dashboard Content with Search Bar and Table of Appointments -->
            <VBox prefHeight="370.0" prefWidth="350.0" styleClass="dashboard-partition-content-container" stylesheets="@../../Styles/Dashboard.css">
                <children>
                    <TextField prefHeight="60.0" prefWidth="270.0" />
                    <TreeTableView prefHeight="332.0" prefWidth="270.0" styleClass="tree-table" stylesheets="@../../Styles/Dashboard.css">
                        <columns>
-                           <TreeTableColumn prefWidth="87.20000779628754" style="-fx-background-color: #e8e8e8; -fx-border-color: #cccccc; -fx-border-width: 0 1 1 0;" text="Student Name" />
-                    <TreeTableColumn prefWidth="74.39997100830078" style="-fx-background-color: #e8e8e8; -fx-border-color: #cccccc; -fx-border-width: 0 1 1 0;" text="Time Slot" />
-                    <TreeTableColumn prefWidth="47.20001220703125" style="-fx-background-color: #e8e8e8; -fx-border-color: #cccccc; -fx-border-width: 0 1 1 0;" text="Course" />
-                    <TreeTableColumn prefWidth="58.39997253417971" style="-fx-background-color: #e8e8e8; -fx-border-color: #cccccc; -fx-border-width: 0 1 1 0;" text="Reason" />
+                            <TreeTableColumn prefWidth="87.20000779628754" style="-fx-background-color: #e8e8e8; -fx-border-color: #cccccc; -fx-border-width: 0 1 1 0;" text="Student Name" />
+                            <TreeTableColumn prefWidth="74.39997100830078" style="-fx-background-color: #e8e8e8; -fx-border-color: #cccccc; -fx-border-width: 0 1 1 0;" text="Time Slot" />
+                            <TreeTableColumn prefWidth="47.20001220703125" style="-fx-background-color: #e8e8e8; -fx-border-color: #cccccc; -fx-border-width: 0 1 1 0;" text="Course" />
+                            <TreeTableColumn prefWidth="58.39997253417971" style="-fx-background-color: #e8e8e8; -fx-border-color: #cccccc; -fx-border-width: 0 1 1 0;" text="Reason" />
                        </columns>
                    </TreeTableView>
                </children>
            </VBox>
+
+           <!-- Left Side of Dashboard Content with Calendar and Notifications -->
            <VBox prefHeight="360.0" prefWidth="258.0" styleClass="dashboard-partition-content-container" stylesheets="@../../Styles/Dashboard.css">
            <children>
+
+               <!-- Calendar -->
               <Label styleClass="dashboard-label" stylesheets="@../../Styles/Dashboard.css" text="Calendar" />
               <GridPane prefHeight="168.0" prefWidth="196.0" styleClass="calendar" stylesheets="@../../Styles/Dashboard.css">
                 <columnConstraints>
@@ -151,6 +169,8 @@
                        </children></Pane>
                  </children>
               </GridPane>
+
+               <!-- Notifications -->
               <Label styleClass="dashboard-label" stylesheets="@../../Styles/Dashboard.css" text="Notifications" />
               <Pane prefHeight="96.0" prefWidth="135.0" styleClass="notifications" stylesheets="@../../Styles/Dashboard.css" />
            </children></VBox>

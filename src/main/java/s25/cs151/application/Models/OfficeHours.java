@@ -1,4 +1,4 @@
-package com.example.project_group17.Models;
+package s25.cs151.application.Models;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
