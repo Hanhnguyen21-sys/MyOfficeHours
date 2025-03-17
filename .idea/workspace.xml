@@ -56,17 +56,6 @@
   }
 }</component>
   <component name="RunManager" selected="Maven.Project_Group17 [javafx:run]">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="MyOfficeHours" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="MyOfficeHours" />
-      <option name="filePath" />
-      <method v="2" />
-    </configuration>
     <configuration name="Project_Group17 [clean,compile]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
