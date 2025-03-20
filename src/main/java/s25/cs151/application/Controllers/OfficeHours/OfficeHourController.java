@@ -39,18 +39,9 @@ public class OfficeHourController implements Initializable {
     public CheckBox wedCheck;
     public CheckBox friCheck;
     public CheckBox thurCheck;
-    public VBox timeGroup;
-    public HBox startTimeGroup;
-    public TextField startTimeField;
-    public HBox endTimeGroup;
-    public TextField endTimeField;
-    public VBox titleSection;
     public HBox actionBtn;
     public Button listAllBtn;
     public Button newBtn;
-    public TextField courseSection;
-    public TextField courseCode;
-    public TextField courseName;
     public Button cancelBtn;
     public Button saveBtn;
 
@@ -152,17 +143,9 @@ public class OfficeHourController implements Initializable {
             selectedDays = selectedDays.substring(0, selectedDays.length() - 1);
         }
 
-        String startTime = startTimeField.getText();
-        String endTime = endTimeField.getText();
-        String course = courseCode.getText();
-        String section = courseSection.getText();
-        String name = courseName.getText();
-
         // Validate required fields
-        if (selectedSemester == null || year.isEmpty() || selectedDays.isEmpty() ||
-                startTime.isEmpty() || endTime.isEmpty() || course.isEmpty()) {
-            showAlert(
-                    "Please fill in all required fields: Semester, Year, Days, Start Time, End Time, and Course Code.");
+        if (selectedSemester == null || year.isEmpty() || selectedDays.isEmpty()) {
+            showAlert("Please fill in all required fields: Semester, Year, Days");
             return;
         }
 
@@ -170,10 +153,7 @@ public class OfficeHourController implements Initializable {
         // In a future version, this would save to a database or file
         showAlert("Office Hours saved successfully!\n\n" +
                 "Semester: " + selectedSemester + " " + year + "\n" +
-                "Days: " + selectedDays + "\n" +
-                "Time: " + startTime + " - " + endTime + "\n" +
-                "Course: " + course + " - " + section + "\n" +
-                "Course Name: " + name);
+                "Days: " + selectedDays);
 
         // Reset the form after saving
         resetForm();
@@ -187,12 +167,7 @@ public class OfficeHourController implements Initializable {
         semesterCombo.setValue(semesterCombo.getItems().get(0));
 
         // reset text-field
-        startTimeField.setText("");
-        endTimeField.setText("");
         yearField.setText("");
-        courseSection.setText("");
-        courseCode.setText("");
-        courseName.setText("");
 
         // clear checkboxes
         monCheck.setSelected(false);
