@@ -5,12 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b52546b4-ac0b-45bb-8759-fe99c5a1be21" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_jfoenix_jfoenix_9_0_10.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__de_jensd_fontawesomefx_commons_9_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__de_jensd_fontawesomefx_fontawesome_4_7_0_9_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_23_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_23_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_23_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_23_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_23_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_win_23_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_23_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_23_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_media_23_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_media_win_23_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_web_23_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_web_win_23_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_xerial_sqlite_jdbc_3_36_0_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_Group17.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/OfficeHours/OfficeHourController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/OfficeHours/OfficeHourController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/OfficeHours/OfficeHoursListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/OfficeHours/OfficeHoursListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Models/OfficeHours.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Models/OfficeHours.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/OfficeHours/OfficeHours.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/OfficeHours/OfficeHours.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/s25/cs151/application/Controllers/OfficeHours/OfficeHourController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/s25/cs151/application/Controllers/OfficeHours/OfficeHourController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/OfficeHours/OfficeHoursList.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/OfficeHours/OfficeHoursList.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Styles/OfficeHours.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Styles/OfficeHours.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +59,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Hanhnguyen21-sys/MyOfficeHours.git&quot;,
-    &quot;accountId&quot;: &quot;6f7519b5-649a-4752-93c4-c1c43ba9b696&quot;
+    &quot;accountId&quot;: &quot;943f3342-5ce4-4203-a6bc-9897295d34b9&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -51,13 +74,15 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.s25.cs151.application.Main.executor": "Run",
     "Maven.Project_Group17 [clean,compile].executor": "Run",
     "Maven.Project_Group17 [javafx:run].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "code-version-0.2",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/nguyennguyen/Desktop/MyOfficeHours",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -66,7 +91,15 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Maven.Project_Group17 [javafx:run]">
+  <component name="RunManager" selected="Application.s25.cs151.application.Main">
+    <configuration default="true" type="Application" factoryName="Application">
+      <method v="2" />
+    </configuration>
+    <configuration name="s25.cs151.application.Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="s25.cs151.application.Main" />
+      <module name="Project_Group17" />
+      <method v="2" />
+    </configuration>
     <configuration name="Project_Group17 [clean,compile]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -129,17 +162,10 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Application.s25.cs151.application.Main" />
       <item itemvalue="Maven.Project_Group17 [javafx:run]" />
       <item itemvalue="Maven.Project_Group17 [clean,compile]" />
     </list>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.25659.59" />
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.25659.59" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -156,5 +182,27 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/OfficeHours/OfficeHourController.java</url>
+          <line>220</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

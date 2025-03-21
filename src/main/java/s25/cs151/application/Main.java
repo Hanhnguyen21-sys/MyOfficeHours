@@ -5,12 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import s25.cs151.application.Models.ConnectDB;
+
+import java.sql.Connection;
 
 /**
  * This Main Class is the JavaFX Office Hours Application entry point, which extends Application.
  */
 public class Main extends Application {
-
 
     /**
      * JavaFX calls start automatically after launch is called, we override this method to
@@ -19,7 +21,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root =  FXMLLoader.load(getClass().getResource("/Fxml/Dashboard/Dashboard.fxml"));
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root,660,510);
         primaryStage.setScene(scene);
         primaryStage.show();
 
@@ -32,4 +34,6 @@ public class Main extends Application {
         launch(args);
     }
 }
+
+
 

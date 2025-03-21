@@ -7,15 +7,15 @@ public class OfficeHours {
     private final StringProperty semester;
     private final StringProperty year;
     private final StringProperty days;
-    private final StringProperty time;
-    private final StringProperty course;
+//    private final StringProperty time;
+//    private final StringProperty course;
 
-    public OfficeHours(String semester, String year, String days, String time, String course) {
+    public OfficeHours(String semester, String year, String days) {
         this.semester = new SimpleStringProperty(semester);
         this.year = new SimpleStringProperty(year);
         this.days = new SimpleStringProperty(days);
-        this.time = new SimpleStringProperty(time);
-        this.course = new SimpleStringProperty(course);
+//        this.time = new SimpleStringProperty(time);
+//        this.course = new SimpleStringProperty(course);
     }
 
     // Getters
@@ -31,13 +31,13 @@ public class OfficeHours {
         return days.get();
     }
 
-    public String getTime() {
-        return time.get();
-    }
-
-    public String getCourse() {
-        return course.get();
-    }
+//    public String getTime() {
+//        return time.get();
+//    }
+//
+//    public String getCourse() {
+//        return course.get();
+//    }
 
     // Setters
     public void setSemester(String value) {
@@ -52,13 +52,13 @@ public class OfficeHours {
         days.set(value);
     }
 
-    public void setTime(String value) {
-        time.set(value);
-    }
-
-    public void setCourse(String value) {
-        course.set(value);
-    }
+//    public void setTime(String value) {
+//        time.set(value);
+//    }
+//
+//    public void setCourse(String value) {
+//        course.set(value);
+//    }
 
     // Property getters
     public StringProperty semesterProperty() {
@@ -72,12 +72,12 @@ public class OfficeHours {
     public StringProperty daysProperty() {
         return days;
     }
-
-    public StringProperty timeProperty() {
-        return time;
-    }
-
-    public StringProperty courseProperty() {
-        return course;
-    }
+//
+//    public StringProperty timeProperty() {
+//        return time;
+//    }
+//
+//    public StringProperty courseProperty() {
+//        return course;
+//    }
 }
