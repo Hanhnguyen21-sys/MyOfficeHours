@@ -2,20 +2,37 @@ package s25.cs151.application.Models;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 
 public class OfficeHours {
+    private IntegerProperty id;
     private final StringProperty semester;
     private final StringProperty year;
     private final StringProperty days;
-//    private final StringProperty time;
-//    private final StringProperty course;
+    // private final StringProperty time;
+    // private final StringProperty course;
 
     public OfficeHours(String semester, String year, String days) {
+        this.id = new SimpleIntegerProperty(0);
         this.semester = new SimpleStringProperty(semester);
         this.year = new SimpleStringProperty(year);
         this.days = new SimpleStringProperty(days);
-//        this.time = new SimpleStringProperty(time);
-//        this.course = new SimpleStringProperty(course);
+        // this.time = new SimpleStringProperty(time);
+        // this.course = new SimpleStringProperty(course);
+    }
+
+    // ID Getter & Setter
+    public int getId() {
+        return id.get();
+    }
+
+    public void setId(int value) {
+        this.id.set(value);
+    }
+
+    public IntegerProperty idProperty() {
+        return id;
     }
 
     // Getters
@@ -31,13 +48,13 @@ public class OfficeHours {
         return days.get();
     }
 
-//    public String getTime() {
-//        return time.get();
-//    }
-//
-//    public String getCourse() {
-//        return course.get();
-//    }
+    // public String getTime() {
+    // return time.get();
+    // }
+    //
+    // public String getCourse() {
+    // return course.get();
+    // }
 
     // Setters
     public void setSemester(String value) {
@@ -52,13 +69,13 @@ public class OfficeHours {
         days.set(value);
     }
 
-//    public void setTime(String value) {
-//        time.set(value);
-//    }
-//
-//    public void setCourse(String value) {
-//        course.set(value);
-//    }
+    // public void setTime(String value) {
+    // time.set(value);
+    // }
+    //
+    // public void setCourse(String value) {
+    // course.set(value);
+    // }
 
     // Property getters
     public StringProperty semesterProperty() {
@@ -72,12 +89,12 @@ public class OfficeHours {
     public StringProperty daysProperty() {
         return days;
     }
-//
-//    public StringProperty timeProperty() {
-//        return time;
-//    }
-//
-//    public StringProperty courseProperty() {
-//        return course;
-//    }
+    //
+    // public StringProperty timeProperty() {
+    // return time;
+    // }
+    //
+    // public StringProperty courseProperty() {
+    // return course;
+    // }
 }

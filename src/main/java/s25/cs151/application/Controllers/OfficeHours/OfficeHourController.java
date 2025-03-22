@@ -56,7 +56,7 @@ public class OfficeHourController implements Initializable {
     public MenuItem scheduleItem;
     public MenuItem reportItem;
 
-    private String[] semester = { "Spring", "Summer", "Fall", "Winter" };
+    private String[] semester = { "Fall", "Winter", "Spring", "Summer" };
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -125,7 +125,7 @@ public class OfficeHourController implements Initializable {
      */
     @FXML
     private void handleSaveButton() {
-        //Connect to our Database
+        // Connect to our Database
         ConnectDB connectDB = new ConnectDB();
         Connection connection = connectDB.getConnection();
 
@@ -148,7 +148,7 @@ public class OfficeHourController implements Initializable {
 
         // Remove trailing comma if exists
         if (days.length() > 0) {
-            days.setLength(days.length() - 2);  // Removes last ", "
+            days.setLength(days.length() - 2); // Removes last ", "
         }
         String selectedDays = days.toString();
 
@@ -161,20 +161,17 @@ public class OfficeHourController implements Initializable {
         // Validate year being 4 digits
         try {
             int yearAsInt = Integer.parseInt(selectedYear);
-            if (yearAsInt > 9999 || yearAsInt < 1000)
-            {
+            if (yearAsInt > 9999 || yearAsInt < 1000) {
                 showAlert("Year must be a 4 digit number");
                 return;
             }
-        }
-        catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             showAlert("Year must be a 4 digit number.");
             return;
         }
 
-
-        if(connection!=null){
-            try{
+        if (connection != null) {
+            try {
                 Statement statement = connection.createStatement();
                 String createTable = "CREATE TABLE IF NOT EXISTS officeHours ("
                         + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -194,9 +191,9 @@ public class OfficeHourController implements Initializable {
                 ResultSet resultSetDup = preparedStatementDup.executeQuery();
                 resultSetDup.next();
 
-                if(resultSetDup.getInt("count") > 0)
-                {
-                    showAlert("This semester, year, and days combination for office hours already exists. Please select another one.");
+                if (resultSetDup.getInt("count") > 0) {
+                    showAlert(
+                            "This semester, year, and days combination for office hours already exists. Please select another one.");
                     return;
                 }
 
@@ -244,7 +241,7 @@ public class OfficeHourController implements Initializable {
     public void switchToDashboard() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Dashboard/Dashboard.fxml"));
         Parent dashboard = loader.load();
-        Scene dashboardScene = new Scene(dashboard,660,510);
+        Scene dashboardScene = new Scene(dashboard, 660, 510);
         Stage stage = (Stage) root.getScene().getWindow();
         stage.setTitle("Dashboard");
         stage.setScene(dashboardScene);
@@ -257,7 +254,7 @@ public class OfficeHourController implements Initializable {
     private void switchToListAllView() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/OfficeHours/OfficeHoursList.fxml"));
         Parent listView = loader.load();
-        Scene scene = new Scene(listView,660,510);
+        Scene scene = new Scene(listView, 660, 510);
         Stage stage = (Stage) root.getScene().getWindow();
         stage.setTitle("Office Hours List");
         stage.setScene(scene);
@@ -270,7 +267,7 @@ public class OfficeHourController implements Initializable {
     private void switchToNewOfficeHoursView() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/OfficeHours/OfficeHours.fxml"));
         Parent newOfficeHoursView = loader.load();
-        Scene scene = new Scene(newOfficeHoursView,660,510);
+        Scene scene = new Scene(newOfficeHoursView, 660, 510);
         Stage stage = (Stage) root.getScene().getWindow();
         stage.setTitle("New Office Hours");
         stage.setScene(scene);

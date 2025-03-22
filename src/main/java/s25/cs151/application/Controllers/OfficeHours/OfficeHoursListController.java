@@ -2,7 +2,9 @@ package s25.cs151.application.Controllers.OfficeHours;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Button;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 import s25.cs151.application.Models.ConnectDB;
 import s25.cs151.application.Models.OfficeHours;
 import javafx.fxml.FXML;
@@ -18,9 +20,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
@@ -42,19 +46,13 @@ public class OfficeHoursListController implements Initializable {
     public TableColumn<OfficeHours, String> yearColumn;
     @FXML
     public TableColumn<OfficeHours, String> daysColumn;
+    @FXML
+    public TableColumn<OfficeHours, Void> actionColumn;
     public MenuItem dashboardItem;
     public MenuItem officehoursItem;
-//    @FXML
-//    private TableColumn<OfficeHours, String> timeColumn;
-//    @FXML
-//    private TableColumn<OfficeHours, String> courseColumn;
-//    @FXML
-//    private Button newBtn;
-//    @FXML
-//    private Button editBtn;
-//    @FXML
-//    private Button deleteBtn;
-ObservableList<OfficeHours> officeHoursObservableList = FXCollections.observableArrayList();
+
+    ObservableList<OfficeHours> officeHoursObservableList = FXCollections.observableArrayList();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Set up table columns and button actions
@@ -70,8 +68,42 @@ ObservableList<OfficeHours> officeHoursObservableList = FXCollections.observable
         semesterColumn.setCellValueFactory(cellData -> cellData.getValue().semesterProperty());
         yearColumn.setCellValueFactory(cellData -> cellData.getValue().yearProperty());
         daysColumn.setCellValueFactory(cellData -> cellData.getValue().daysProperty());
-//        timeColumn.setCellValueFactory(cellData -> cellData.getValue().timeProperty());
-//        courseColumn.setCellValueFactory(cellData -> cellData.getValue().courseProperty());
+
+        // Set up the action column with delete button
+        setupActionColumn();
+    }
+
+    /**
+     * Sets up the action column with a delete button
+     */
+    private void setupActionColumn() {
+        Callback<TableColumn<OfficeHours, Void>, TableCell<OfficeHours, Void>> cellFactory = new Callback<>() {
+            @Override
+            public TableCell<OfficeHours, Void> call(final TableColumn<OfficeHours, Void> param) {
+                return new TableCell<>() {
+                    private final Button deleteBtn = new Button("Delete");
+                    {
+                        deleteBtn.setStyle("-fx-background-color: #FF5555; -fx-text-fill: white;");
+                        deleteBtn.setOnAction(event -> {
+                            OfficeHours officeHours = getTableView().getItems().get(getIndex());
+                            deleteOfficeHours(officeHours);
+                        });
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(deleteBtn);
+                        }
+                    }
+                };
+            }
+        };
+
+        actionColumn.setCellFactory(cellFactory);
     }
 
     /**
@@ -116,52 +148,25 @@ ObservableList<OfficeHours> officeHoursObservableList = FXCollections.observable
                 throw new RuntimeException(ex);
             }
         });
-
-
-        // Edit button
-//        editBtn.setOnAction(e -> {
-//            OfficeHours selected = officeHoursTable.getSelectionModel().getSelectedItem();
-//            if (selected != null) {
-//                try {
-//                    System.out.println("Edit button clicked");
-//                    switchToEditOfficeHoursView(selected);
-//                } catch (IOException ex) {
-//                    System.err.println("Error switching to edit office hours view: " + ex.getMessage());
-//                    ex.printStackTrace();
-//                    throw new RuntimeException(ex);
-//                }
-//            } else {
-//                showAlert("Please select an office hours entry to edit.");
-//            }
-//        });
-//
-//        // Delete button
-//        deleteBtn.setOnAction(e -> {
-//            OfficeHours selected = officeHoursTable.getSelectionModel().getSelectedItem();
-//            if (selected != null) {
-//                deleteOfficeHours(selected);
-//            } else {
-//                showAlert("Please select an office hours entry to delete.");
-//            }
-//        });
     }
 
     /**
      * Loads office hours data into the table
      */
     private void loadOfficeHours() {
+        // Clear the existing list to avoid duplicates when reloading
+        officeHoursObservableList.clear();
 
-        try{
-
+        try {
             ConnectDB connectDB = new ConnectDB();
             Connection connection = connectDB.getConnection();
 
             Statement createstatement = connection.createStatement();
             String createTable = "CREATE TABLE IF NOT EXISTS officeHours ("
-                        + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                        + "semester TEXT, "
-                        + "year TEXT, "
-                        + "days TEXT)";
+                    + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                    + "semester TEXT, "
+                    + "year TEXT, "
+                    + "days TEXT)";
             // create a table
             createstatement.executeUpdate(createTable);
 
@@ -169,17 +174,22 @@ ObservableList<OfficeHours> officeHoursObservableList = FXCollections.observable
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(selectQuery);
 
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 String semester = resultSet.getString("semester");
                 String year = resultSet.getString("year");
-                String days  = resultSet.getString("days");
-                officeHoursObservableList.add(new OfficeHours(semester,year,days));
+                String days = resultSet.getString("days");
+
+                // Create OfficeHours object with ID for deletion
+                OfficeHours officeHour = new OfficeHours(semester, year, days);
+                officeHour.setId(resultSet.getInt("id"));
+                officeHoursObservableList.add(officeHour);
             }
+
             semesterColumn.setCellValueFactory(new PropertyValueFactory<>("semester"));
             yearColumn.setCellValueFactory(new PropertyValueFactory<>("year"));
             daysColumn.setCellValueFactory(new PropertyValueFactory<>("days"));
 
-            //set items to tableview
+            // set items to tableview
             officeHoursTable.setItems(officeHoursObservableList);
 
             // sort descending based on year & semester
@@ -192,29 +202,65 @@ ObservableList<OfficeHours> officeHoursObservableList = FXCollections.observable
             officeHoursTable.sort();
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.err.println("Database error: " + e.getMessage());
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Database Error", "Could not load office hours data.");
         }
     }
 
     /**
      * Deletes the selected office hours entry
-     * TODO: Implement database integration
      */
     private void deleteOfficeHours(OfficeHours officeHours) {
-        // TODO: Implement delete functionality
-        // This will be implemented when we add database functionality
-        showAlert("Delete functionality will be implemented with database integration.");
+        // Confirm deletion with dialog
+        Alert confirmDialog = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmDialog.setTitle("Confirm Delete");
+        confirmDialog.setHeaderText(null);
+        confirmDialog.setContentText("Are you sure you want to delete this office hours entry?");
+
+        Optional<ButtonType> result = confirmDialog.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            try {
+                ConnectDB connectDB = new ConnectDB();
+                Connection connection = connectDB.getConnection();
+
+                String deleteQuery = "DELETE FROM officeHours WHERE id = ?";
+                PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery);
+                preparedStatement.setInt(1, officeHours.getId());
+
+                int rowsAffected = preparedStatement.executeUpdate();
+                if (rowsAffected > 0) {
+                    // Remove from the table
+                    officeHoursObservableList.remove(officeHours);
+                    showAlert(Alert.AlertType.INFORMATION, "Success", "Office hours entry deleted successfully.");
+                } else {
+                    showAlert(Alert.AlertType.ERROR, "Error", "Failed to delete office hours entry.");
+                }
+
+            } catch (SQLException e) {
+                System.err.println("Database error: " + e.getMessage());
+                e.printStackTrace();
+                showAlert(Alert.AlertType.ERROR, "Database Error", "Could not delete office hours entry.");
+            }
+        }
+    }
+
+    /**
+     * Shows an alert dialog with the given message
+     */
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     /**
      * Shows an alert dialog with the given message
      */
     private void showAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+        showAlert(Alert.AlertType.INFORMATION, "Information", message);
     }
 
     /**
@@ -224,7 +270,7 @@ ObservableList<OfficeHours> officeHoursObservableList = FXCollections.observable
         System.out.println("Loading dashboard FXML from: /Fxml/Dashboard/Dashboard.fxml");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Dashboard/Dashboard.fxml"));
         Parent dashboard = loader.load();
-        Scene scene = new Scene(dashboard,660,510);
+        Scene scene = new Scene(dashboard, 660, 510);
         Stage stage = (Stage) root.getScene().getWindow();
         stage.setTitle("Dashboard");
         stage.setScene(scene);
@@ -238,26 +284,9 @@ ObservableList<OfficeHours> officeHoursObservableList = FXCollections.observable
         System.out.println("Loading new office hours FXML from: /Fxml/OfficeHours/OfficeHours.fxml");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/OfficeHours/OfficeHours.fxml"));
         Parent newOfficeHoursView = loader.load();
-        Scene scene = new Scene(newOfficeHoursView,660,510);
+        Scene scene = new Scene(newOfficeHoursView, 660, 510);
         Stage stage = (Stage) root.getScene().getWindow();
         stage.setTitle("New Office Hours");
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    /**
-     * Switches to the edit office hours form view
-     *
-     * @param officeHours The office hours entry to edit
-     */
-    private void switchToEditOfficeHoursView(OfficeHours officeHours) throws IOException {
-        System.out.println("Loading edit office hours FXML from: /Fxml/OfficeHours/OfficeHours.fxml");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/OfficeHours/OfficeHours.fxml"));
-        Parent editOfficeHoursView = loader.load();
-        OfficeHourController controller = loader.getController();
-        Scene scene = new Scene(editOfficeHoursView,660,510);
-        Stage stage = (Stage) root.getScene().getWindow();
-        stage.setTitle("Edit Office Hours");
         stage.setScene(scene);
         stage.show();
     }
