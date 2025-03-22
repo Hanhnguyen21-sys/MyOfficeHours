@@ -1,15 +1,18 @@
 # Name of application: Faculty's Office Hours Manager
 
-# Version: 0.2
+# Version: 0.4
 
 # who did what:
 
-1. Meghana Indukuri - Dashboard FXML UI design and implementation
-2. Nguyen Nguyen - Office Hours UI design and implementation
-3. Oliver Majano - Office Hours Controller implementation
-4. Misbah Syed - Dashboard Controller implementation
+1. Meghana Indukuri - Dashboard FXML UI design and implementation, Display database information in tables
+2. Nguyen Nguyen - Office Hours UI design and implementation, Database integration for user input
+3. Oliver Majano - Project documentation, Bug fixes and code cleanup, Delete functionality implementation
+4. Misbah Syed - Dashboard Controller implementation, Updated Office Hours UI
 
 # Any other instruction that users need to know:
+
+N/A
+
 ## Running the Application
 
 1. Make sure you have Java 23 or higher installed
@@ -27,9 +30,3 @@
 3. Navigation:
    - Use the menu button in top-left to switch between views
    - Click the dashboard label to return to main view
-
-## Note
-
-- Data persistence is currently not implemented (saving/loading data)
-- All form data is temporary and will be cleared when closing the application
-
