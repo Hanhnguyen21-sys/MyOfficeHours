@@ -11,9 +11,14 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import s25.cs151.application.Models.ConnectDB;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 /**
@@ -120,41 +125,69 @@ public class OfficeHourController implements Initializable {
      */
     @FXML
     private void handleSaveButton() {
+        //Connect to our Database
+        ConnectDB connectDB = new ConnectDB();
+        Connection connection = connectDB.getConnection();
+        /**
+         * TODO: Validate input based on the requirement (Ex: year should be 4 digit, etc)
+         */
         // Collect all form data
         String selectedSemester = semesterCombo.getValue();
-        String year = yearField.getText();
+        String selectedYear = yearField.getText();
 
         // Collect days
         StringBuilder days = new StringBuilder();
         if (monCheck.isSelected())
-            days.append("Monday,");
+            days.append("Monday, ");
         if (tueCheck.isSelected())
-            days.append("Tuesday,");
+            days.append("Tuesday, ");
         if (wedCheck.isSelected())
-            days.append("Wednesday,");
+            days.append("Wednesday, ");
         if (thurCheck.isSelected())
-            days.append("Thursday,");
+            days.append("Thursday, ");
         if (friCheck.isSelected())
-            days.append("Friday,");
+            days.append("Friday, ");
 
         // Remove trailing comma if exists
-        String selectedDays = days.toString();
-        if (selectedDays.endsWith(",")) {
-            selectedDays = selectedDays.substring(0, selectedDays.length() - 1);
+        if (days.length() > 0) {
+            days.setLength(days.length() - 2);  // Removes last ", "
         }
+        String selectedDays = days.toString();
 
         // Validate required fields
-        if (selectedSemester == null || year.isEmpty() || selectedDays.isEmpty()) {
+        if (selectedSemester == null || selectedYear.isEmpty() || selectedDays.isEmpty()) {
             showAlert("Please fill in all required fields: Semester, Year, Days");
             return;
         }
 
-        // For now, just show a confirmation message
-        // In a future version, this would save to a database or file
-        showAlert("Office Hours saved successfully!\n\n" +
-                "Semester: " + selectedSemester + " " + year + "\n" +
-                "Days: " + selectedDays);
+        if(connection!=null){
+            try{
+                Statement statement = connection.createStatement();
+                String createTable = "CREATE TABLE IF NOT EXISTS officeHours ("
+                        + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                        + "semester TEXT, "
+                        + "year TEXT, "
+                        + "days TEXT)";
+                // create a table
+                statement.executeUpdate(createTable);
+                /* TODO: ======= CHECK FOR DUPLICATION ========
+                 * */
+                // insert data if there is no duplication
+                String insertQuery = "INSERT INTO officeHours (semester, year, days) VALUES (?, ?, ?)";
+                PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
+                preparedStatement.setString(1, selectedSemester);
+                preparedStatement.setString(2, selectedYear);
+                preparedStatement.setString(3, selectedDays);
+                preparedStatement.executeUpdate();
+                // show successfully alert
+                showAlert("Successfully Saved!");
 
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+        connectDB.closeConnection();
         // Reset the form after saving
         resetForm();
     }
@@ -183,7 +216,7 @@ public class OfficeHourController implements Initializable {
     public void switchToDashboard() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Dashboard/Dashboard.fxml"));
         Parent dashboard = loader.load();
-        Scene dashboardScene = new Scene(dashboard);
+        Scene dashboardScene = new Scene(dashboard,660,510);
         Stage stage = (Stage) root.getScene().getWindow();
         stage.setTitle("Dashboard");
         stage.setScene(dashboardScene);
@@ -196,7 +229,7 @@ public class OfficeHourController implements Initializable {
     private void switchToListAllView() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/OfficeHours/OfficeHoursList.fxml"));
         Parent listView = loader.load();
-        Scene scene = new Scene(listView);
+        Scene scene = new Scene(listView,660,510);
         Stage stage = (Stage) root.getScene().getWindow();
         stage.setTitle("Office Hours List");
         stage.setScene(scene);
@@ -209,7 +242,7 @@ public class OfficeHourController implements Initializable {
     private void switchToNewOfficeHoursView() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/OfficeHours/OfficeHours.fxml"));
         Parent newOfficeHoursView = loader.load();
-        Scene scene = new Scene(newOfficeHoursView);
+        Scene scene = new Scene(newOfficeHoursView,660,510);
         Stage stage = (Stage) root.getScene().getWindow();
         stage.setTitle("New Office Hours");
         stage.setScene(scene);

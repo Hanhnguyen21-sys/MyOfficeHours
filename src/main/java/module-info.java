@@ -1,6 +1,7 @@
 module com.example.project_group17 {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
 
     opens s25.cs151.application to javafx.fxml;
     opens s25.cs151.application.Controllers.OfficeHours to javafx.fxml;

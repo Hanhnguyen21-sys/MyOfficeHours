@@ -13,7 +13,6 @@
 /* Label: "My Office Hours" in left sidebar */
 .left-sidebar Text {
     -fx-font-size: 16px;
-    -fx-font-weight: bold;
     -fx-fill: #133E87;
 }
 
@@ -61,7 +60,6 @@
 
 .breadcrumb-item.active {
     -fx-text-fill: #133E87;
-    -fx-font-weight: semibold;
 }
 
 /* Action buttons container */

@@ -2,20 +2,29 @@
 
 <!-- Imports -->
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
 
 <!-- Anchor Pane -->
 
-<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.OfficeHours.OfficeHourController">
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.OfficeHours.OfficeHourController">
 
         <!-- Left Panel Sidebar -->
         <VBox layoutY="1.0" prefHeight="400.0" prefWidth="180.0" styleClass="left-sidebar" stylesheets="@../../Styles/OfficeHours.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="My Office Hours" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 800;" text="My Office Hours" />
             <Line endX="29.792892456054688" endY="7.748603820800781E-7" startX="-100.0" />
             <!-- Navigation bar -->
             <MenuButton fx:id="dashboardBtn" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" styleClass="nav-btn" stylesheets="@../../Styles/OfficeHours.css" text="Menu" textFill="#FFFFFF">
@@ -107,7 +116,7 @@
             <HBox fx:id="breadcrumb" prefHeight="32.0" prefWidth="502.0" styleClass="breadcrumb-container" stylesheets="@../../Styles/OfficeHours.css">
                 <Label fx:id="dashboardLabel" onMouseClicked="#switchToDashboard" styleClass="breadcrumb-item" stylesheets="@../../Styles/OfficeHours.css" text="Dashboard" />
                 <Label styleClass="breadcrumb-separator" stylesheets="@../../Styles/OfficeHours.css" text="&gt;" />
-                <Label stylesheets="@../../Styles/OfficeHours.css" text="Office Hours">
+                <Label style="-fx-font-weight: 600;" stylesheets="@../../Styles/OfficeHours.css" text="Office Hours">
                     <styleClass>
                         <String fx:value="breadcrumb-item" />
                         <String fx:value="active" />
@@ -126,16 +135,16 @@
             <HBox.margin>
                <Insets left="15.0" right="15.0" />
             </HBox.margin></Button>
-         <Button fx:id="CoursesBtn" layoutX="445.0" layoutY="10.0" mnemonicParsing="false" styleClass="list-button" stylesheets="@../../Styles/OfficeHours.css" text="Courses 🖉">
+         <Button fx:id="CoursesBtn" layoutX="445.0" layoutY="10.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="99.0" styleClass="list-button" stylesheets="@../../Styles/OfficeHours.css" text="Courses 🖉">
             <HBox.margin>
                <Insets right="15.0" />
             </HBox.margin>
          </Button>
-         <Button fx:id="listAllBtn" layoutX="368.0" layoutY="10.0" mnemonicParsing="false" styleClass="list-button" stylesheets="@../../Styles/OfficeHours.css" text="List All 📝">
+         <Button fx:id="listAllBtn" layoutX="368.0" layoutY="10.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="91.0" styleClass="list-button" stylesheets="@../../Styles/OfficeHours.css" text="List All 📝">
             <HBox.margin>
                <Insets right="20.0" />
             </HBox.margin>
          </Button>
             </HBox>
         </VBox>
-    </AnchorPane>
+</AnchorPane>
