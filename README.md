@@ -5,9 +5,9 @@
 # Who did what
 
 - **Nguyen Nguyen (Jenny)**: Built and connected the SQLite database, and handled inserting user input into it.
-- **Meghana Indukuri**: Handled data validation and duplication checks.
+- **Meghana Indukuri**: Handled data validation and duplication check, bug fixes
 - **Misbah Syed**: Updated UI for office hours and added TableView.
-- **Oliver Majano**: Implemented database functions, wrote README, fixed bugs, and cleaned up code.
+- **Oliver Majano**: Implemented database function, wrote README, bug fixes
 
 # Any other instruction that users need to know:
 
