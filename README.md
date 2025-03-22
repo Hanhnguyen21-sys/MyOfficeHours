@@ -6,7 +6,7 @@
 
 1. Meghana Indukuri - Dashboard FXML UI design and implementation, Display database information in tables
 2. Nguyen Nguyen - Office Hours UI design and implementation, Database integration for user input
-3. Oliver Majano - Project documentation, Bug fixes and code cleanup, Delete functionality implementation
+3. Oliver Majano - Project documentation, Bug fixes and code cleanup, DB functionality
 4. Misbah Syed - Dashboard Controller implementation, Updated Office Hours UI
 
 # Any other instruction that users need to know:
