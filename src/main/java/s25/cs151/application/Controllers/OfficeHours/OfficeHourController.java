@@ -128,9 +128,7 @@ public class OfficeHourController implements Initializable {
         //Connect to our Database
         ConnectDB connectDB = new ConnectDB();
         Connection connection = connectDB.getConnection();
-        /**
-         * TODO: Validate input based on the requirement (Ex: year should be 4 digit, etc)
-         */
+
         // Collect all form data
         String selectedSemester = semesterCombo.getValue();
         String selectedYear = yearField.getText();
@@ -160,6 +158,21 @@ public class OfficeHourController implements Initializable {
             return;
         }
 
+        // Validate year being 4 digits
+        try {
+            int yearAsInt = Integer.parseInt(selectedYear);
+            if (yearAsInt > 9999 || yearAsInt < 1000)
+            {
+                showAlert("Year must be a 4 digit number");
+                return;
+            }
+        }
+        catch (NumberFormatException e) {
+            showAlert("Year must be a 4 digit number.");
+            return;
+        }
+
+
         if(connection!=null){
             try{
                 Statement statement = connection.createStatement();
@@ -170,8 +183,23 @@ public class OfficeHourController implements Initializable {
                         + "days TEXT)";
                 // create a table
                 statement.executeUpdate(createTable);
-                /* TODO: ======= CHECK FOR DUPLICATION ========
-                 * */
+
+                // check for duplication
+                String dupCountQuery = "SELECT COUNT(*) AS count FROM officeHours WHERE semester = ? AND year = ? AND days = ?";
+                PreparedStatement preparedStatementDup = connection.prepareStatement(dupCountQuery);
+                preparedStatementDup.setString(1, selectedSemester);
+                preparedStatementDup.setString(2, selectedYear);
+                preparedStatementDup.setString(3, selectedDays);
+
+                ResultSet resultSetDup = preparedStatementDup.executeQuery();
+                resultSetDup.next();
+
+                if(resultSetDup.getInt("count") > 0)
+                {
+                    showAlert("This semester, year, and days combination for office hours already exists. Please select another one.");
+                    return;
+                }
+
                 // insert data if there is no duplication
                 String insertQuery = "INSERT INTO officeHours (semester, year, days) VALUES (?, ?, ?)";
                 PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);

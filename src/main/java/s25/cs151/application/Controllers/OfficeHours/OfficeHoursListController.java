@@ -148,14 +148,23 @@ ObservableList<OfficeHours> officeHoursObservableList = FXCollections.observable
 
     /**
      * Loads office hours data into the table
-     * TODO: Implement database integration
      */
     private void loadOfficeHours() {
 
-        // This will be implemented when we add database functionality
         try{
+
             ConnectDB connectDB = new ConnectDB();
             Connection connection = connectDB.getConnection();
+
+            Statement createstatement = connection.createStatement();
+            String createTable = "CREATE TABLE IF NOT EXISTS officeHours ("
+                        + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                        + "semester TEXT, "
+                        + "year TEXT, "
+                        + "days TEXT)";
+            // create a table
+            createstatement.executeUpdate(createTable);
+
             String selectQuery = "SELECT * FROM officeHours";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(selectQuery);
@@ -172,6 +181,16 @@ ObservableList<OfficeHours> officeHoursObservableList = FXCollections.observable
 
             //set items to tableview
             officeHoursTable.setItems(officeHoursObservableList);
+
+            // sort descending based on year & semester
+            yearColumn.setSortType(TableColumn.SortType.DESCENDING);
+            semesterColumn.setSortType(TableColumn.SortType.DESCENDING);
+
+            // clear old sorting order & add the new one
+            officeHoursTable.getSortOrder().clear();
+            officeHoursTable.getSortOrder().addAll(yearColumn, semesterColumn);
+            officeHoursTable.sort();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

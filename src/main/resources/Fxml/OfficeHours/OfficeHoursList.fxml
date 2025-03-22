@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="root" prefHeight="419.0" prefWidth="656.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.OfficeHours.OfficeHoursListController">
+<AnchorPane fx:id="root" prefHeight="419.0" prefWidth="656.0" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.OfficeHours.OfficeHoursListController">
 
     <!-- Left Panel Sidebar -->
     <VBox layoutY="1.0" prefHeight="400.0" prefWidth="180.0" styleClass="left-sidebar" stylesheets="@../../Styles/OfficeHours.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -61,9 +61,8 @@
     <TableView fx:id="officeHoursTable" layoutX="164.0" layoutY="138.0" prefHeight="333.0" prefWidth="464.0" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="130.0">
         <columns>
             <TableColumn fx:id="semesterColumn" prefWidth="92.0" text="Semester " />
-            <TableColumn fx:id="yearColumn" prefWidth="77.0" text="Year" />
-            <TableColumn fx:id="daysColumn" prefWidth="204.0" text="Days" />
-            <TableColumn fx:id="moreCol" prefWidth="90.0" text="More Features" />
+            <TableColumn fx:id="yearColumn" prefWidth="79.20001220703125" text="Year" />
+            <TableColumn fx:id="daysColumn" prefWidth="291.20001220703125" text="Days" />
         </columns>
     </TableView>
 </AnchorPane>
