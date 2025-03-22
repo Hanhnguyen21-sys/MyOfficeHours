@@ -2,12 +2,12 @@
 
 # Version: 0.4
 
-# who did what:
+# Who did what
 
-1. Meghana Indukuri - Dashboard FXML UI design and implementation, Display database information in tables
-2. Nguyen Nguyen - Office Hours UI design and implementation, Database integration for user input
-3. Oliver Majano - Project documentation, Bug fixes and code cleanup, DB functionality
-4. Misbah Syed - Dashboard Controller implementation, Updated Office Hours UI
+- **Nguyen Nguyen (Jenny)**: Built and connected the SQLite database, and handled inserting user input into it.
+- **Meghana Indukuri**: Handled data validation and duplication checks.
+- **Misbah Syed**: Updated UI for office hours and added TableView.
+- **Oliver Majano**: Implemented database functions, wrote README, fixed bugs, and cleaned up code.
 
 # Any other instruction that users need to know:
 
