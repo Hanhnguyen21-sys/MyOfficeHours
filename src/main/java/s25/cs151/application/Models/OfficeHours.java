@@ -97,4 +97,18 @@ public class OfficeHours {
     // public StringProperty courseProperty() {
     // return course;
     // }
+
+    /**
+     * Semester order getter, this is used for the hidden column to order our table
+     */
+    public Integer getSemesterOrder() {
+        switch (semester.get()) {
+            case "Spring": return 1;
+            case "Summer": return 2;
+            case "Fall":   return 3;
+            case "Winter": return 4;
+            default:       return -1;
+        }
+    }
+
 }

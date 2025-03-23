@@ -62,8 +62,7 @@
         <columns>
             <TableColumn fx:id="semesterColumn" prefWidth="92.0" text="Semester " />
             <TableColumn fx:id="yearColumn" prefWidth="79.20001220703125" text="Year" />
-            <TableColumn fx:id="daysColumn" prefWidth="220.0" text="Days" />
-            <TableColumn fx:id="actionColumn" prefWidth="70.0" text="Actions" />
+            <TableColumn fx:id="daysColumn" prefWidth="291.20001220703125" text="Days" />
         </columns>
     </TableView>
 </AnchorPane>
