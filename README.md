@@ -24,7 +24,7 @@ N/A
 1. Dashboard: Main view showing overview of office hours
 2. Office Hours:
    - Click "New" to create new office hours
-   - Fill in required fields (Semester, Year, Days, Time, Course Code)
+   - Fill in required fields (Semester, Year, Days)
    - Click "Save" to save the entry
    - Click "List All" to view all office hours
 3. Navigation:
