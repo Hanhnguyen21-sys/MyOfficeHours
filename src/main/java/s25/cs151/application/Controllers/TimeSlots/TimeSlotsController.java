@@ -1,18 +1,9 @@
-package s25.cs151.application.Controllers.OfficeHours;
+package s25.cs151.application.Controllers.TimeSlots;
 
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
+import javafx.scene.input.MouseEvent;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -49,6 +40,13 @@ public class TimeSlotsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+    }
+
+    public void handleSaveButton(ActionEvent event) {
+    }
+
+    public void switchToDashboard(MouseEvent mouseEvent) {
 
     }
 }

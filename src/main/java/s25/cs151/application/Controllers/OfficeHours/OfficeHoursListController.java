@@ -2,18 +2,17 @@ package s25.cs151.application.Controllers.OfficeHours;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.cell.PropertyValueFactory;
-import s25.cs151.application.Models.ConnectDB;
-import s25.cs151.application.Models.OfficeHours;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import s25.cs151.application.Models.ConnectDB;
+import s25.cs151.application.Models.OfficeHours;
 
 import java.io.IOException;
 import java.net.URL;
@@ -232,7 +231,6 @@ public class OfficeHoursListController implements Initializable {
      * Switches the view to the dashboard
      */
     public void switchToDashboard() throws IOException {
-        System.out.println("Loading dashboard FXML from: /Fxml/Dashboard/Dashboard.fxml");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Dashboard/Dashboard.fxml"));
         Parent dashboard = loader.load();
         Scene scene = new Scene(dashboard,660,510);
@@ -246,7 +244,6 @@ public class OfficeHoursListController implements Initializable {
      * Switches to the new office hours form view
      */
     private void switchToNewOfficeHoursView() throws IOException {
-        System.out.println("Loading new office hours FXML from: /Fxml/OfficeHours/OfficeHours.fxml");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/OfficeHours/OfficeHours.fxml"));
         Parent newOfficeHoursView = loader.load();
         Scene scene = new Scene(newOfficeHoursView,660,510);
@@ -262,7 +259,6 @@ public class OfficeHoursListController implements Initializable {
      * @param officeHours The office hours entry to edit
      */
     private void switchToEditOfficeHoursView(OfficeHours officeHours) throws IOException {
-        System.out.println("Loading edit office hours FXML from: /Fxml/OfficeHours/OfficeHours.fxml");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/OfficeHours/OfficeHours.fxml"));
         Parent editOfficeHoursView = loader.load();
         OfficeHourController controller = loader.getController();
