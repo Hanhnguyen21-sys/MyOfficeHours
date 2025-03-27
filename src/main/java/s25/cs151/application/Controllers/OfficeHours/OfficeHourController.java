@@ -1,16 +1,14 @@
 package s25.cs151.application.Controllers.OfficeHours;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import s25.cs151.application.Helper.SwitchScene;
 import s25.cs151.application.Models.ConnectDB;
 
 import java.io.IOException;
@@ -20,7 +18,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ResourceBundle;
-import java.util.regex.Pattern;
 
 /**
  * Controller for the Office Hours form view.
@@ -127,7 +124,7 @@ public class OfficeHourController implements Initializable {
     @FXML
     private void handleSaveButton() {
         try {
-            ConnectDB connectDB = new ConnectDB();
+            ConnectDB connectDB = new ConnectDB("jdbc:sqlite:src/main/resources/Database/officehours.db");
             Connection connection = connectDB.getConnection();
 
             // Collect all form data
@@ -237,39 +234,24 @@ public class OfficeHourController implements Initializable {
      * Switches the view to the dashboard
      */
     public void switchToDashboard() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Dashboard/Dashboard.fxml"));
-        Parent dashboard = loader.load();
-        Scene dashboardScene = new Scene(dashboard, 660, 510);
-        Stage stage = (Stage) root.getScene().getWindow();
-        stage.setTitle("Dashboard");
-        stage.setScene(dashboardScene);
-        stage.show();
+        Stage stage = (Stage)root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/Dashboard/Dashboard.fxml", "Dashboard");
     }
 
     /**
      * Switches to the list view showing all office hours entries
      */
     private void switchToListAllView() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/OfficeHours/OfficeHoursList.fxml"));
-        Parent listView = loader.load();
-        Scene scene = new Scene(listView, 660, 510);
-        Stage stage = (Stage) root.getScene().getWindow();
-        stage.setTitle("Office Hours List");
-        stage.setScene(scene);
-        stage.show();
+        Stage stage = (Stage)root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHoursList.fxml", "Office Hours List");
     }
 
     /**
      * Switches to the new office hours form view
      */
     private void switchToNewOfficeHoursView() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/OfficeHours/OfficeHours.fxml"));
-        Parent newOfficeHoursView = loader.load();
-        Scene scene = new Scene(newOfficeHoursView, 660, 510);
-        Stage stage = (Stage) root.getScene().getWindow();
-        stage.setTitle("New Office Hours");
-        stage.setScene(scene);
-        stage.show();
+        Stage stage = (Stage)root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHours.fxml", "Office Hours");
     }
 
     /**
