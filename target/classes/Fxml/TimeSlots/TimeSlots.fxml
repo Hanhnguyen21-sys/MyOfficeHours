@@ -67,23 +67,19 @@
         </VBox>
 
         <!-- Form for Office Hours -->
-        <VBox layoutX="249.0" layoutY="149.0" prefHeight="157.0" prefWidth="312.0" styleClass="formContainer" stylesheets="@../../Styles/OfficeHours.css">
-      <children>
-         <HBox prefHeight="33.0" prefWidth="319.0" />
-         <HBox prefHeight="41.0" prefWidth="319.0" styleClass="form-row" stylesheets="@../../Styles/OfficeHours.css">
-            <children>
-               <Label styleClass="form-label" stylesheets="@../../Styles/OfficeHours.css" text="From Hour" />
-               <ComboBox fx:id="startComboBox" prefHeight="26.0" prefWidth="137.0" />
-            </children>
-         </HBox>
-         <HBox prefHeight="72.0" prefWidth="319.0" styleClass="form-row" stylesheets="@../../Styles/OfficeHours.css">
-            <children>
-               <Label prefHeight="18.0" prefWidth="64.0" styleClass="form-label" stylesheets="@../../Styles/OfficeHours.css" text="To Hour" />
-               <ComboBox fx:id="endComboBox" prefHeight="26.0" prefWidth="137.0" />
-            </children>
-         </HBox>
-      </children>
-        </VBox>
+    <VBox layoutX="249.0" layoutY="149.0" prefHeight="157.0" prefWidth="312.0" styleClass="formContainer"
+          stylesheets="@../../Styles/OfficeHours.css">
+        <HBox prefHeight="18.0" prefWidth="292.0"/>
+        <HBox prefHeight="40.0" prefWidth="320.0" styleClass="form-row" stylesheets="@../../Styles/OfficeHours.css">
+            <Label styleClass="form-label" stylesheets="@../../Styles/OfficeHours.css" text="From Hour"/>
+            <ComboBox fx:id="startComboBox" prefHeight="26.0" prefWidth="140.0"/>
+        </HBox>
+        <HBox prefHeight="40.0" prefWidth="320.0" styleClass="form-row" stylesheets="@../../Styles/OfficeHours.css">
+            <Label prefHeight="18.0" prefWidth="64.0" styleClass="form-label"
+                   stylesheets="@../../Styles/OfficeHours.css" text="To Hour"/>
+            <ComboBox fx:id="endComboBox" prefHeight="26.0" prefWidth="140.0"/>
+        </HBox>
+    </VBox>
 
         <!-- Save and Cancel Buttons-->
         <HBox layoutX="304.0" layoutY="333.0" prefHeight="43.0" prefWidth="200.0" styleClass="buttons-container" stylesheets="@../../Styles/OfficeHours.css">
