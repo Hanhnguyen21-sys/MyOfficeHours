@@ -14,7 +14,6 @@ import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable {
     public AnchorPane root1;
-    public Button officeHoursBtn1;
     public Button scheduleBtn1;
     public Button reportBtn1;
     public Button timeSlotsBtn;
@@ -27,13 +26,14 @@ public class DashboardController implements Initializable {
     public MenuItem scheduleMenuItem;
     public MenuItem reportMenuItem;
     public MenuItem dashboardItem1;
+    public Button officeHoursBtn;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         // Handle the Office Hours button click
-        officeHoursBtn1.setOnMouseClicked(event -> {
+        officeHoursBtn.setOnMouseClicked(event -> {
             try {
                 switchToOfficeHours();
             } catch (IOException e) {
