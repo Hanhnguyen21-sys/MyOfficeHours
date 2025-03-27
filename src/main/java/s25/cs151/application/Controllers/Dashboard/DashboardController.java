@@ -1,14 +1,13 @@
 package s25.cs151.application.Controllers.Dashboard;
 
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import s25.cs151.application.Helper.SwitchScene;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -86,25 +85,13 @@ public class DashboardController implements Initializable {
     // Method to switch to the Office Hours page
     private void switchToOfficeHours() throws IOException {
         // Load the Office Hours FXML
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/OfficeHours/OfficeHours.fxml"));
-        Parent officeHours = loader.load();
-
-        // Get the current stage (window) and set the scene to the Office Hours page
-        Scene officeHoursScene = new Scene(officeHours);
-        Stage stage = (Stage) root1.getScene().getWindow();
-        stage.setTitle("Office Hours");
-        stage.setScene(officeHoursScene);
-        stage.show();
+        Stage stage = (Stage)root1.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHours.fxml", "Office Hours");
     }
 
     // Method to switch to Dashboard page
     public void switchToDashboard() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Dashboard/Dashboard.fxml"));
-        Parent dashboard = loader.load();
-        Scene dashboardScene = new Scene(dashboard);
-        Stage stage = (Stage) root1.getScene().getWindow();
-        stage.setTitle("Dashboard");
-        stage.setScene(dashboardScene);
-        stage.show();
+        Stage stage = (Stage)root1.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/Dashboard/Dashboard.fxml", "Dashboard");
     }
 }

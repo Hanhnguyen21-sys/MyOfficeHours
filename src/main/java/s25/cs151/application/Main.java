@@ -5,9 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import s25.cs151.application.Models.ConnectDB;
-
-import java.sql.Connection;
 
 /**
  * This Main Class is the JavaFX Office Hours Application entry point, which extends Application.
