@@ -2,25 +2,16 @@
 
 <!-- Imports -->
 
-<?import java.lang.String?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Text?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
 <!-- Anchor Pane -->
 
-<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.OfficeHours.OfficeHourController">
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.OfficeHours.OfficeHourController">
 
         <!-- Left Panel Sidebar -->
         <VBox layoutY="1.0" prefHeight="400.0" prefWidth="180.0" styleClass="left-sidebar" stylesheets="@../../Styles/OfficeHours.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -131,7 +122,7 @@
                <Insets />
             </HBox.margin>
          </Button>
-                <Button fx:id="TimeslotsBtn" mnemonicParsing="false" prefHeight="35.0" prefWidth="111.0" styleClass="list-button" stylesheets="@../../Styles/OfficeHours.css" text="Timeslots 🖉" textAlignment="CENTER">
+                <Button fx:id="timeSlotsBtn" mnemonicParsing="false" prefHeight="35.0" prefWidth="111.0" styleClass="list-button" stylesheets="@../../Styles/OfficeHours.css" text="Timeslots 🖉" textAlignment="CENTER">
             <HBox.margin>
                <Insets left="15.0" right="15.0" />
             </HBox.margin></Button>
