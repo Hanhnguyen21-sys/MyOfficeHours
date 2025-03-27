@@ -45,7 +45,6 @@ public class OfficeHourController implements Initializable {
     public HBox actionBtn;
     public Button listAllBtn;
     public Button timeSlotsBtn;
-    public Button newBtn;
     public Button cancelBtn;
     public Button saveBtn;
 
@@ -54,8 +53,8 @@ public class OfficeHourController implements Initializable {
     public MenuItem officehoursItem;
     public MenuItem scheduleItem;
     public MenuItem reportItem;
-    public Button TimeslotsBtn;
     public Button CoursesBtn;
+    public Button officeHoursBtn;
 
     private String[] semester = { "Spring", "Summer", "Fall", "Winter" };
 
@@ -115,14 +114,14 @@ public class OfficeHourController implements Initializable {
         });
 
         // "New" button is used to show up the form
-        newBtn.setOnAction(e -> {
+        officeHoursBtn.setOnAction(e -> {
             try {
                 switchToNewOfficeHoursView();
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
         });
-        TimeslotsBtn.setOnAction(e -> {
+        timeSlotsBtn.setOnAction(e -> {
             try {
                 switchToTimeSlots();
             } catch (IOException ex) {
@@ -279,7 +278,9 @@ public class OfficeHourController implements Initializable {
         Stage stage = (Stage)root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHours.fxml", "Office Hours");
     }
-
+    /**
+     * Switches to the Courses View
+     */
     private void switchToCourses() throws IOException {
         Stage stage = (Stage)root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Courses/Course.fxml", "Courses");

@@ -1,9 +1,6 @@
 package s25.cs151.application.Controllers.TimeSlots;
 
 
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
@@ -116,13 +113,6 @@ public class TimeSlotsController implements Initializable {
         timeSlotsBtn.setOnAction(e -> resetForm());
 
         // "List All" button is used to show up table containing all office hours
-        listAllBtn.setOnAction(e -> {
-            try {
-                switchToAllList();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        });
 
         listAllBtn.setOnMouseClicked(e->{
             try{
@@ -169,8 +159,8 @@ public class TimeSlotsController implements Initializable {
         ConnectDB connectDB = new ConnectDB("jdbc:sqlite:src/main/resources/Database/timeSlots.db");
         Connection connection = connectDB.getConnection();
 
-        String fromHour= startComboBox.getValue();
-        String toHour = endComboBox.getValue();
+        String fromHour= startComboBox.getValue().toUpperCase();
+        String toHour = endComboBox.getValue().toUpperCase();
 
         // check if the field is empty or not
         if(fromHour.isEmpty() || toHour.isEmpty()){
@@ -180,13 +170,21 @@ public class TimeSlotsController implements Initializable {
         //validate fromHour < toHour
         // compare 2 strings. str1: 10:30 AM and 12:30 PM
         SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm a");
-        Date fromDate = dateFormat.parse(fromHour);
-        Date toDate = dateFormat.parse(toHour);
-        if (fromDate.compareTo(toDate)>0)
-        {
-            showAlert("From Hour should be before To Hour");
+        dateFormat.setLenient(false);
+        try{
+            Date fromDate = dateFormat.parse(fromHour);
+            Date toDate = dateFormat.parse(toHour);
+            if (fromDate.compareTo(toDate)>0)
+            {
+                showAlert("From Hour should be before To Hour");
+                return;
+            }
+        }catch (ParseException e) {
+            // validate input format, the format should be hh:mm AM/PM
+            showAlert("Time Slots should be formatted: hh:mm AM/PM");
             return;
         }
+
         if (connection!=null){
             try{
                 Statement statement = connection.createStatement();
@@ -228,7 +226,9 @@ public class TimeSlotsController implements Initializable {
         SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHours.fxml", "Office Hours");
     }
 
-    // Method to switch to Dashboard page
+    /**
+     * Switches to the dashboard page
+     */
     public void switchToDashboard() throws IOException {
         Stage stage = (Stage)root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Dashboard/Dashboard.fxml", "Dashboard");
@@ -241,7 +241,9 @@ public class TimeSlotsController implements Initializable {
         Stage stage = (Stage)root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/TimeSlots/TimeSlotsList.fxml", "Time Slots List");
     }
-
+    /**
+     * Switches to Courses page
+     */
 
     public void switchCourses() throws IOException {
         Stage stage = (Stage)root.getScene().getWindow();

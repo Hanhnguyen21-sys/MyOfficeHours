@@ -2,23 +2,32 @@
 
 <!-- Imports -->
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
 
 <!-- Anchor Pane -->
 
-<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.OfficeHours.OfficeHourController">
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.OfficeHours.OfficeHourController">
 
         <!-- Left Panel Sidebar -->
         <VBox layoutY="1.0" prefHeight="400.0" prefWidth="180.0" styleClass="left-sidebar" stylesheets="@../../Styles/OfficeHours.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 800;" text="My Office Hours" />
             <Line endX="29.792892456054688" endY="7.748603820800781E-7" startX="-100.0" />
             <!-- Navigation bar -->
-            <MenuButton fx:id="dashboardBtn" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" styleClass="nav-btn" stylesheets="@../../Styles/OfficeHours.css" text="Menu" textFill="#FFFFFF">
+            <MenuButton fx:id="menuBtn" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" styleClass="nav-btn" stylesheets="@../../Styles/OfficeHours.css" text="Menu" textFill="#FFFFFF">
          <items>
             <MenuItem fx:id="dashboardItem" mnemonicParsing="false" text="Dashboard" />
             <MenuItem fx:id="officehoursItem" mnemonicParsing="false" text="Office Hours" />
@@ -117,7 +126,7 @@
 
             <!-- Action Buttons -->
             <HBox fx:id="actionBtn" prefHeight="35.0" prefWidth="479.0" styleClass="action-buttons" stylesheets="@../../Styles/OfficeHours.css">
-         <Button fx:id="newBtn" layoutX="393.0" layoutY="11.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="120.0" styleClass="new-button" stylesheets="@../../Styles/OfficeHours.css" text="Office Hour 🖉">
+         <Button fx:id="officeHoursBtn" layoutX="393.0" layoutY="11.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="120.0" styleClass="new-button" stylesheets="@../../Styles/OfficeHours.css" text="Office Hour 🖉">
             <HBox.margin>
                <Insets />
             </HBox.margin>
