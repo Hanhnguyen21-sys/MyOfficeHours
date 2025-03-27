@@ -1,5 +1,9 @@
 package s25.cs151.application.Controllers.TimeSlots;
 
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
@@ -69,14 +73,57 @@ public class TimeSlotsController implements Initializable {
         );
     }
 
+    // Sets up navigation between different views
     private void setupNavigationHandlers() {
-        dashboardLabel.setOnMouseClicked(e->{
-            try{
+        // Handle the Dashboard menu item click
+        dashboardItem.setOnAction(event -> {
+            try {
                 switchToDashboard();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        // Handle the Office Hours menu item click
+        officehoursItem.setOnAction(event -> {
+            try {
+                switchToOfficeHours();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        // switch back to dashboard when click
+        dashboardLabel.setOnMouseClicked(event -> {
+            try {
+                switchToDashboard();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        // Handle the Office Hours button click
+        officeHoursBtn.setOnAction(event -> {
+            try {
+                switchToOfficeHours();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        // "Cancel" button is used to refresh the form
+
+        timeSlotsBtn.setOnAction(e -> resetForm());
+
+        // "List All" button is used to show up table containing all office hours
+        listAllBtn.setOnAction(e -> {
+            try {
+                switchToAllList();
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
         });
+
         listAllBtn.setOnMouseClicked(e->{
             try{
                 switchToAllList();
@@ -86,7 +133,7 @@ public class TimeSlotsController implements Initializable {
         });
         officeHoursBtn.setOnAction(e->{
             try {
-                switchToNewOfficeHoursView();
+                switchToOfficeHours();
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
@@ -105,10 +152,13 @@ public class TimeSlotsController implements Initializable {
                 throw new RuntimeException(ex);
             }
         });
-        cancelBtn.setOnAction(e->handleCancelButton());
+        cancelBtn.setOnAction(e->resetForm());
     }
 
-    private void handleCancelButton() {
+    /**
+     * Resets all form fields to their default values
+     */
+    private void resetForm() {
         //reset ComboChoices
         startComboBox.setValue("");
         endComboBox.setValue("");
@@ -168,18 +218,31 @@ public class TimeSlotsController implements Initializable {
         alert.showAndWait();
     }
 
+
+    /**
+     * Switches to the new office hours form view
+     */
+    private void switchToOfficeHours() throws IOException {
+        // Load the Office Hours FXML
+        Stage stage = (Stage)root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHours.fxml", "Office Hours");
+    }
+
+    // Method to switch to Dashboard page
     public void switchToDashboard() throws IOException {
         Stage stage = (Stage)root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/Dashboard.fxml", "Dashboard");
+        SwitchScene.switchScene(stage, "/Fxml/Dashboard/Dashboard.fxml", "Dashboard");
     }
-    public void switchToAllList() throws IOException {
+
+    /**
+     * Switches to the list view showing all office hours entries
+     */
+    private void switchToAllList() throws IOException {
         Stage stage = (Stage)root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/TimeSlots/TimeSlotsList.fxml", "List of Time Slots");
+        SwitchScene.switchScene(stage, "/Fxml/TimeSlots/TimeSlotsList.fxml", "Time Slots List");
     }
-    public void switchToNewOfficeHoursView() throws IOException {
-        Stage stage = (Stage) root.getScene().getWindow();
-        SwitchScene.switchScene(stage,"/Fxml/OfficeHours/OfficeHours.fxml","New Office Hours");
-    }
+
+
     public void switchCourses() throws IOException {
         Stage stage = (Stage)root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Courses/Course.fxml", "Courses");

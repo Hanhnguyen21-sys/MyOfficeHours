@@ -44,6 +44,7 @@ public class OfficeHourController implements Initializable {
     public CheckBox thurCheck;
     public HBox actionBtn;
     public Button listAllBtn;
+    public Button timeSlotsBtn;
     public Button newBtn;
     public Button cancelBtn;
     public Button saveBtn;
@@ -94,6 +95,15 @@ public class OfficeHourController implements Initializable {
 
         // "Cancel" button is used to refresh the form
         cancelBtn.setOnAction(e -> resetForm());
+
+        // "Time Slots" button is used to show up the time slots page
+        timeSlotsBtn.setOnAction(e -> {
+            try {
+                switchToTimeSlots();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
 
         // "List All" button is used to show up table containing all office hours
         listAllBtn.setOnAction(e -> {
@@ -269,15 +279,19 @@ public class OfficeHourController implements Initializable {
         Stage stage = (Stage)root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHours.fxml", "Office Hours");
     }
-    private void switchToTimeSlots() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/TimeSlots/TimeSlots.fxml", "Time Slots");
-    }
 
     private void switchToCourses() throws IOException {
         Stage stage = (Stage)root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Courses/Course.fxml", "Courses");
     }
+    /**
+     * Switches to the Time Slots view
+     */
+    private void switchToTimeSlots() throws IOException {
+        Stage stage = (Stage)root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/TimeSlots/TimeSlots.fxml", "Time Slots");
+    }
+
     /**
      * Shows an alert dialog with the given message
      */

@@ -17,6 +17,8 @@ public class DashboardController implements Initializable {
     public Button officeHoursBtn1;
     public Button scheduleBtn1;
     public Button reportBtn1;
+    public Button timeSlotsBtn;
+    public Button coursesBtn;
 
     // Dashboard button and dropdown menu
     public MenuButton menuBtn;
@@ -80,6 +82,30 @@ public class DashboardController implements Initializable {
          * // Implement functionality for report
          * });
          */
+
+        // "Time Slots" button is used to show up the time slots page
+        timeSlotsBtn.setOnAction(e -> {
+            try {
+                switchToTimeSlots();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+        // Handle the Office Hours button click
+        coursesBtn.setOnAction(event -> {
+            try {
+                switchToCourses();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
+
+    // Method to switch to Dashboard page
+    public void switchToDashboard() throws IOException {
+        Stage stage = (Stage)root1.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/Dashboard/Dashboard.fxml", "Dashboard");
     }
 
     // Method to switch to the Office Hours page
@@ -89,9 +115,19 @@ public class DashboardController implements Initializable {
         SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHours.fxml", "Office Hours");
     }
 
-    // Method to switch to Dashboard page
-    public void switchToDashboard() throws IOException {
+    /**
+     * Switches to the Time Slots view
+     */
+    private void switchToTimeSlots() throws IOException {
         Stage stage = (Stage)root1.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/Dashboard/Dashboard.fxml", "Dashboard");
+        SwitchScene.switchScene(stage, "/Fxml/TimeSlots/TimeSlots.fxml", "Time Slots");
+    }
+
+    /**
+     * Switches to the courses view
+     */
+    private void switchToCourses() throws IOException {
+        Stage stage = (Stage)root1.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/Courses/Course.fxml", "Courses");
     }
 }
