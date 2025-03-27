@@ -1,11 +1,11 @@
 package s25.cs151.application.Controllers.TimeSlots;
 
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import s25.cs151.application.Helper.SwitchScene;
@@ -17,8 +17,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.stream.IntStream;
 
@@ -42,33 +45,13 @@ public class TimeSlotsController implements Initializable {
     public ComboBox<String> endComboBox;
     public Button cancelBtn;
     public Button saveBtn;
-    /*
-    public VBox timeGroup;
-    public HBox startTimeGroup;
-    public TextField startTimeField;
-    public HBox endTimeGroup;
-    public TextField endTimeField;
-    public VBox titleSection;
 
-    String startTime = startTimeField.getText();
-    String endTime = endTimeField.getText();
-    String course = courseCode.getText();
-
-    /*
-    startTime.isEmpty() || endTime.isEmpty() || course.isEmpty())
-    showAlert("Time: " + startTime + " - " + endTime + "\n" +
-                "Course: " + course + " - " + section + "\n" +
-                "Course Name: " + name);
-     // reset text-field
-        startTimeField.setText("");
-        endTimeField.setText("");
-        courseSection.setText("");
-        courseCode.setText("");
-        courseName.setText("");
-     */
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        //show example for users to know the format of time slot
+        startComboBox.setValue("10:00 AM");
+        endComboBox.setValue("11:30 AM");
         setupNavigationHandlers();
         showTimeOptions();
     }
@@ -88,9 +71,6 @@ public class TimeSlotsController implements Initializable {
                     endComboBox.getItems().add(time.format(dateTimeFormatter));
                 })
         );
-
-        startComboBox.setValue("10:00 AM");
-        endComboBox.setValue("11:30 AM");
     }
 
     // Sets up navigation between different views
@@ -132,27 +112,81 @@ public class TimeSlotsController implements Initializable {
         });
 
         // "Cancel" button is used to refresh the form
-        cancelBtn.setOnAction(e -> resetForm());
 
         timeSlotsBtn.setOnAction(e -> resetForm());
 
         // "List All" button is used to show up table containing all office hours
         listAllBtn.setOnAction(e -> {
             try {
-                switchToListAllView();
+                switchToAllList();
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
         });
+
+        listAllBtn.setOnMouseClicked(e->{
+            try{
+                switchToAllList();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+        officeHoursBtn.setOnAction(e->{
+            try {
+                switchToOfficeHours();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+        CoursesBtn.setOnAction(e->{
+            try {
+                switchCourses();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+        saveBtn.setOnAction(e-> {
+            try {
+                handleSaveButton();
+            } catch (ParseException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+        cancelBtn.setOnAction(e->resetForm());
     }
 
-    public void handleSaveButton(ActionEvent event) {
+    /**
+     * Resets all form fields to their default values
+     */
+    private void resetForm() {
+        //reset ComboChoices
+        startComboBox.setValue("");
+        endComboBox.setValue("");
+    }
+
+    public void handleSaveButton() throws ParseException {
         //Connect to database
         ConnectDB connectDB = new ConnectDB("jdbc:sqlite:src/main/resources/Database/timeSlots.db");
         Connection connection = connectDB.getConnection();
 
         String fromHour= startComboBox.getValue();
         String toHour = endComboBox.getValue();
+
+        // check if the field is empty or not
+        if(fromHour.isEmpty() || toHour.isEmpty()){
+            showAlert("Please fill in all required fields: From Hour and To Hour");
+        }
+
+        //validate fromHour < toHour
+        // compare 2 strings. str1: 10:30 AM and 12:30 PM
+        SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm a");
+        Date fromDate = dateFormat.parse(fromHour);
+        Date toDate = dateFormat.parse(toHour);
+        if (fromDate.compareTo(toDate)>0)
+        {
+            showAlert("From Hour should be before To Hour");
+            return;
+        }
         if (connection!=null){
             try{
                 Statement statement = connection.createStatement();
@@ -203,15 +237,14 @@ public class TimeSlotsController implements Initializable {
     /**
      * Switches to the list view showing all office hours entries
      */
-    private void switchToListAllView() throws IOException {
+    private void switchToAllList() throws IOException {
         Stage stage = (Stage)root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/TimeSlots/TimeSlotsList.fxml", "Time Slots List");
     }
 
-    /**
-     * Resets all form fields to their default values
-     */
-    private void resetForm() {
-        // TODO: Reset time picker
+
+    public void switchCourses() throws IOException {
+        Stage stage = (Stage)root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/Courses/Course.fxml", "Courses");
     }
 }

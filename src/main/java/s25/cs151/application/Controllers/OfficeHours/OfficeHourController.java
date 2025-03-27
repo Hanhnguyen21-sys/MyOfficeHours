@@ -54,6 +54,8 @@ public class OfficeHourController implements Initializable {
     public MenuItem officehoursItem;
     public MenuItem scheduleItem;
     public MenuItem reportItem;
+    public Button TimeslotsBtn;
+    public Button CoursesBtn;
 
     private String[] semester = { "Spring", "Summer", "Fall", "Winter" };
 
@@ -116,6 +118,20 @@ public class OfficeHourController implements Initializable {
         newBtn.setOnAction(e -> {
             try {
                 switchToNewOfficeHoursView();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+        TimeslotsBtn.setOnAction(e -> {
+            try {
+                switchToTimeSlots();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+        CoursesBtn.setOnAction(e -> {
+            try {
+                switchToCourses();
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
@@ -264,6 +280,10 @@ public class OfficeHourController implements Initializable {
         SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHours.fxml", "Office Hours");
     }
 
+    private void switchToCourses() throws IOException {
+        Stage stage = (Stage)root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/Courses/Course.fxml", "Courses");
+    }
     /**
      * Switches to the Time Slots view
      */
