@@ -1,5 +1,6 @@
 package s25.cs151.application.Controllers.Dashboard;
 
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
@@ -13,20 +14,32 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable {
-    public AnchorPane root1;
-    public Button scheduleBtn1;
-    public Button reportBtn1;
-    public Button timeSlotsBtn;
-    public Button coursesBtn;
+    @FXML
+    private AnchorPane root1;
+    @FXML
+    private Button scheduleBtn1;
+    @FXML
+    private Button reportBtn1;
+    @FXML
+    private Button timeSlotsBtn;
+    @FXML
+    private Button coursesBtn;
 
     // Dashboard button and dropdown menu
-    public MenuButton menuBtn;
-    public MenuItem officeHoursMenuItem;
-    public MenuItem dashBoardMenuItem;
-    public MenuItem scheduleMenuItem;
-    public MenuItem reportMenuItem;
-    public MenuItem dashboardItem1;
-    public Button officeHoursBtn;
+    @FXML
+    private MenuButton menuBtn;
+    @FXML
+    private MenuItem officeHoursMenuItem;
+    @FXML
+    private MenuItem dashBoardMenuItem;
+    @FXML
+    private MenuItem scheduleMenuItem;
+    @FXML
+    private MenuItem reportMenuItem;
+    @FXML
+    private MenuItem dashboardItem1;
+    @FXML
+    private Button officeHoursBtn;
 
 
     @Override

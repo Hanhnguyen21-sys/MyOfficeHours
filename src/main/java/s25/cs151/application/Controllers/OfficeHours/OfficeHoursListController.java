@@ -25,32 +25,26 @@ import java.util.ResourceBundle;
  * Displays and manages the table of office hours entries.
  */
 public class OfficeHoursListController implements Initializable {
-    public Label dashboardLabel;
-    public Button OfficeHourBtn;
     @FXML
-    public AnchorPane root;
+    private Label dashboardLabel;
     @FXML
-    public MenuButton menuBtn;
+    private Button OfficeHourBtn;
     @FXML
-    public TableView<OfficeHours> officeHoursTable;
+    private AnchorPane root;
+
     @FXML
-    public TableColumn<OfficeHours, String> semesterColumn;
+    private TableView<OfficeHours> officeHoursTable;
     @FXML
-    public TableColumn<OfficeHours, String> yearColumn;
+    private TableColumn<OfficeHours, String> semesterColumn;
     @FXML
-    public TableColumn<OfficeHours, String> daysColumn;
-    public MenuItem dashboardItem;
-    public MenuItem officehoursItem;
-    //    @FXML
-//    private TableColumn<OfficeHours, String> timeColumn;
-//    @FXML
-//    private TableColumn<OfficeHours, String> courseColumn;
-//    @FXML
-//    private Button newBtn;
-//    @FXML
-//    private Button editBtn;
-//    @FXML
-//    private Button deleteBtn;
+    private TableColumn<OfficeHours, String> yearColumn;
+    @FXML
+    private TableColumn<OfficeHours, String> daysColumn;
+    @FXML
+    private MenuItem dashboardItem;
+    @FXML
+    private MenuItem officehoursItem;
+
     ObservableList<OfficeHours> officeHoursObservableList = FXCollections.observableArrayList();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -67,8 +61,6 @@ public class OfficeHoursListController implements Initializable {
         semesterColumn.setCellValueFactory(cellData -> cellData.getValue().semesterProperty());
         yearColumn.setCellValueFactory(cellData -> cellData.getValue().yearProperty());
         daysColumn.setCellValueFactory(cellData -> cellData.getValue().daysProperty());
-//        timeColumn.setCellValueFactory(cellData -> cellData.getValue().timeProperty());
-//        courseColumn.setCellValueFactory(cellData -> cellData.getValue().courseProperty());
     }
 
     /**
@@ -114,33 +106,6 @@ public class OfficeHoursListController implements Initializable {
             }
         });
 
-
-        // Edit button
-//        editBtn.setOnAction(e -> {
-//            OfficeHours selected = officeHoursTable.getSelectionModel().getSelectedItem();
-//            if (selected != null) {
-//                try {
-//                    System.out.println("Edit button clicked");
-//                    switchToEditOfficeHoursView(selected);
-//                } catch (IOException ex) {
-//                    System.err.println("Error switching to edit office hours view: " + ex.getMessage());
-//                    ex.printStackTrace();
-//                    throw new RuntimeException(ex);
-//                }
-//            } else {
-//                showAlert("Please select an office hours entry to edit.");
-//            }
-//        });
-//
-//        // Delete button
-//        deleteBtn.setOnAction(e -> {
-//            OfficeHours selected = officeHoursTable.getSelectionModel().getSelectedItem();
-//            if (selected != null) {
-//                deleteOfficeHours(selected);
-//            } else {
-//                showAlert("Please select an office hours entry to delete.");
-//            }
-//        });
     }
 
     /**

@@ -3,7 +3,7 @@ module com.example.project_group17 {
     requires javafx.fxml;
     requires java.sql;
 
-    opens s25.cs151.application to javafx.fxml;
+    //opens s25.cs151.application to javafx.fxml;
     opens s25.cs151.application.Controllers.OfficeHours to javafx.fxml;
     opens s25.cs151.application.Controllers.Dashboard to javafx.fxml;
     opens s25.cs151.application.Models to javafx.fxml;
