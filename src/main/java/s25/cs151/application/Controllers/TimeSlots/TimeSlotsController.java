@@ -1,6 +1,7 @@
 package s25.cs151.application.Controllers.TimeSlots;
 
 
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
@@ -28,20 +29,34 @@ import java.util.stream.IntStream;
  */
 
 public class TimeSlotsController implements Initializable {
-    public AnchorPane root;
-    public Label dashboardLabel;
-    public Button officeHoursBtn;
-    public Button timeSlotsBtn;
-    public Button CoursesBtn;
-    public Button listAllBtn;
-    public MenuItem dashboardItem;
-    public MenuItem officehoursItem;
-    public MenuItem scheduleItem;
-    public MenuItem reportItem;
-    public ComboBox<String> startComboBox;
-    public ComboBox<String> endComboBox;
-    public Button cancelBtn;
-    public Button saveBtn;
+    @FXML
+    private AnchorPane root;
+    @FXML
+    private Label dashboardLabel;
+    @FXML
+    private Button officeHoursBtn;
+    @FXML
+    private Button timeSlotsBtn;
+    @FXML
+    private Button CoursesBtn;
+    @FXML
+    private Button listAllBtn;
+    @FXML
+    private MenuItem dashboardItem;
+    @FXML
+    private MenuItem officehoursItem;
+    @FXML
+    private MenuItem scheduleItem;
+    @FXML
+    private MenuItem reportItem;
+    @FXML
+    private ComboBox<String> startComboBox;
+    @FXML
+    private ComboBox<String> endComboBox;
+    @FXML
+    private Button cancelBtn;
+    @FXML
+    private Button saveBtn;
 
 
     @Override

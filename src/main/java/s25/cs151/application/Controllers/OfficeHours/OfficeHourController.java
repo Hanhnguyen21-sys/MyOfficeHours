@@ -4,9 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import s25.cs151.application.Helper.SwitchScene;
 import s25.cs151.application.Models.ConnectDB;
@@ -24,37 +21,46 @@ import java.util.ResourceBundle;
  * Handles user input for creating and editing office hours entries.
  */
 public class OfficeHourController implements Initializable {
-    public AnchorPane root;
-    public MenuButton dashboardBtn;
-    public VBox mainContainer;
-    public VBox topForm;
-    public VBox semesterGroup;
-    public Label semesterLabel;
-    public ChoiceBox<String> semesterCombo;
-    public VBox yearGroup;
-    public Label yearLabel;
-    public StackPane yearFieldContainer;
-    public TextField yearField;
-    public VBox dayGroup;
-    public HBox dayCheckboxes;
-    public CheckBox monCheck;
-    public CheckBox tueCheck;
-    public CheckBox wedCheck;
-    public CheckBox friCheck;
-    public CheckBox thurCheck;
-    public HBox actionBtn;
-    public Button listAllBtn;
-    public Button timeSlotsBtn;
-    public Button cancelBtn;
-    public Button saveBtn;
+    @FXML
+    private AnchorPane root;
 
-    public Label dashboardLabel;
-    public MenuItem dashboardItem;
-    public MenuItem officehoursItem;
-    public MenuItem scheduleItem;
-    public MenuItem reportItem;
-    public Button CoursesBtn;
-    public Button officeHoursBtn;
+    @FXML
+    private ChoiceBox<String> semesterCombo;
+    @FXML
+    private TextField yearField;
+    @FXML
+    private CheckBox monCheck;
+    @FXML
+    private CheckBox tueCheck;
+    @FXML
+    private CheckBox wedCheck;
+    @FXML
+    private CheckBox friCheck;
+    @FXML
+    private CheckBox thurCheck;
+    @FXML
+    private Button listAllBtn;
+    @FXML
+    private Button timeSlotsBtn;
+    @FXML
+    private Button cancelBtn;
+    @FXML
+    private Button saveBtn;
+
+    @FXML
+    private Label dashboardLabel;
+    @FXML
+    private MenuItem dashboardItem;
+    @FXML
+    private MenuItem officehoursItem;
+    @FXML
+    private MenuItem scheduleItem;
+    @FXML
+    private MenuItem reportItem;
+    @FXML
+    private Button CoursesBtn;
+    @FXML
+    private Button officeHoursBtn;
 
     private String[] semester = { "Spring", "Summer", "Fall", "Winter" };
 
@@ -94,7 +100,8 @@ public class OfficeHourController implements Initializable {
 
         // "Cancel" button is used to refresh the form
         cancelBtn.setOnAction(e -> resetForm());
-
+        // Save input data to database
+        saveBtn.setOnAction(e -> handleSaveButton());
         // "Time Slots" button is used to show up the time slots page
         timeSlotsBtn.setOnAction(e -> {
             try {
