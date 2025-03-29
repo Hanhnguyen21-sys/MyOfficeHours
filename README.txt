@@ -17,13 +17,34 @@ Run mvn clean compile to build the project
 Run mvn javafx:run to start the application
 Using the Application
 
-Dashboard: Main view showing overview of office hours
+Dashboard: Main view showing overview of office hours 
 
 Office Hours:
    Click "New" to create new office hours
-   Fill in required fields (Semester, Year, Days)
+   Fill in required fields:
+      - Semester
+      - Year
+      - Days
    Click "Save" to save the entry
    Click "List All" to view all office hours
+
 Navigation:
-   Use the menu button in top-left to switch between views
-   Click the dashboard label to return to main view
+   Use the menu button in the top-left to switch between views
+   Click the Dashboard label to return to the main view
+   
+   To Add Time Slots:
+      - Click the "Time Slots" tab
+      Enter the following:
+         - From Hour (e.g., 10:30)
+         - To Hour (e.g., 11:30)
+   Click "Save" or confirm the entry
+
+   To Add Courses:
+       - Click the "Courses" tab
+      Enter course details:
+         - Course Name (e.g., CS 146)
+         - Course Code
+         - Section Number
+   Click "Save" to add the course
+
+
