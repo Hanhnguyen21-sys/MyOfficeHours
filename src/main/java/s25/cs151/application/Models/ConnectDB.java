@@ -7,7 +7,6 @@ import java.sql.SQLException;
 public class ConnectDB {
     private Connection connection;
     public ConnectDB(String url){
-        //String url = "jdbc:sqlite:src/main/resources/database.db";
         try{
             connection = DriverManager.getConnection(url);
             System.out.println("Successfully Connected");
