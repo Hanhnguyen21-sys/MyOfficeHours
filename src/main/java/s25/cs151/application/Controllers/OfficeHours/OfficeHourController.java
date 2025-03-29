@@ -25,6 +25,14 @@ public class OfficeHourController implements Initializable {
     private AnchorPane root;
 
     @FXML
+    private Button officeHoursBtn;
+    @FXML
+    private Button timeSlotsBtn;
+    @FXML
+    private Button CoursesBtn;
+    @FXML
+    private Button listAllBtn;
+    @FXML
     private ChoiceBox<String> semesterCombo;
     @FXML
     private TextField yearField;
@@ -39,10 +47,6 @@ public class OfficeHourController implements Initializable {
     @FXML
     private CheckBox thurCheck;
     @FXML
-    private Button listAllBtn;
-    @FXML
-    private Button timeSlotsBtn;
-    @FXML
     private Button cancelBtn;
     @FXML
     private Button saveBtn;
@@ -54,13 +58,14 @@ public class OfficeHourController implements Initializable {
     @FXML
     private MenuItem officehoursItem;
     @FXML
+    private MenuItem timeslotsItem;
+    @FXML
+    private MenuItem coursesItem;
+    @FXML
     private MenuItem scheduleItem;
     @FXML
     private MenuItem reportItem;
-    @FXML
-    private Button CoursesBtn;
-    @FXML
-    private Button officeHoursBtn;
+
 
     private String[] semester = { "Spring", "Summer", "Fall", "Winter" };
 
@@ -79,33 +84,29 @@ public class OfficeHourController implements Initializable {
 
     // Sets up navigation between different views
     private void setupNavigationHandlers() {
-        // handle MenuItems when chosen
-        dashboardItem.setOnAction(event -> {
+        // 4 BUTTONS + 1 DASHBOARD LABEL + CANCEL BUTTON + SAVE BUTTON
+        // "Office Hours" button is used to show up the form
+        officeHoursBtn.setOnAction(e -> {
             try {
-                switchToDashboard();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-        officehoursItem.setOnAction(e -> resetForm());
-
-        // switch back to dashboard when click
-        dashboardLabel.setOnMouseClicked(event -> {
-            try {
-                switchToDashboard();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+                switchToNewOfficeHoursView();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
             }
         });
 
-        // "Cancel" button is used to refresh the form
-        cancelBtn.setOnAction(e -> resetForm());
-        // Save input data to database
-        saveBtn.setOnAction(e -> handleSaveButton());
         // "Time Slots" button is used to show up the time slots page
         timeSlotsBtn.setOnAction(e -> {
             try {
                 switchToTimeSlots();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+        // "Courses" button is used to show up the courses page
+        CoursesBtn.setOnAction(e -> {
+            try {
+                switchToCourses();
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
@@ -120,26 +121,49 @@ public class OfficeHourController implements Initializable {
             }
         });
 
-        // "New" button is used to show up the form
-        officeHoursBtn.setOnAction(e -> {
+        // switch back to dashboard when Dashboard label is clicked
+        dashboardLabel.setOnMouseClicked(event -> {
             try {
-                switchToNewOfficeHoursView();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
+                switchToDashboard();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         });
-        timeSlotsBtn.setOnAction(e -> {
+
+        // "Cancel" button is used to refresh the form
+        cancelBtn.setOnAction(e -> resetForm());
+
+        // "Save" button is used to save input data to database
+        saveBtn.setOnAction(e -> handleSaveButton());
+
+        // 4 MENU ITEMS + 2 MENU ITEMS TO BE IMPLEMENTED
+        // Handle the Dashboard menu item click
+        dashboardItem.setOnAction(event -> {
+            try {
+                switchToDashboard();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        // Handle the Office Hours menu item click
+        officehoursItem.setOnAction(e -> resetForm());
+
+        // Handle the Time Slots menu item click
+        timeslotsItem.setOnAction(event -> {
             try {
                 switchToTimeSlots();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         });
-        CoursesBtn.setOnAction(e -> {
+
+        // Handle the Courses menu item click
+        coursesItem.setOnAction(event -> {
             try {
                 switchToCourses();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         });
     }
@@ -269,21 +293,19 @@ public class OfficeHourController implements Initializable {
         Stage stage = (Stage)root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Dashboard/Dashboard.fxml", "Dashboard");
     }
-
     /**
-     * Switches to the list view showing all office hours entries
-     */
-    private void switchToListAllView() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHoursList.fxml", "Office Hours List");
-    }
-
-    /**
-     * Switches to the new office hours form view
+     * Switches to the office hours view
      */
     private void switchToNewOfficeHoursView() throws IOException {
         Stage stage = (Stage)root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHours.fxml", "Office Hours");
+    }
+    /**
+     * Switches to the Time Slots view
+     */
+    private void switchToTimeSlots() throws IOException {
+        Stage stage = (Stage)root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/TimeSlots/TimeSlots.fxml", "Time Slots");
     }
     /**
      * Switches to the Courses View
@@ -293,13 +315,12 @@ public class OfficeHourController implements Initializable {
         SwitchScene.switchScene(stage, "/Fxml/Courses/Course.fxml", "Courses");
     }
     /**
-     * Switches to the Time Slots view
+     * Switches to the list all view showing all office hours entries
      */
-    private void switchToTimeSlots() throws IOException {
+    private void switchToListAllView() throws IOException {
         Stage stage = (Stage)root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/TimeSlots/TimeSlots.fxml", "Time Slots");
+        SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHoursList.fxml", "Office Hours List");
     }
-
     /**
      * Shows an alert dialog with the given message
      */
