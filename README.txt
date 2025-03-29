@@ -1,5 +1,5 @@
 Name of application: Faculty's Office Hours Manager
-Version: 0.4
+Version: 0.5
 
 Who did what
 - Nguyen Nguyen: Set up and connected the SQLite database; handled saving Time Slots to the database with input validation.
