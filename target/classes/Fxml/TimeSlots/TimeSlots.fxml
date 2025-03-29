@@ -13,11 +13,11 @@
 
 <AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.TimeSlots.TimeSlotsController">
         <VBox fx:id="titleSection" layoutX="153.0" layoutY="17.0" prefHeight="200.0" prefWidth="502.0">
-            <Label styleClass="page-header" stylesheets="@../../Styles/OfficeHours.css" text="Entry Office Hours" />
+            <Label styleClass="page-header" stylesheets="@../../Styles/OfficeHours.css" text="Entry Time Slots" />
             <HBox fx:id="breadcrumb" prefHeight="32.0" prefWidth="502.0" styleClass="breadcrumb-container" stylesheets="@../../Styles/OfficeHours.css">
                 <Label fx:id="dashboardLabel" onMouseClicked="#switchToDashboard" styleClass="breadcrumb-item" stylesheets="@../../Styles/OfficeHours.css" text="Dashboard" />
                 <Label styleClass="breadcrumb-separator" stylesheets="@../../Styles/OfficeHours.css" text="&gt;" />
-                <Label style="-fx-font-weight: 600;" stylesheets="@../../Styles/OfficeHours.css" text="Office Hours">
+                <Label style="-fx-font-weight: 600;" stylesheets="@../../Styles/OfficeHours.css" text="Time Slots">
                     <styleClass>
                         <String fx:value="breadcrumb-item" />
                         <String fx:value="active" />
@@ -26,7 +26,7 @@
             </HBox>
 
             <!-- Action Buttons -->
-            <HBox fx:id="actionBtn" prefHeight="35.0" prefWidth="481.0" styleClass="action-buttons" stylesheets="@../../Styles/OfficeHours.css">
+            <HBox fx:id="actionBtn" prefHeight="35.0" styleClass="action-buttons" stylesheets="@../../Styles/OfficeHours.css">
                 <Button fx:id="officeHoursBtn" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" styleClass="list-button" stylesheets="@../../Styles/OfficeHours.css" text="Office Hours 🖉" textAlignment="CENTER">
             <HBox.margin>
                <Insets />
@@ -57,6 +57,8 @@
          <items>
             <MenuItem fx:id="dashboardItem" mnemonicParsing="false" text="Dashboard" />
             <MenuItem fx:id="officehoursItem" mnemonicParsing="false" text="Office Hours" />
+            <MenuItem fx:id="timeslotsItem" mnemonicParsing="false" text="Time Slots" />
+            <MenuItem fx:id="coursesItem" mnemonicParsing="false" text="Courses" />
             <MenuItem fx:id="scheduleItem" mnemonicParsing="false" text="Schedule" />
             <MenuItem fx:id="reportItem" mnemonicParsing="false" text="Report" />
          </items>
@@ -64,17 +66,15 @@
         </VBox>
 
         <!-- Form for Office Hours -->
-    <VBox layoutX="249.0" layoutY="149.0" prefHeight="157.0" prefWidth="312.0" styleClass="formContainer"
-          stylesheets="@../../Styles/OfficeHours.css">
-        <HBox prefHeight="18.0" prefWidth="292.0"/>
+    <VBox layoutX="249.0" layoutY="149.0" prefHeight="157.0" prefWidth="312.0" styleClass="formContainer" stylesheets="@../../Styles/OfficeHours.css">
+        <HBox prefHeight="18.0" prefWidth="292.0" />
         <HBox prefHeight="40.0" prefWidth="320.0" styleClass="form-row" stylesheets="@../../Styles/OfficeHours.css">
-            <Label styleClass="form-label" stylesheets="@../../Styles/OfficeHours.css" text="From Hour"/>
-            <ComboBox fx:id="startComboBox" prefHeight="26.0" prefWidth="140.0"/>
+            <Label styleClass="form-label" stylesheets="@../../Styles/OfficeHours.css" text="From Hour" />
+            <ComboBox fx:id="startComboBox" prefHeight="26.0" prefWidth="140.0" />
         </HBox>
         <HBox prefHeight="40.0" prefWidth="320.0" styleClass="form-row" stylesheets="@../../Styles/OfficeHours.css">
-            <Label prefHeight="18.0" prefWidth="64.0" styleClass="form-label"
-                   stylesheets="@../../Styles/OfficeHours.css" text="To Hour"/>
-            <ComboBox fx:id="endComboBox" prefHeight="26.0" prefWidth="140.0"/>
+            <Label prefHeight="18.0" prefWidth="64.0" styleClass="form-label" stylesheets="@../../Styles/OfficeHours.css" text="To Hour" />
+            <ComboBox fx:id="endComboBox" prefHeight="26.0" prefWidth="140.0" />
         </HBox>
     </VBox>
 

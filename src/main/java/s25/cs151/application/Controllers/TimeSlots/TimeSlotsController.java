@@ -31,8 +31,7 @@ import java.util.stream.IntStream;
 public class TimeSlotsController implements Initializable {
     @FXML
     private AnchorPane root;
-    @FXML
-    private Label dashboardLabel;
+
     @FXML
     private Button officeHoursBtn;
     @FXML
@@ -42,14 +41,6 @@ public class TimeSlotsController implements Initializable {
     @FXML
     private Button listAllBtn;
     @FXML
-    private MenuItem dashboardItem;
-    @FXML
-    private MenuItem officehoursItem;
-    @FXML
-    private MenuItem scheduleItem;
-    @FXML
-    private MenuItem reportItem;
-    @FXML
     private ComboBox<String> startComboBox;
     @FXML
     private ComboBox<String> endComboBox;
@@ -57,6 +48,21 @@ public class TimeSlotsController implements Initializable {
     private Button cancelBtn;
     @FXML
     private Button saveBtn;
+
+    @FXML
+    private Label dashboardLabel;
+    @FXML
+    private MenuItem dashboardItem;
+    @FXML
+    private MenuItem officehoursItem;
+    @FXML
+    private MenuItem timeslotsItem;
+    @FXML
+    private MenuItem coursesItem;
+    @FXML
+    private MenuItem scheduleItem;
+    @FXML
+    private MenuItem reportItem;
 
 
     @Override
@@ -87,6 +93,60 @@ public class TimeSlotsController implements Initializable {
 
     // Sets up navigation between different views
     private void setupNavigationHandlers() {
+
+        // 4 BUTTONS + 1 DASHBOARD LABEL + CANCEL BUTTON + SAVE BUTTON
+        // "Office Hours" button is used to show up the form
+        officeHoursBtn.setOnAction(e -> {
+            try {
+                switchToOfficeHours();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+        // "Time Slots" button is used to reset the time slots page
+        timeSlotsBtn.setOnAction(e -> resetForm());
+
+        // "Courses" button is used to show up the courses page
+        CoursesBtn.setOnAction(e -> {
+            try {
+                switchToCourses();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+        // "List All" button is used to show up table containing all time slots
+        listAllBtn.setOnMouseClicked(e->{
+            try{
+                switchToAllList();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+        // switch back to dashboard when Dashboard label is clicked
+        dashboardLabel.setOnMouseClicked(event -> {
+            try {
+                switchToDashboard();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        // "Cancel" button is used to refresh the form
+        cancelBtn.setOnAction(e->resetForm());
+
+        // "Save" button is used to save input data to database
+        saveBtn.setOnAction(e-> {
+            try {
+                handleSaveButton();
+            } catch (ParseException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+        // 4 MENU ITEMS + 2 MENU ITEMS TO BE IMPLEMENTED
         // Handle the Dashboard menu item click
         dashboardItem.setOnAction(event -> {
             try {
@@ -105,68 +165,17 @@ public class TimeSlotsController implements Initializable {
             }
         });
 
-        // switch back to dashboard when click
-        dashboardLabel.setOnMouseClicked(event -> {
+        // Handle the Time Slots menu item click
+        timeslotsItem.setOnAction(e -> resetForm());
+
+        // Handle the Courses menu item click
+        coursesItem.setOnAction(event -> {
             try {
-                switchToDashboard();
+                switchToCourses();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         });
-
-        // Handle the Office Hours button click
-        officeHoursBtn.setOnAction(event -> {
-            try {
-                switchToOfficeHours();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-        // "Cancel" button is used to refresh the form
-
-        timeSlotsBtn.setOnAction(e -> resetForm());
-
-        // "List All" button is used to show up table containing all office hours
-
-        listAllBtn.setOnMouseClicked(e->{
-            try{
-                switchToAllList();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        });
-        officeHoursBtn.setOnAction(e->{
-            try {
-                switchToOfficeHours();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        });
-        CoursesBtn.setOnAction(e->{
-            try {
-                switchCourses();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        });
-        saveBtn.setOnAction(e-> {
-            try {
-                handleSaveButton();
-            } catch (ParseException ex) {
-                throw new RuntimeException(ex);
-            }
-        });
-        cancelBtn.setOnAction(e->resetForm());
-    }
-
-    /**
-     * Resets all form fields to their default values
-     */
-    private void resetForm() {
-        //reset ComboChoices
-        startComboBox.setValue("");
-        endComboBox.setValue("");
     }
 
     public void handleSaveButton() throws ParseException {
@@ -231,37 +240,40 @@ public class TimeSlotsController implements Initializable {
         alert.showAndWait();
     }
 
-
     /**
-     * Switches to the new office hours form view
+     * Resets all form fields to their default values
      */
-    private void switchToOfficeHours() throws IOException {
-        // Load the Office Hours FXML
-        Stage stage = (Stage)root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHours.fxml", "Office Hours");
+    private void resetForm() {
+        //reset ComboChoices
+        startComboBox.setValue("");
+        endComboBox.setValue("");
     }
-
     /**
-     * Switches to the dashboard page
+     * Switches the view to the dashboard
      */
     public void switchToDashboard() throws IOException {
         Stage stage = (Stage)root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Dashboard/Dashboard.fxml", "Dashboard");
     }
-
     /**
-     * Switches to the list view showing all office hours entries
+     * Switches to the office hours view
+     */
+    private void switchToOfficeHours() throws IOException {
+        Stage stage = (Stage)root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHours.fxml", "Office Hours");
+    }
+    /**
+     * Switches to the Courses View
+     */
+    private void switchToCourses() throws IOException {
+        Stage stage = (Stage)root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/Courses/Course.fxml", "Courses");
+    }
+    /**
+     * Switches to the list view showing all time slots entries
      */
     private void switchToAllList() throws IOException {
         Stage stage = (Stage)root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/TimeSlots/TimeSlotsList.fxml", "Time Slots List");
-    }
-    /**
-     * Switches to Courses page
-     */
-
-    public void switchCourses() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/Courses/Course.fxml", "Courses");
     }
 }

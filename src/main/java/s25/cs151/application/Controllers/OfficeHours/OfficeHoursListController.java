@@ -44,6 +44,10 @@ public class OfficeHoursListController implements Initializable {
     private MenuItem dashboardItem;
     @FXML
     private MenuItem officehoursItem;
+    @FXML
+    private MenuItem timeslotsItem;
+    @FXML
+    private MenuItem coursesItem;
 
     ObservableList<OfficeHours> officeHoursObservableList = FXCollections.observableArrayList();
     @Override
@@ -105,7 +109,23 @@ public class OfficeHoursListController implements Initializable {
                 throw new RuntimeException(ex);
             }
         });
+        // Handle the Time Slots menu item click
+        timeslotsItem.setOnAction(event -> {
+            try {
+                switchToTimeSlots();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
 
+        // Handle the Courses menu item click
+        coursesItem.setOnAction(event -> {
+            try {
+                switchToCourses();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     /**
@@ -204,6 +224,20 @@ public class OfficeHoursListController implements Initializable {
     private void switchToNewOfficeHoursView() throws IOException {
         Stage stage = (Stage)root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHours.fxml", "Office Hours");
+    }
+    /**
+     * Switches to the Time Slots view
+     */
+    private void switchToTimeSlots() throws IOException {
+        Stage stage = (Stage)root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/TimeSlots/TimeSlots.fxml", "Time Slots");
+    }
+    /**
+     * Switches to the Courses View
+     */
+    private void switchToCourses() throws IOException {
+        Stage stage = (Stage)root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/Courses/Course.fxml", "Courses");
     }
 
     /**
