@@ -231,18 +231,20 @@ public class OfficeHourController implements Initializable {
 
                     // check for duplication
                     String dupCountQuery = "SELECT COUNT(*) AS count FROM officeHours WHERE semester = ? AND year = ? AND days = ?";
-                    PreparedStatement preparedStatementDup = connection.prepareStatement(dupCountQuery);
-                    preparedStatementDup.setString(1, selectedSemester);
-                    preparedStatementDup.setString(2, selectedYear);
-                    preparedStatementDup.setString(3, selectedDays);
+                    try(PreparedStatement preparedStatementDup = connection.prepareStatement(dupCountQuery)) {
+                        preparedStatementDup.setString(1, selectedSemester);
+                        preparedStatementDup.setString(2, selectedYear);
+                        preparedStatementDup.setString(3, selectedDays);
 
-                    ResultSet resultSetDup = preparedStatementDup.executeQuery();
-                    resultSetDup.next();
+                        try(ResultSet resultSetDup = preparedStatementDup.executeQuery()) {
+                            resultSetDup.next();
 
-                    if (resultSetDup.getInt("count") > 0) {
-                        showAlert(
-                                "This semester, year, and days combination for office hours already exists. Please select another one.");
-                        return;
+                            if (resultSetDup.getInt("count") > 0) {
+                                showAlert(
+                                        "This semester, year, and days combination for office hours already exists. Please select another one.");
+                                return;
+                            }
+                        }
                     }
 
                     // insert data if there is no duplication

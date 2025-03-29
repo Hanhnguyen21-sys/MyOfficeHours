@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e18cf392-ead5-4a6e-9f28-951bd910f791" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Models/Courses.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/wayne.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Courses/CourseListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Courses/CourseListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Courses/CoursesContoller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Courses/CoursesContoller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/OfficeHours/OfficeHourController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/OfficeHours/OfficeHourController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/OfficeHours/OfficeHoursListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/OfficeHours/OfficeHoursListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/TimeSlots/TimeSlotsListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/TimeSlots/TimeSlotsListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Models/TimeSlots.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Models/TimeSlots.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Database/courses.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Database/officehours.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Database/timeSlots.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Courses/CourseList.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Courses/CourseList.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/OfficeHours/OfficeHoursList.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/OfficeHours/OfficeHoursList.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/TimeSlots/TimeSlotsList.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/TimeSlots/TimeSlotsList.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Database/courses.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Database/officehours.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Database/timeSlots.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/Courses/Course.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/Courses/CourseList.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/Dashboard/Dashboard.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/OfficeHours/OfficeHours.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/OfficeHours/OfficeHoursList.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/TimeSlots/TimeSlots.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/TimeSlots/TimeSlotsList.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Styles/Dashboard.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Styles/OfficeHours.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/s25/cs151/application/Controllers/Courses/CourseListController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/s25/cs151/application/Controllers/Courses/CoursesContoller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/s25/cs151/application/Controllers/Dashboard/DashboardController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/s25/cs151/application/Controllers/OfficeHours/OfficeHourController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/s25/cs151/application/Controllers/OfficeHours/OfficeHoursListController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/s25/cs151/application/Controllers/TimeSlots/TimeSlotsController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/s25/cs151/application/Controllers/TimeSlots/TimeSlotsListController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/s25/cs151/application/Helper/SwitchScene.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/s25/cs151/application/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/s25/cs151/application/Models/ConnectDB.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/s25/cs151/application/Models/Model.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/s25/cs151/application/Models/OfficeHours.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/s25/cs151/application/Models/TimeSlots.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/s25/cs151/application/Views/View.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "meghanai28"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Hanhnguyen21-sys/MyOfficeHours.git",
+    "accountId": "6f7519b5-649a-4752-93c4-c1c43ba9b696"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="2uyS2jQSJ1Vx4Rrls9CRvCtN5Ct" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.Project_Group17 [clean,compile].executor": "Run",
+    "Maven.Project_Group17 [javafx:run].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.25659.59" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.25659.59" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e18cf392-ead5-4a6e-9f28-951bd910f791" name="Changes" comment="" />
+      <created>1743219115532</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1743219115532</updated>
+      <workItem from="1743219116738" duration="15284000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

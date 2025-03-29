@@ -1,18 +1,19 @@
 package s25.cs151.application.Controllers.Courses;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import s25.cs151.application.Helper.SwitchScene;
+import s25.cs151.application.Models.ConnectDB;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 /**
@@ -33,6 +34,7 @@ public class CoursesContoller implements Initializable{
     private Button CoursesBtn;
     @FXML
     private Button listAllBtn;
+
     @FXML
     private TextField courseCode;
     @FXML
@@ -43,6 +45,7 @@ public class CoursesContoller implements Initializable{
     private Button cancelBtn;
     @FXML
     private Button saveBtn;
+
 
     @FXML
     private Label dashboardLabel;
@@ -115,7 +118,7 @@ public class CoursesContoller implements Initializable{
         cancelBtn.setOnAction(e -> resetForm());
 
         // "Save" button is used to save input data to database
-        //saveBtn.setOnAction(e -> handleSaveButton());
+        saveBtn.setOnAction(e -> handleSaveButton());
 
         // 4 MENU ITEMS + 2 MENU ITEMS TO BE IMPLEMENTED
         // Handle the Dashboard menu item click
@@ -149,7 +152,75 @@ public class CoursesContoller implements Initializable{
         coursesItem.setOnAction(e -> resetForm());
     }
 
-    public void handleSaveButton(ActionEvent event) {
+    public void handleSaveButton() {
+        try {
+            ConnectDB connectDB = new ConnectDB("jdbc:sqlite:src/main/resources/Database/courses.db");
+            Connection connection = connectDB.getConnection();
+
+            String selectedCourseCode = courseCode.getText();
+            String selectedCourseName = courseName.getText();
+            String selectedSectionNumber = sectionNumber.getText();
+
+            if (selectedCourseCode.isEmpty() || selectedCourseName.isEmpty() || selectedSectionNumber.isEmpty())
+            {
+                showAlert("Please fill in all required fields: Course Code, Course Name, and Section Number");
+                return;
+            }
+
+            if (connection != null) {
+                try {
+                    Statement statement = connection.createStatement();
+                    String createTable = "CREATE TABLE IF NOT EXISTS courses ("
+                            + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                            + "courseCode TEXT, "
+                            + "courseName TEXT, "
+                            + "sectionNumber TEXT)";
+                    //create the table
+                    statement.executeUpdate(createTable);
+
+                    // duplicate checking
+                    String dupCountQuery = "SELECT COUNT(*) AS count FROM courses WHERE courseCode = ? AND courseName = ? AND sectionNumber = ?";
+                    try(PreparedStatement preparedStatementDup = connection.prepareStatement(dupCountQuery)) {
+                        preparedStatementDup.setString(1, selectedCourseCode);
+                        preparedStatementDup.setString(2, selectedCourseName);
+                        preparedStatementDup.setString(3, selectedSectionNumber);
+
+                        try(ResultSet resultSetDup = preparedStatementDup.executeQuery()) {
+                            resultSetDup.next();
+                            if (resultSetDup.getInt("count") > 0) {
+                                showAlert("This course code, course name, and section number combination already exists. Please select another one.");
+                                return;
+                            }
+                        }
+                    }
+
+                    String insertQuery = "INSERT INTO courses (courseCode, courseName, sectionNumber) VALUES (?, ?, ?)";
+                    PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
+                    preparedStatement.setString(1, selectedCourseCode);
+                    preparedStatement.setString(2, selectedCourseName);
+                    preparedStatement.setString(3, selectedSectionNumber);
+                    preparedStatement.executeUpdate();
+
+                    showAlert("Successfully Saved!");
+
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            connectDB.closeConnection();
+            resetForm();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     /**
@@ -186,6 +257,6 @@ public class CoursesContoller implements Initializable{
      */
     private void switchToListAllView() throws IOException {
         Stage stage = (Stage)root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/Courses/CourseList.fxml", "Time Slots List");
+        SwitchScene.switchScene(stage, "/Fxml/Courses/CourseList.fxml", "Courses List");
     }
 }

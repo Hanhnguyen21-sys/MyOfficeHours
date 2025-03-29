@@ -27,10 +27,30 @@ import java.util.ResourceBundle;
 public class OfficeHoursListController implements Initializable {
     @FXML
     private Label dashboardLabel;
+
+    @FXML
+    private Label officeHoursLabel;
+
     @FXML
     private Button OfficeHourBtn;
     @FXML
+    private Button TimeslotsBtn;
+    @FXML
+    private Button CoursesBtn;
+    @FXML
+    private Button listAllBtn;
+
+    @FXML
+    private Label officeHoursListLabel;
+    @FXML
+    private Label timeSlotsListLabel;
+    @FXML
+    private Label coursesListLabel;
+
+    @FXML
     private AnchorPane root;
+
+
 
     @FXML
     private TableView<OfficeHours> officeHoursTable;
@@ -90,6 +110,26 @@ public class OfficeHoursListController implements Initializable {
                 throw new RuntimeException(e);
             }
         });
+
+        // switch to Office Hours form
+        officeHoursListLabel.setOnMouseClicked(e -> {
+            try {
+                switchToOfficeHoursList();
+            } catch (IOException ex) {
+                System.err.println("Error switching to new office hours view: " + ex.getMessage());
+                ex.printStackTrace();
+                throw new RuntimeException(ex);
+            }
+        });
+        officeHoursLabel.setOnMouseClicked(event -> {
+            try {
+                switchToNewOfficeHoursView();
+            } catch (IOException e) {
+                System.err.println("Error switching to new office hours view:" + e.getMessage());
+                e.printStackTrace();
+                throw new RuntimeException(e);
+            }
+        });
         // switch to Office Hours form
         OfficeHourBtn.setOnAction(e -> {
             try {
@@ -109,6 +149,24 @@ public class OfficeHoursListController implements Initializable {
                 throw new RuntimeException(ex);
             }
         });
+
+        //switch to time slots view
+        timeSlotsListLabel.setOnMouseClicked(e -> {
+            try {
+                switchToTimeSlotsList();
+            } catch (IOException ex) {
+                System.err.println("Error switching to time slot view: " + ex.getMessage());
+                ex.printStackTrace();
+                throw new RuntimeException(ex);
+            }
+        });
+        TimeslotsBtn.setOnAction(event -> {
+            try {
+                switchToTimeSlots();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
         // Handle the Time Slots menu item click
         timeslotsItem.setOnAction(event -> {
             try {
@@ -118,6 +176,23 @@ public class OfficeHoursListController implements Initializable {
             }
         });
 
+        // switch to courses label
+        coursesListLabel.setOnMouseClicked(e -> {
+            try {
+                switchToCoursesList();
+            } catch (IOException ex) {
+                System.err.println("Error switching to courses view: " + ex.getMessage());
+                ex.printStackTrace();
+                throw new RuntimeException(ex);
+            }
+        });
+        CoursesBtn.setOnAction(event -> {
+            try {
+                switchToCourses();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
         // Handle the Courses menu item click
         coursesItem.setOnAction(event -> {
             try {
@@ -221,6 +296,7 @@ public class OfficeHoursListController implements Initializable {
     /**
      * Switches to the new office hours form view
      */
+    @FXML
     private void switchToNewOfficeHoursView() throws IOException {
         Stage stage = (Stage)root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHours.fxml", "Office Hours");
@@ -248,5 +324,35 @@ public class OfficeHoursListController implements Initializable {
     private void switchToEditOfficeHoursView(OfficeHours officeHours) throws IOException {
         Stage stage = (Stage)root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHours.fxml", "Edit Office Hours");
+    }
+
+    /**
+     * Switches to course list view
+     *
+     */
+    @FXML
+    private void switchToCoursesList() throws IOException {
+        Stage stage = (Stage)root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/Courses/CourseList.fxml", "Courses List");
+    }
+
+    /**
+     * Switches to office hours list view
+     *
+     */
+    @FXML
+    private void switchToOfficeHoursList() throws IOException {
+        Stage stage = (Stage)root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHoursList.fxml", "Office Hours List");
+    }
+
+    /**
+     * Switches to Time Slots List View
+     *
+     */
+    @FXML
+    private void switchToTimeSlotsList() throws IOException {
+        Stage stage = (Stage)root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/TimeSlots/TimeSlotsList.fxml", "Time Slots List");
     }
 }

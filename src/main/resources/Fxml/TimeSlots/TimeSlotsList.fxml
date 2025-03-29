@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="root" prefHeight="419.0" prefWidth="656.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.TimeSlots.TimeSlotsListController">
+<AnchorPane fx:id="root" prefHeight="419.0" prefWidth="656.0" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.TimeSlots.TimeSlotsListController">
 
     <!-- Left Panel Sidebar -->
     <VBox layoutY="1.0" prefHeight="400.0" prefWidth="180.0" styleClass="left-sidebar" stylesheets="@../../Styles/OfficeHours.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -30,7 +37,7 @@
         <HBox fx:id="breadcrumb" prefHeight="32.0" prefWidth="502.0" styleClass="breadcrumb-container" stylesheets="@../../Styles/OfficeHours.css">
             <Label fx:id="dashboardLabel" onMouseClicked="#switchToDashboard" styleClass="breadcrumb-item" stylesheets="@../../Styles/OfficeHours.css" text="Dashboard" />
             <Label styleClass="breadcrumb-separator" stylesheets="@../../Styles/OfficeHours.css" text="&gt;" />
-            <Label styleClass="breadcrumb-item" stylesheets="@../../Styles/OfficeHours.css" text="Time Slots" />
+            <Label fx:id="timeSlotsLabel" onMouseClicked="#switchToTimeSlots" styleClass="breadcrumb-item" stylesheets="@../../Styles/OfficeHours.css" text="Time Slots" />
          <Label layoutX="73.0" layoutY="10.0" styleClass="breadcrumb-separator" stylesheets="@../../Styles/OfficeHours.css" text="&gt;" />
          <Label layoutX="87.0" layoutY="10.0" stylesheets="@../../Styles/OfficeHours.css" text="List All">
             <styleClass>
@@ -56,11 +63,11 @@
         </HBox>
         <HBox styleClass="action-buttons" stylesheets="@../../Styles/OfficeHours.css">
             <children>
-                <Label styleClass="breadcrumb-item" text="Office Hours">
+                <Label fx:id="officeHoursListLabel" onMouseClicked="#switchToOfficeHoursList" styleClass="breadcrumb-item" text="Office Hours">
                     <HBox.margin>
                         <Insets />
                     </HBox.margin></Label>
-                <Label text="Time Slots">
+                <Label fx:id="timeSlotsListLabel" onMouseClicked="#switchToTimeSlotsList" text="Time Slots">
                     <HBox.margin>
                         <Insets left="80.0" />
                     </HBox.margin>
@@ -68,7 +75,7 @@
                   <String fx:value="active" />
                   <String fx:value="breadcrumb-item" />
                </styleClass></Label>
-                <Label styleClass="breadcrumb-item" text="Courses">
+                <Label fx:id="coursesListLabel" onMouseClicked="#switchToCoursesList" styleClass="breadcrumb-item" text="Courses">
                     <HBox.margin>
                         <Insets left="80.0" right="70.0" />
                     </HBox.margin></Label>
@@ -79,11 +86,10 @@
         </HBox>
     </VBox>
 <!--    TableView Section-->
-    <TableView fx:id="officeHoursTable" layoutX="164.0" layoutY="159.0" prefHeight="250.0" prefWidth="464.0" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="159.0">
+    <TableView fx:id="timeSlotsTable" layoutX="164.0" layoutY="159.0" prefHeight="250.0" prefWidth="464.0" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="159.0">
         <columns>
-            <TableColumn fx:id="semesterColumn" prefWidth="110.99998474121094" text="From Hour" />
-            <TableColumn fx:id="yearColumn" prefWidth="116.5999755859375" text="To Hour" />
-            <TableColumn fx:id="daysColumn" prefWidth="237.0" text="Selected" />
+            <TableColumn fx:id="fromHourColumn" prefWidth="230.4000244140625" text="From Hour" />
+            <TableColumn fx:id="toHourColumn" prefWidth="232.79998779296875" text="To Hour" />
         </columns>
     </TableView>
 </AnchorPane>
