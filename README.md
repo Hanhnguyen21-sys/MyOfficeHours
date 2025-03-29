@@ -4,10 +4,10 @@
 
 # Who did what
 
-- **Nguyen Nguyen**: Built and connected the SQLite database, and handled inserting user input into it.
-- **Meghana Indukuri**: Handled data validation and duplication check, bug fixes
-- **Misbah Syed**: Updated UI for office hours and added TableView.
-- **Oliver Majano**: Implemented database function, wrote README, bug fixes
+- **Nguyen Nguyen**: Set up and connected the SQLite database; handled saving Time Slots to the database with input validation.
+- **Meghana Indukuri**: Handled saving Courses to the database with duplication checks; contributed to input validation and bug fixes.
+- **Misbah Syed**: Designed and implemented the UIs for Time Slots and Courses, along with their controllers; merged all main UI components.
+- **Oliver Majano**: Implemented TableView display with sorting + ReadME.
 
 # Any other instruction that users need to know:
 
