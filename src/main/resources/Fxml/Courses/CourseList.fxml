@@ -54,13 +54,36 @@
             </Button>
          <Button fx:id="ListAllBtn" mnemonicParsing="false" prefHeight="34.0" prefWidth="93.0" styleClass="new-button" stylesheets="@../../Styles/OfficeHours.css" text="List All 📝" />
         </HBox>
+        <HBox styleClass="action-buttons" stylesheets="@../../Styles/OfficeHours.css">
+            <children>
+                <Label styleClass="breadcrumb-item" text="Office Hours">
+                    <HBox.margin>
+                        <Insets />
+                    </HBox.margin></Label>
+                <Label styleClass="breadcrumb-item" text="Time Slots">
+                    <HBox.margin>
+                        <Insets left="80.0" />
+                    </HBox.margin></Label>
+                <Label text="Courses">
+                    <HBox.margin>
+                        <Insets left="80.0" right="70.0" />
+                    </HBox.margin>
+               <styleClass>
+                  <String fx:value="breadcrumb-item" />
+                  <String fx:value="active" />
+               </styleClass></Label>
+            </children>
+            <VBox.margin>
+                <Insets top="10.0" />
+            </VBox.margin>
+        </HBox>
     </VBox>
 <!--    TableView Section-->
-    <TableView fx:id="officeHoursTable" layoutX="164.0" layoutY="138.0" prefHeight="333.0" prefWidth="464.0" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="130.0">
+    <TableView fx:id="officeHoursTable" layoutX="164.0" layoutY="162.0" prefHeight="247.0" prefWidth="464.0" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="162.0">
         <columns>
-            <TableColumn fx:id="semesterColumn" prefWidth="92.0" text="Semester " />
-            <TableColumn fx:id="yearColumn" prefWidth="79.20001220703125" text="Year" />
-            <TableColumn fx:id="daysColumn" prefWidth="291.20001220703125" text="Days" />
+            <TableColumn fx:id="semesterColumn" prefWidth="148.4000244140625" text="Course Code" />
+            <TableColumn fx:id="yearColumn" prefWidth="165.20001220703125" text="Course Name" />
+            <TableColumn fx:id="daysColumn" prefWidth="153.20001220703125" text="Section Number" />
         </columns>
     </TableView>
 </AnchorPane>
