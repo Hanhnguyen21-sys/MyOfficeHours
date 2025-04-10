@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
  * Handles user input for Course information
  */
 
-public class CoursesContoller implements Initializable{
+public class CoursesController implements Initializable{
 
     @FXML
     private AnchorPane root;
@@ -62,10 +62,6 @@ public class CoursesContoller implements Initializable{
     @FXML
     private MenuItem reportItem;
 
-    /*
-    String section = courseSection.getText();
-    String name = courseName.getText();
-     */
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -113,7 +109,13 @@ public class CoursesContoller implements Initializable{
                 throw new RuntimeException(e);
             }
         });
-
+        scheduleItem.setOnAction(event -> {
+            try {
+                switchToSchedule();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
         // "Cancel" button is used to refresh the form
         cancelBtn.setOnAction(e -> resetForm());
 
@@ -258,5 +260,12 @@ public class CoursesContoller implements Initializable{
     private void switchToListAllView() throws IOException {
         Stage stage = (Stage)root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Courses/CourseList.fxml", "Courses List");
+    }
+    /**
+     * Switches to the Schedule view
+     */
+    private void switchToSchedule() throws IOException {
+        Stage stage = (Stage)root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/Schedule/Schedule.fxml", "Schedule");
     }
 }

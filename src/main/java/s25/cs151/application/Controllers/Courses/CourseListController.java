@@ -63,6 +63,8 @@ public class CourseListController implements Initializable {
     private MenuItem timeslotsItem;
     @FXML
     private MenuItem coursesItem;
+    @FXML
+    private MenuItem scheduleItem;
 
     ObservableList<Courses> coursesObservableList = FXCollections.observableArrayList();
 
@@ -194,6 +196,13 @@ public class CourseListController implements Initializable {
                 throw new RuntimeException(e);
             }
         });
+        scheduleItem.setOnAction(event -> {
+            try {
+                switchToSchedule();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     /**
@@ -310,6 +319,15 @@ public class CourseListController implements Initializable {
     private void switchToTimeSlotsList() throws IOException {
         Stage stage = (Stage)root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/TimeSlots/TimeSlotsList.fxml", "Time Slots List");
+    }
+    /**
+     * Switches to Time Slots List View
+     *
+     */
+    @FXML
+    private void switchToSchedule() throws IOException {
+        Stage stage = (Stage)root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/Schedule/Schedule.fxml", "Schedule View");
     }
 
 

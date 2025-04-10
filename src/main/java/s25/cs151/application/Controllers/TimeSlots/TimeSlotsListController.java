@@ -62,6 +62,10 @@ public class TimeSlotsListController implements Initializable {
     private MenuItem timeslotsItem;
     @FXML
     private MenuItem coursesItem;
+    @FXML
+    private MenuItem scheduleItem;
+    @FXML
+    private MenuItem reportItem;
 
     ObservableList<TimeSlots> timeSlotsObservableList = FXCollections.observableArrayList();
 
@@ -127,6 +131,15 @@ public class TimeSlotsListController implements Initializable {
         officehoursItem.setOnAction(e -> {
             try {
                 switchToNewOfficeHoursView();
+            } catch (IOException ex) {
+                System.err.println("Error switching to new office hours view: " + ex.getMessage());
+                ex.printStackTrace();
+                throw new RuntimeException(ex);
+            }
+        });
+        scheduleItem.setOnAction(e -> {
+            try {
+                switchToSchedule();
             } catch (IOException ex) {
                 System.err.println("Error switching to new office hours view: " + ex.getMessage());
                 ex.printStackTrace();
@@ -320,5 +333,12 @@ public class TimeSlotsListController implements Initializable {
     private void switchToTimeSlotsList() throws IOException {
         Stage stage = (Stage)root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/TimeSlots/TimeSlotsList.fxml", "Time Slots List");
+    }
+    /**
+     * Switches to the Schedule view
+     */
+    private void switchToSchedule() throws IOException {
+        Stage stage = (Stage)root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/Schedule/Schedule.fxml", "Schedule");
     }
 }

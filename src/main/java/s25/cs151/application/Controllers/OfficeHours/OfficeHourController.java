@@ -166,6 +166,15 @@ public class OfficeHourController implements Initializable {
                 throw new RuntimeException(e);
             }
         });
+        // Handle the Courses menu item click
+        scheduleItem.setOnAction(event -> {
+            try {
+                switchToSchedule();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
     }
 
     // Sets up form action buttons (cancel, list all, new)
@@ -322,6 +331,13 @@ public class OfficeHourController implements Initializable {
     private void switchToListAllView() throws IOException {
         Stage stage = (Stage)root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHoursList.fxml", "Office Hours List");
+    }
+    /**
+     * Switches to the Schedule view
+     */
+    private void switchToSchedule() throws IOException {
+        Stage stage = (Stage)root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/Schedule/Schedule.fxml", "Schedule");
     }
     /**
      * Shows an alert dialog with the given message
