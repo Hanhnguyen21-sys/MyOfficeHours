@@ -176,6 +176,13 @@ public class TimeSlotsController implements Initializable {
                 throw new RuntimeException(e);
             }
         });
+        scheduleItem.setOnAction(event -> {
+            try {
+                switchToSchedule();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     public void handleSaveButton() throws ParseException {
@@ -275,5 +282,12 @@ public class TimeSlotsController implements Initializable {
     private void switchToAllList() throws IOException {
         Stage stage = (Stage)root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/TimeSlots/TimeSlotsList.fxml", "Time Slots List");
+    }
+    /**
+     * Switches to the Schedule view
+     */
+    private void switchToSchedule() throws IOException {
+        Stage stage = (Stage)root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/Schedule/Schedule.fxml", "Schedule");
     }
 }

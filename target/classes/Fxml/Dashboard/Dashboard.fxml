@@ -2,15 +2,28 @@
 
 <!-- Imports -->
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
 
 <!-- Anchor Pane -->
 
-<AnchorPane fx:id="root" prefHeight="510.0" prefWidth="664.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.Dashboard.DashboardController">
+<AnchorPane fx:id="root" prefHeight="510.0" prefWidth="664.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.Dashboard.DashboardController">
 
     <!-- Left Panel with Navigation Bar -->
     <VBox layoutY="1.0" prefHeight="400.0" prefWidth="188.0" styleClass="left-panel" stylesheets="@../../Styles/Dashboard.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -38,7 +51,7 @@
                <RadioMenuItem fx:id="reportItem" mnemonicParsing="false" text="Report" toggleGroup="$myGroup" />
            </items>
        </MenuButton>
-        <Button fx:id="scheduleBtn1" mnemonicParsing="false" prefHeight="33.0" prefWidth="133.0" styleClass="dashboard-nav-buttons" stylesheets="@../../Styles/Dashboard.css" text="Schedule">
+        <Button fx:id="scheduleBtn" mnemonicParsing="false" prefHeight="33.0" prefWidth="133.0" styleClass="dashboard-nav-buttons" stylesheets="@../../Styles/Dashboard.css" text="Schedule">
          <VBox.margin>
             <Insets top="300.0" />
          </VBox.margin>

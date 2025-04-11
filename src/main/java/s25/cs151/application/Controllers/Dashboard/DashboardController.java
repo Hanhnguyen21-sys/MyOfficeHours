@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable {
     @FXML
-    private AnchorPane root;
+    public AnchorPane root;
 
     @FXML
     private Button officeHoursBtn;
@@ -75,7 +75,13 @@ public class DashboardController implements Initializable {
                 throw new RuntimeException(e);
             }
         });
-
+        scheduleBtn.setOnAction(event -> {
+            try {
+                switchToSchedule();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
         // 4 MENU ITEMS + 2 MENU ITEMS TO BE IMPLEMENTED
         // Handle the Dashboard menu item click
         dashboardItem.setOnAction(event -> {
@@ -148,4 +154,9 @@ public class DashboardController implements Initializable {
         Stage stage = (Stage)root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Courses/Course.fxml", "Courses");
     }
+    private void switchToSchedule() throws IOException {
+        Stage stage = (Stage)root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/Schedule/Schedule.fxml", "Schedule");
+    }
+
 }
