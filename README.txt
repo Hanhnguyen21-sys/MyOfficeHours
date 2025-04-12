@@ -3,9 +3,9 @@ Version: 0.6
 
 Who did what
 - Nguyen Nguyen: Designed and implemented Schedule UI, along with implementation for saving schedules to database.
-- Meghana Indukuri: Fixed bugs in UI and implemented sorting based on schedule date and time + ReadME.
-- Misbah Syed: .
-- Oliver Majano: .
+- Meghana Indukuri: Fixed bugs in UI and implemented sorting + ReadME.
+- Misbah Syed: Implemented navigation and organization for Dashboard and the application as a whole.
+- Oliver Majano: Implemented UI for the schedule list and displayed the schedule data.
 
 Any other instruction that users need to know:
 N/A
