@@ -27,6 +27,8 @@ public class ScheduleListController implements Initializable {
 
     @FXML
     private Label dashboardLabel;
+    @FXML
+    private Label scheduleLabel;
 
     @FXML
     private Button ScheduleBtn;
@@ -61,6 +63,8 @@ public class ScheduleListController implements Initializable {
     private MenuItem scheduleItem;
     @FXML
     private MenuItem reportItem;
+
+
 
     private ObservableList<Schedule> scheduleObservableList = FXCollections.observableArrayList();
 
@@ -98,8 +102,15 @@ public class ScheduleListController implements Initializable {
                 throw new RuntimeException(e);
             }
         });
+        scheduleLabel.setOnMouseClicked(event -> {
+            try {
+                switchToSchedule();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
 
-        // Handle the Dashboard menu item click
+        // Handle all menu items click
         dashboardItem.setOnAction(event -> {
             try {
                 switchToDashboard();
@@ -108,7 +119,14 @@ public class ScheduleListController implements Initializable {
             }
         });
 
-        // Handle the Office Hours menu item click
+        scheduleItem.setOnAction(event -> {
+            try {
+                switchToSchedule();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
         officehoursItem.setOnAction(event -> {
             try {
                 switchToOfficeHours();
@@ -117,7 +135,6 @@ public class ScheduleListController implements Initializable {
             }
         });
 
-        // Handle the Time Slots menu item click
         timeslotsItem.setOnAction(event -> {
             try {
                 switchToTimeSlots();
@@ -126,7 +143,6 @@ public class ScheduleListController implements Initializable {
             }
         });
 
-        // Handle the Courses menu item click
         coursesItem.setOnAction(event -> {
             try {
                 switchToCourses();
