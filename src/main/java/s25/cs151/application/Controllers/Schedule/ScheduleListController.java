@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import s25.cs151.application.Helper.SwitchScene;
@@ -22,19 +21,16 @@ import java.util.ResourceBundle;
 
 public class ScheduleListController implements Initializable {
     @FXML
-    private Label dashboardLabel;
+    private AnchorPane root;
 
     @FXML
-    private Button OfficeHourBtn;
-    @FXML
-    private Button TimeslotsBtn;
-    @FXML
-    private Button CoursesBtn;
+    private Label dashboardLabel;
+
     @FXML
     private Button ScheduleBtn;
 
     @FXML
-    private AnchorPane root;
+    private Button listAllBtn;
 
     @FXML
     private TableView<Schedule> scheduleTable;
@@ -64,19 +60,15 @@ public class ScheduleListController implements Initializable {
     @FXML
     private MenuItem reportItem;
 
-    ObservableList<Schedule> scheduleObservableList = FXCollections.observableArrayList();
+    private ObservableList<Schedule> scheduleObservableList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Set up table columns and button actions
         setupTableColumns();
-        setupButtonActions();
+        setupNavigationHandlers();
         loadSchedules();
     }
 
-    /**
-     * Configures the table columns to display schedule data
-     */
     private void setupTableColumns() {
         studentNameColumn.setCellValueFactory(cellData -> cellData.getValue().studentNameProperty());
         dateColumn.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
@@ -86,11 +78,26 @@ public class ScheduleListController implements Initializable {
         commentColumn.setCellValueFactory(cellData -> cellData.getValue().commentProperty());
     }
 
-    /**
-     * Sets up event handlers for all buttons and MenuItems
-     */
-    private void setupButtonActions() {
-        // Menu items and main navigation remain unchanged
+    private void setupNavigationHandlers() {
+        // Handle Schedule button click
+        ScheduleBtn.setOnAction(e -> {
+            try {
+                switchToSchedule();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+        // switch back to dashboard when Dashboard label is clicked
+        dashboardLabel.setOnMouseClicked(event -> {
+            try {
+                switchToDashboard();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        // Handle the Dashboard menu item click
         dashboardItem.setOnAction(event -> {
             try {
                 switchToDashboard();
@@ -99,6 +106,7 @@ public class ScheduleListController implements Initializable {
             }
         });
 
+        // Handle the Office Hours menu item click
         officehoursItem.setOnAction(event -> {
             try {
                 switchToOfficeHours();
@@ -107,6 +115,7 @@ public class ScheduleListController implements Initializable {
             }
         });
 
+        // Handle the Time Slots menu item click
         timeslotsItem.setOnAction(event -> {
             try {
                 switchToTimeSlots();
@@ -115,6 +124,7 @@ public class ScheduleListController implements Initializable {
             }
         });
 
+        // Handle the Courses menu item click
         coursesItem.setOnAction(event -> {
             try {
                 switchToCourses();
@@ -122,69 +132,8 @@ public class ScheduleListController implements Initializable {
                 throw new RuntimeException(e);
             }
         });
-
-        scheduleItem.setOnAction(event -> {
-            try {
-                switchToSchedule();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-        reportItem.setOnAction(event -> {
-            try {
-                switchToReport();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-        // Main buttons navigate to main views
-        OfficeHourBtn.setOnAction(event -> {
-            try {
-                switchToOfficeHours();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-        TimeslotsBtn.setOnAction(event -> {
-            try {
-                switchToTimeSlots();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-        CoursesBtn.setOnAction(event -> {
-            try {
-                switchToCourses();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-        ScheduleBtn.setOnAction(event -> {
-            try {
-                switchToSchedule();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-        // Dashboard label click
-        dashboardLabel.setOnMouseClicked(event -> {
-            try {
-                switchToDashboard();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
     }
 
-    /**
-     * Loads schedule data from the database and populates the table
-     */
     private void loadSchedules() {
         ConnectDB connectDB = new ConnectDB("jdbc:sqlite:src/main/resources/Database/schedule.db");
         Connection connection = connectDB.getConnection();
@@ -215,7 +164,7 @@ public class ScheduleListController implements Initializable {
     }
 
     /**
-     * Switches to the dashboard view
+     * Switches the view to the dashboard
      */
     public void switchToDashboard() throws IOException {
         Stage stage = (Stage) root.getScene().getWindow();
@@ -231,7 +180,7 @@ public class ScheduleListController implements Initializable {
     }
 
     /**
-     * Switches to the time slots view
+     * Switches to the Time Slots view
      */
     private void switchToTimeSlots() throws IOException {
         Stage stage = (Stage) root.getScene().getWindow();
@@ -239,7 +188,7 @@ public class ScheduleListController implements Initializable {
     }
 
     /**
-     * Switches to the courses view
+     * Switches to the Courses view
      */
     private void switchToCourses() throws IOException {
         Stage stage = (Stage) root.getScene().getWindow();
@@ -247,42 +196,10 @@ public class ScheduleListController implements Initializable {
     }
 
     /**
-     * Switches to the schedule view
+     * Switches to the Schedule view
      */
     private void switchToSchedule() throws IOException {
         Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Schedule/Schedule.fxml", "Schedule");
-    }
-
-    /**
-     * Switches to the report view
-     */
-    private void switchToReport() throws IOException {
-        Stage stage = (Stage) root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/Report/Report.fxml", "Report");
-    }
-
-    /**
-     * Switches to the office hours list view
-     */
-    public void switchToOfficeHoursList() throws IOException {
-        Stage stage = (Stage) root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHoursList.fxml", "Office Hours List");
-    }
-
-    /**
-     * Switches to the time slots list view
-     */
-    public void switchToTimeSlotsList() throws IOException {
-        Stage stage = (Stage) root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/TimeSlots/TimeSlotsList.fxml", "Time Slots List");
-    }
-
-    /**
-     * Switches to the courses list view
-     */
-    public void switchToCoursesList() throws IOException {
-        Stage stage = (Stage) root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/Courses/CourseList.fxml", "Course List");
     }
 }

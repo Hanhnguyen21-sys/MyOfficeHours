@@ -20,57 +20,7 @@ public class Schedule {
         this.comment = new SimpleStringProperty(comment);
     }
 
-    // Getters
-    public String getStudentName() {
-        return studentName.get();
-    }
-
-    public String getDate() {
-        return date.get();
-    }
-
-    public String getTime() {
-        return time.get();
-    }
-
-    public String getCourse() {
-        return course.get();
-    }
-
-    public String getReason() {
-        return reason.get();
-    }
-
-    public String getComment() {
-        return comment.get();
-    }
-
-    // Setters
-    public void setStudentName(String value) {
-        studentName.set(value);
-    }
-
-    public void setDate(String value) {
-        date.set(value);
-    }
-
-    public void setTime(String value) {
-        time.set(value);
-    }
-
-    public void setCourse(String value) {
-        course.set(value);
-    }
-
-    public void setReason(String value) {
-        reason.set(value);
-    }
-
-    public void setComment(String value) {
-        comment.set(value);
-    }
-
-    // Property getters
+    // Getters for properties
     public StringProperty studentNameProperty() {
         return studentName;
     }
@@ -93,5 +43,30 @@ public class Schedule {
 
     public StringProperty commentProperty() {
         return comment;
+    }
+
+    // Regular getters
+    public String getStudentName() {
+        return studentName.get();
+    }
+
+    public String getDate() {
+        return date.get();
+    }
+
+    public String getTime() {
+        return time.get();
+    }
+
+    public String getCourse() {
+        return course.get();
+    }
+
+    public String getReason() {
+        return reason.get();
+    }
+
+    public String getComment() {
+        return comment.get();
     }
 }

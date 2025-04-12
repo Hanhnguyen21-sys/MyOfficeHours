@@ -306,6 +306,7 @@ public class TimeSlotsListController implements Initializable {
 
     /**
      * Switches to course list view
+     *
      */
     @FXML
     private void switchToCoursesList() throws IOException {
@@ -339,14 +340,5 @@ public class TimeSlotsListController implements Initializable {
     private void switchToSchedule() throws IOException {
         Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Schedule/Schedule.fxml", "Schedule");
-    }
-
-    /**
-     * Switches to Schedule List View
-     */
-    @FXML
-    private void switchToScheduleList() throws IOException {
-        Stage stage = (Stage) root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/Schedule/ScheduleList.fxml", "Schedule List");
     }
 }

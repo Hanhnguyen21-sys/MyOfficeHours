@@ -48,7 +48,7 @@
         </HBox>
 
         <!-- Action Buttons -->
-        <HBox fx:id="actionBtn" prefWidth="464.0" prefHeight="35.0" styleClass="nav-labels" stylesheets="@../../Styles/OfficeHours.css">
+        <HBox fx:id="actionBtn" prefHeight="35.0" styleClass="action-buttons" stylesheets="@../../Styles/OfficeHours.css">
          <Button fx:id="OfficeHourBtn" mnemonicParsing="false" prefHeight="35.0" prefWidth="125.0" styleClass="list-button" stylesheets="@../../Styles/OfficeHours.css" text="Office Hours 🖉" textAlignment="CENTER" />
             <Button fx:id="TimeslotsBtn" mnemonicParsing="false" prefHeight="35.0" prefWidth="116.0" styleClass="list-button" stylesheets="@../../Styles/OfficeHours.css" text="Time Slots 🖉 " textAlignment="CENTER">
                 <HBox.margin>
@@ -61,11 +61,11 @@
             </Button>
          <Button fx:id="ListAllBtn" mnemonicParsing="false" prefHeight="34.0" prefWidth="93.0" styleClass="new-button" stylesheets="@../../Styles/OfficeHours.css" text="List All 📝" />
         </HBox>
-      <HBox styleClass="nav-labels" stylesheets="@../../Styles/OfficeHours.css">
+      <HBox styleClass="action-buttons" stylesheets="@../../Styles/OfficeHours.css">
          <children>
             <Label fx:id="officeHoursListLabel" onMouseClicked="#switchToOfficeHoursList" text="Office Hours">
                <HBox.margin>
-                  <Insets left="20.0" />
+                  <Insets />
                </HBox.margin>
                <styleClass>
                   <String fx:value="breadcrumb-item" />
@@ -73,26 +73,16 @@
                </styleClass></Label>
             <Label fx:id="timeSlotsListLabel" onMouseClicked="#switchToTimeSlotsList" styleClass="breadcrumb-item" text="Time Slots">
                <HBox.margin>
-                  <Insets left="50.0" />
+                  <Insets left="80.0" />
                </HBox.margin></Label>
             <Label fx:id="coursesListLabel" onMouseClicked="#switchToCoursesList" styleClass="breadcrumb-item" text="Courses">
                <HBox.margin>
-                  <Insets left="50.0" />
-               </HBox.margin></Label>
-            <Label fx:id="scheduleListLabel" onMouseClicked="#switchToScheduleList" styleClass="breadcrumb-item" text="Schedule">
-               <HBox.margin>
-                  <Insets left="50.0" />
+                  <Insets left="80.0" right="70.0" />
                </HBox.margin></Label>
          </children>
          <VBox.margin>
             <Insets top="10.0" />
          </VBox.margin>
-         <padding>
-            <Insets top="10.0" bottom="10.0" />
-         </padding>
-         <style>
-            -fx-background-color: #EEEEEE;
-         </style>
       </HBox>
     </VBox>
 <!--    TableView Section-->
