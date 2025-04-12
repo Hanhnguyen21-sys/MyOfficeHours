@@ -10,13 +10,18 @@
 
 <!-- Anchor Pane -->
 
-<AnchorPane fx:id="root" prefHeight="510.0" prefWidth="664.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.Dashboard.DashboardController">
+
+<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.Dashboard.DashboardController">
+
 
     <!-- Left Panel with Navigation Bar -->
     <VBox layoutY="1.0" prefHeight="400.0" prefWidth="188.0" styleClass="left-panel" stylesheets="@../../Styles/Dashboard.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="My Office Hours" />
+       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="My Office Hours">
+         <VBox.margin>
+            <Insets left="10.0" top="20.0" />
+         </VBox.margin></Text>
        <Line endX="29.792892456054688" endY="7.748603820800781E-7" startX="-100.0" />
-       <MenuButton fx:id="menuBtn" mnemonicParsing="false" prefHeight="26.0" prefWidth="132.0" styleClass="menu-btn" stylesheets="@../../Styles/Dashboard.css" text="Menu" textFill="#FFFFFF">
+       <MenuButton fx:id="menuBtn" mnemonicParsing="false" prefHeight="26.0" prefWidth="140.0" styleClass="menu-btn" stylesheets="@../../Styles/Dashboard.css" text="Menu" textFill="#FFFFFF">
            <items>
                <RadioMenuItem fx:id="dashboardItem" mnemonicParsing="false" text="Dashboard">
                    <toggleGroup>
@@ -42,7 +47,7 @@
 
 
     <!-- Top Panel with Title and Navigation Buttons-->
-   <VBox fx:id="titleSection" layoutX="153.0" layoutY="17.0" prefHeight="75.0" prefWidth="502.0">
+   <VBox fx:id="titleSection" layoutX="153.0" layoutY="17.0" prefHeight="75.0" prefWidth="600.0">
 
        <!-- Page Title -->
        <Label styleClass="page-header" stylesheets="@../../Styles/Dashboard.css" text="Dashboard" />
@@ -80,7 +85,9 @@
    </VBox>
 
     <!-- Dashboard Content-->
-   <HBox layoutX="153.0" layoutY="169.0" prefHeight="326.0" prefWidth="549.0" styleClass="dashboard-content-container" stylesheets="@../../Styles/Dashboard.css">
+
+   <HBox layoutX="153.0" layoutY="129.0" prefHeight="380.0" prefWidth="600.0" styleClass="dashboard-content-container" stylesheets="@../../Styles/Dashboard.css">
+
        <children>
 
            <!-- Right Side of Dashboard Content with Search Bar and Table of Appointments -->
@@ -98,7 +105,8 @@
            </VBox>
 
            <!-- Left Side of Dashboard Content with Calendar and Notifications -->
-           <VBox prefHeight="317.0" prefWidth="188.0" styleClass="dashboard-partition-content-container" stylesheets="@../../Styles/Dashboard.css">
+           <VBox prefHeight="370.0" prefWidth="254.0" styleClass="dashboard-partition-content-container" stylesheets="@../../Styles/Dashboard.css">
+
            <children>
 
                <!-- Notifications -->
