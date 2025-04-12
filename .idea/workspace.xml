@@ -6,22 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8b34a287-10b1-4bb5-844a-1e798f22fb78" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Courses/Course.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Courses/Course.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Courses/CourseList.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Courses/CourseList.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Dashboard/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Dashboard/Dashboard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/OfficeHours/OfficeHours.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/OfficeHours/OfficeHours.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/OfficeHours/OfficeHoursList.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/OfficeHours/OfficeHoursList.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Schedule/Schedule.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Schedule/Schedule.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Schedule/ScheduleList.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Schedule/ScheduleList.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/TimeSlots/TimeSlots.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/TimeSlots/TimeSlots.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/TimeSlots/TimeSlotsList.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/TimeSlots/TimeSlotsList.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/Courses/Course.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Fxml/Courses/Course.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/Dashboard/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Fxml/Dashboard/Dashboard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/Schedule/Schedule.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Fxml/Schedule/Schedule.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/Schedule/ScheduleList.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Fxml/Schedule/ScheduleList.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/s25/cs151/application/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/s25/cs151/application/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="modifyUI" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -80,19 +66,19 @@
     <option name="sortByType" value="true" />
     <option name="sortKey" value="BY_TYPE" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;zulu-23&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/nguyennguyen/Desktop/MyOfficeHours&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.importing&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "modifyViewSize",
+    "jdk.selected.JAVA_MODULE": "zulu-23",
+    "last_opened_file_path": "/Users/nguyennguyen/Desktop/MyOfficeHours",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.importing"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="s25.cs151.application.Main" />
