@@ -5,26 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b34a287-10b1-4bb5-844a-1e798f22fb78" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Schedule/ScheduleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Courses/CourseListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Courses/CourseListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Courses/CoursesContoller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Courses/CoursesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Dashboard/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Dashboard/DashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/OfficeHours/OfficeHourController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/OfficeHours/OfficeHourController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/OfficeHours/OfficeHoursListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/OfficeHours/OfficeHoursListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/TimeSlots/TimeSlotsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/TimeSlots/TimeSlotsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/TimeSlots/TimeSlotsListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/TimeSlots/TimeSlotsListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Database/courses.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Database/courses.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Database/officehours.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Database/officehours.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Courses/Course.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Courses/Course.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Dashboard/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Dashboard/Dashboard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Database/courses.db" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Database/courses.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/Courses/Course.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Fxml/Courses/Course.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/Dashboard/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Fxml/Dashboard/Dashboard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/s25/cs151/application/Controllers/Courses/CoursesContoller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/s25/cs151/application/Controllers/Dashboard/DashboardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/s25/cs151/application/Controllers/Dashboard/DashboardController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +56,7 @@
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="2uvsWr6jSX9JvOWfczVRxykXkgZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="abbreviatePackageNames" value="true" />
     <option name="autoscrollFromSource" value="true" />
@@ -83,19 +67,27 @@
     <option name="sortByType" value="true" />
     <option name="sortKey" value="BY_TYPE" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;zulu-23&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/nguyennguyen/Desktop/MyOfficeHours&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.importing&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "jdk.selected.JAVA_MODULE": "zulu-23",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/nguyennguyen/Desktop/MyOfficeHours",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="s25.cs151.application.Main" />
@@ -105,5 +97,27 @@
       </method>
     </configuration>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.25659.59" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.25659.59" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8b34a287-10b1-4bb5-844a-1e798f22fb78" name="Changes" comment="" />
+      <created>1744420497714</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1744420497714</updated>
+      <workItem from="1744420501237" duration="4054000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
 </project>
