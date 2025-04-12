@@ -21,7 +21,7 @@
 
 <!-- Anchor Pane -->
 
-<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.Schedule.ScheduleController">
+<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.Schedule.ScheduleController">
 
 
     <VBox layoutY="1.0" prefHeight="400.0" prefWidth="180.0" styleClass="left-sidebar" stylesheets="@../../Styles/OfficeHours.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -67,15 +67,18 @@
          <padding>
             <Insets bottom="5.0" top="5.0" />
          </padding>
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" />
+         </VBox.margin>
         </HBox>
     </VBox>
 
     <!-- Save and Cancel Buttons-->
-    <HBox layoutX="276.0" layoutY="453.0" prefHeight="55.0" prefWidth="200.0" styleClass="buttons-container" stylesheets="@../../Styles/OfficeHours.css">
+    <HBox layoutX="360.0" layoutY="476.0" prefHeight="55.0" prefWidth="200.0" styleClass="buttons-container" stylesheets="@../../Styles/OfficeHours.css">
         <Button fx:id="cancelBtn" mnemonicParsing="false" prefHeight="31.0" prefWidth="110.0" styleClass="cancel-button" stylesheets="@../../Styles/OfficeHours.css" text="Cancel" />
         <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#handleSaveButton" styleClass="save-button" stylesheets="@../../Styles/OfficeHours.css" text="Save" />
     </HBox>
-    <FlowPane layoutX="163.0" layoutY="132.0" prefHeight="298.0" prefWidth="407.0">
+    <FlowPane layoutX="272.0" layoutY="139.0" prefHeight="298.0" prefWidth="407.0">
         <HBox prefHeight="51.0" prefWidth="409.0">
             <Label styleClass="form-label" stylesheets="@../../Styles/OfficeHours.css" text="Student Name">
                 <HBox.margin>
