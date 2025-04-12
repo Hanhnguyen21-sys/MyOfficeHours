@@ -38,6 +38,8 @@ public class OfficeHoursListController implements Initializable {
     @FXML
     private Button CoursesBtn;
     @FXML
+    private Button ScheduleBtn;
+    @FXML
     private Button listAllBtn;
 
     @FXML
@@ -49,8 +51,6 @@ public class OfficeHoursListController implements Initializable {
 
     @FXML
     private AnchorPane root;
-
-
 
     @FXML
     private TableView<OfficeHours> officeHoursTable;
@@ -72,6 +72,7 @@ public class OfficeHoursListController implements Initializable {
     private MenuItem scheduleItem;
 
     ObservableList<OfficeHours> officeHoursObservableList = FXCollections.observableArrayList();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Set up table columns and button actions
@@ -152,7 +153,7 @@ public class OfficeHoursListController implements Initializable {
             }
         });
 
-        //switch to time slots view
+        // switch to time slots view
         timeSlotsListLabel.setOnMouseClicked(e -> {
             try {
                 switchToTimeSlotsList();
@@ -203,7 +204,7 @@ public class OfficeHoursListController implements Initializable {
                 throw new RuntimeException(e);
             }
         });
-        // Handle the Courses menu item click
+        // Handle the Schedule menu item click
         scheduleItem.setOnAction(event -> {
             try {
                 switchToSchedule();
@@ -218,7 +219,7 @@ public class OfficeHoursListController implements Initializable {
      */
     private void loadOfficeHours() {
 
-        try{
+        try {
 
             ConnectDB connectDB = new ConnectDB("jdbc:sqlite:src/main/resources/Database/officehours.db");
             Connection connection = connectDB.getConnection();
@@ -236,20 +237,21 @@ public class OfficeHoursListController implements Initializable {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(selectQuery);
 
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 String semester = resultSet.getString("semester");
                 String year = resultSet.getString("year");
-                String days  = resultSet.getString("days");
-                officeHoursObservableList.add(new OfficeHours(semester,year,days));
+                String days = resultSet.getString("days");
+                officeHoursObservableList.add(new OfficeHours(semester, year, days));
             }
             semesterColumn.setCellValueFactory(new PropertyValueFactory<>("semester"));
             yearColumn.setCellValueFactory(new PropertyValueFactory<>("year"));
             daysColumn.setCellValueFactory(new PropertyValueFactory<>("days"));
 
-            //set items to tableview
+            // set items to tableview
             officeHoursTable.setItems(officeHoursObservableList);
 
-            // use hidden column to set order in descending prio: winter, fall, summer, spring
+            // use hidden column to set order in descending prio: winter, fall, summer,
+            // spring
             TableColumn<OfficeHours, Integer> hiddenSemColumn = new TableColumn<>("Semester Hidden Order");
             hiddenSemColumn.setCellValueFactory(new PropertyValueFactory<>("semesterOrder"));
 
@@ -285,6 +287,7 @@ public class OfficeHoursListController implements Initializable {
 
     /**
      * Shows an alert dialog with the given message
+     * 
      * @param message to be sent to user
      */
     private void showAlert(String message) {
@@ -299,7 +302,7 @@ public class OfficeHoursListController implements Initializable {
      * Switches the view to the dashboard
      */
     public void switchToDashboard() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
+        Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Dashboard/Dashboard.fxml", "Dashboard");
     }
 
@@ -308,21 +311,23 @@ public class OfficeHoursListController implements Initializable {
      */
     @FXML
     private void switchToNewOfficeHoursView() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
+        Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHours.fxml", "Office Hours");
     }
+
     /**
      * Switches to the Time Slots view
      */
     private void switchToTimeSlots() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
+        Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/TimeSlots/TimeSlots.fxml", "Time Slots");
     }
+
     /**
      * Switches to the Courses View
      */
     private void switchToCourses() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
+        Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Courses/Course.fxml", "Courses");
     }
 
@@ -332,7 +337,7 @@ public class OfficeHoursListController implements Initializable {
      * @param officeHours The office hours entry to edit
      */
     private void switchToEditOfficeHoursView(OfficeHours officeHours) throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
+        Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHours.fxml", "Edit Office Hours");
     }
 
@@ -342,7 +347,7 @@ public class OfficeHoursListController implements Initializable {
      */
     @FXML
     private void switchToCoursesList() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
+        Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Courses/CourseList.fxml", "Courses List");
     }
 
@@ -352,24 +357,33 @@ public class OfficeHoursListController implements Initializable {
      */
     @FXML
     private void switchToOfficeHoursList() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
+        Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHoursList.fxml", "Office Hours List");
     }
 
     /**
      * Switches to Time Slots List View
-     *
      */
     @FXML
     private void switchToTimeSlotsList() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
+        Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/TimeSlots/TimeSlotsList.fxml", "Time Slots List");
     }
+
     /**
-     * Switches to the Schedule view
+     * Switches to Schedule List View
+     */
+    @FXML
+    private void switchToScheduleList() throws IOException {
+        Stage stage = (Stage) root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/Schedule/ScheduleList.fxml", "Schedule List");
+    }
+
+    /**
+     * Switches to Schedule View
      */
     private void switchToSchedule() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
+        Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Schedule/Schedule.fxml", "Schedule");
     }
 }
