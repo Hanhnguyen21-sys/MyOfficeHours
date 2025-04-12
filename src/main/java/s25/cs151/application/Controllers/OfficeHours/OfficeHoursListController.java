@@ -38,8 +38,6 @@ public class OfficeHoursListController implements Initializable {
     @FXML
     private Button CoursesBtn;
     @FXML
-    private Button ScheduleBtn;
-    @FXML
     private Button listAllBtn;
 
     @FXML
@@ -204,7 +202,7 @@ public class OfficeHoursListController implements Initializable {
                 throw new RuntimeException(e);
             }
         });
-        // Handle the Schedule menu item click
+        // Handle the Courses menu item click
         scheduleItem.setOnAction(event -> {
             try {
                 switchToSchedule();
@@ -363,6 +361,7 @@ public class OfficeHoursListController implements Initializable {
 
     /**
      * Switches to Time Slots List View
+     *
      */
     @FXML
     private void switchToTimeSlotsList() throws IOException {
@@ -371,16 +370,7 @@ public class OfficeHoursListController implements Initializable {
     }
 
     /**
-     * Switches to Schedule List View
-     */
-    @FXML
-    private void switchToScheduleList() throws IOException {
-        Stage stage = (Stage) root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/Schedule/ScheduleList.fxml", "Schedule List");
-    }
-
-    /**
-     * Switches to Schedule View
+     * Switches to the Schedule view
      */
     private void switchToSchedule() throws IOException {
         Stage stage = (Stage) root.getScene().getWindow();
