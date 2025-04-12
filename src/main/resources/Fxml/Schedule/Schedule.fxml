@@ -21,14 +21,17 @@
 
 <!-- Anchor Pane -->
 
-<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.Schedule.ScheduleController">
+<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.Schedule.ScheduleController">
 
 
     <VBox layoutY="1.0" prefHeight="400.0" prefWidth="180.0" styleClass="left-sidebar" stylesheets="@../../Styles/OfficeHours.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 800;" text="My Office Hours" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 800;" text="My Office Hours">
+         <VBox.margin>
+            <Insets left="5.0" />
+         </VBox.margin></Text>
         <Line endX="29.792892456054688" endY="7.748603820800781E-7" startX="-100.0" />
         <!-- Navigation bar -->
-        <MenuButton fx:id="menuBtn" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" styleClass="nav-btn" stylesheets="@../../Styles/OfficeHours.css" text="Menu" textFill="#FFFFFF">
+        <MenuButton fx:id="menuBtn" mnemonicParsing="false" prefHeight="9.0" prefWidth="133.0" styleClass="nav-btn" stylesheets="@../../Styles/OfficeHours.css" text="Menu" textFill="#FFFFFF">
             <items>
                 <MenuItem fx:id="dashboardItem" mnemonicParsing="false" text="Dashboard" />
                 <MenuItem fx:id="officehoursItem" mnemonicParsing="false" text="Office Hours" />
@@ -68,7 +71,7 @@
             <Insets bottom="5.0" top="5.0" />
          </padding>
          <VBox.margin>
-            <Insets left="20.0" right="20.0" />
+            <Insets right="5.0" />
          </VBox.margin>
         </HBox>
     </VBox>
@@ -99,7 +102,7 @@
             </Label>
             <DatePicker fx:id="dateField" prefHeight="26.0" prefWidth="169.0">
                 <HBox.margin>
-                    <Insets top="10.0" />
+                    <Insets left="1.0" top="10.0" />
                 </HBox.margin>
             </DatePicker>
         </HBox>
@@ -123,7 +126,7 @@
             </Label>
             <ComboBox fx:id="courseField" prefHeight="26.0" prefWidth="172.0">
                 <HBox.margin>
-                    <Insets top="10.0" />
+                    <Insets left="10.0" top="10.0" />
                 </HBox.margin>
             </ComboBox>
         </HBox>
@@ -133,7 +136,10 @@
                     <Insets left="20.0" right="50.0" top="10.0" />
                 </HBox.margin>
             </Label>
-            <TextArea fx:id="reasonField" prefHeight="51.0" prefWidth="275.0" />
+            <TextArea fx:id="reasonField" prefHeight="51.0" prefWidth="275.0">
+            <HBox.margin>
+               <Insets left="8.0" />
+            </HBox.margin></TextArea>
         </HBox>
         <HBox prefHeight="58.0" prefWidth="409.0">
             <FlowPane.margin>
@@ -144,7 +150,10 @@
                     <Insets left="20.0" right="37.0" top="10.0" />
                 </HBox.margin>
             </Label>
-            <TextArea fx:id="commentField" prefHeight="58.0" prefWidth="275.0" />
+            <TextArea fx:id="commentField" prefHeight="58.0" prefWidth="275.0">
+            <HBox.margin>
+               <Insets left="4.0" />
+            </HBox.margin></TextArea>
         </HBox>
     </FlowPane>
 </AnchorPane>

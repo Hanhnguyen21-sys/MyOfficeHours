@@ -118,6 +118,14 @@ public class DashboardController implements Initializable {
                 throw new RuntimeException(e);
             }
         });
+
+        scheduleItem.setOnAction(event -> {
+            try {
+                switchToSchedule();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
 

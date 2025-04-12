@@ -196,6 +196,12 @@ public class ScheduleController implements Initializable {
         String reason = reasonField.getText();
         String comment= commentField.getText();
 
+        if(studentName.isEmpty())
+        {
+            showAlert("Please fill in required field: Student Name");
+            return;
+        }
+
         if(connection!=null){
             try{
                 Statement statement = connection.createStatement();

@@ -1,11 +1,11 @@
 Name of application: Faculty's Office Hours Manager
-Version: 0.5
+Version: 0.6
 
 Who did what
-- Nguyen Nguyen: Set up and connected the SQLite database; handled saving Time Slots to the database with input validation.
-- Meghana Indukuri: Handled saving Courses to the database with duplication checks; contributed to input validation and bug fixes.
-- Misbah Syed: Designed and implemented the UIs for Time Slots and Courses, along with their controllers; merged all main UI components.
-- Oliver Majano: Implemented TableView display with sorting + ReadME.
+- Nguyen Nguyen: Designed and implemented Schedule UI, along with implementation for saving schedules to database.
+- Meghana Indukuri: Fixed bugs in UI and implemented sorting based on schedule date and time + ReadME.
+- Misbah Syed: .
+- Oliver Majano: .
 
 Any other instruction that users need to know:
 N/A
@@ -17,20 +17,21 @@ Run mvn clean compile to build the project
 Run mvn javafx:run to start the application
 Using the Application
 
-Dashboard: Main view showing overview of office hours 
 
-Office Hours:
-   Click "New" to create new office hours
-   Fill in required fields:
-      - Semester
-      - Year
-      - Days
-   Click "Save" to save the entry
-   Click "List All" to view all office hours
+Dashboard: Main view showing overview of office hours
 
 Navigation:
    Use the menu button in the top-left to switch between views
    Click the Dashboard label to return to the main view
+
+   To Add Office Hours:
+      - Click the "Office Hours" tab
+      Fill in required fields:
+         - Semester
+         - Year
+         - Days
+      Click "Save" to save the entry
+      Click "List All" to view all office hours
    
    To Add Time Slots:
       - Click the "Time Slots" tab
@@ -38,6 +39,7 @@ Navigation:
          - From Hour (e.g., 10:30)
          - To Hour (e.g., 11:30)
    Click "Save" or confirm the entry
+   Click "List All" to view all time slots
 
    To Add Courses:
        - Click the "Courses" tab
@@ -46,5 +48,17 @@ Navigation:
          - Course Code
          - Section Number
    Click "Save" to add the course
+   Click "List All" to view all courses
+
+    To Add Office Hour Schedule:
+        - Click the "Schedule" tab
+        Enter schedule details:
+            - Student Name (e.g., Doug)
+            - Schedule Date
+            - Course
+            - Reason
+            - Comment
+    Click "Save" to add the schedule
+    Click "List All" to view the schedule
 
 

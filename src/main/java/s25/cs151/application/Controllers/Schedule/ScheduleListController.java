@@ -5,11 +5,13 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import s25.cs151.application.Helper.SwitchScene;
 import s25.cs151.application.Models.ConnectDB;
 import s25.cs151.application.Models.Schedule;
+import s25.cs151.application.Models.TimeSlots;
 
 import java.io.IOException;
 import java.net.URL;
@@ -140,6 +142,19 @@ public class ScheduleListController implements Initializable {
 
         if (connection != null) {
             try {
+
+                Statement createstatement = connection.createStatement();
+                String createTable = "CREATE TABLE IF NOT EXISTS schedule ("
+                        + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                        + "studentName TEXT, "
+                        + "date TEXT, "
+                        + "time TEXT, "
+                        + "course TEXT, "
+                        + "reason TEXT, "
+                        + "comment TEXT)";
+                // create a table
+                createstatement.executeUpdate(createTable);
+
                 Statement statement = connection.createStatement();
                 String selectQuery = "SELECT * FROM schedule";
                 ResultSet resultSet = statement.executeQuery(selectQuery);
@@ -156,7 +171,33 @@ public class ScheduleListController implements Initializable {
                     scheduleObservableList.add(schedule);
                 }
 
+                dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
                 scheduleTable.setItems(scheduleObservableList);
+
+                // use hidden column for time sorting
+                TableColumn<Schedule, Integer> hiddenFromHourColumn = new TableColumn<>("fromTimeSlots Hidden Order");
+                hiddenFromHourColumn.setCellValueFactory(new PropertyValueFactory<>("fromTimeOrder"));
+
+                TableColumn<Schedule, Integer> hiddenToHourColumn = new TableColumn<>("toTimeSlots Hidden Order");
+                hiddenToHourColumn.setCellValueFactory(new PropertyValueFactory<>("toTimeOrder"));
+
+                // hide from user
+                hiddenFromHourColumn.setVisible(false);
+                hiddenToHourColumn.setVisible(false);
+
+                scheduleTable.getColumns().add(hiddenFromHourColumn);
+                scheduleTable.getColumns().add(hiddenToHourColumn);
+
+                // sort ascending based on fromHour & toHour
+                dateColumn.setSortType(TableColumn.SortType.ASCENDING);
+                hiddenFromHourColumn.setSortType(TableColumn.SortType.ASCENDING);
+                hiddenToHourColumn.setSortType(TableColumn.SortType.ASCENDING);
+
+                // clear old sorting order & add the new one
+                scheduleTable.getSortOrder().clear();
+                scheduleTable.getSortOrder().addAll(dateColumn, hiddenFromHourColumn, hiddenToHourColumn);
+                scheduleTable.sort();
+
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }

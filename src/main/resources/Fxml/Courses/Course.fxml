@@ -17,17 +17,17 @@
 
 <!-- Anchor Pane -->
 
-<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.Courses.CoursesController">
+<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.Courses.CoursesController">
 
         <!-- Left Panel Sidebar -->
         <VBox layoutY="1.0" prefHeight="400.0" prefWidth="180.0" styleClass="left-sidebar" stylesheets="@../../Styles/OfficeHours.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 800;" text="My Office Hours">
          <VBox.margin>
-            <Insets left="10.0" top="20.0" />
+            <Insets left="5.0" top="20.0" />
          </VBox.margin></Text>
             <Line endX="29.792892456054688" endY="7.748603820800781E-7" startX="-100.0" />
             <!-- Navigation bar -->
-            <MenuButton fx:id="menuBtn" mnemonicParsing="false" prefHeight="30.0" prefWidth="140.0" styleClass="nav-btn" stylesheets="@../../Styles/OfficeHours.css" text="Menu" textFill="#FFFFFF">
+            <MenuButton fx:id="menuBtn" mnemonicParsing="false" prefHeight="0.0" prefWidth="134.0" styleClass="nav-btn" stylesheets="@../../Styles/OfficeHours.css" text="Menu" textFill="#FFFFFF">
          <items>
             <MenuItem fx:id="dashboardItem" mnemonicParsing="false" text="Dashboard" />
             <MenuItem fx:id="officehoursItem" mnemonicParsing="false" text="Office Hours" />
@@ -131,7 +131,7 @@
          </Button>
          <Button fx:id="listAllBtn" layoutX="368.0" layoutY="10.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="91.0" styleClass="list-button" stylesheets="@../../Styles/OfficeHours.css" text="List All 📝">
             <HBox.margin>
-               <Insets right="20.0" />
+               <Insets right="25.0" />
             </HBox.margin>
          </Button>
          <VBox.margin>

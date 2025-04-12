@@ -14,17 +14,17 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.TimeSlots.TimeSlotsListController">
+<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.TimeSlots.TimeSlotsListController">
 
     <!-- Left Panel Sidebar -->
     <VBox layoutY="1.0" prefHeight="400.0" prefWidth="180.0" styleClass="left-sidebar" stylesheets="@../../Styles/OfficeHours.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 800;" text="My Office Hours">
          <VBox.margin>
-            <Insets left="10.0" top="20.0" />
+            <Insets left="5.0" top="20.0" />
          </VBox.margin></Text>
         <Line endX="29.792892456054688" endY="7.748603820800781E-7" startX="-100.0" />
         <!-- Navigation bar -->
-        <MenuButton fx:id="menuBtn" mnemonicParsing="false" prefHeight="30.0" prefWidth="140.0" styleClass="nav-btn" stylesheets="@../../Styles/OfficeHours.css" text="Menu" textFill="#FFFFFF">
+        <MenuButton fx:id="menuBtn" mnemonicParsing="false" prefHeight="0.0" prefWidth="134.0" styleClass="nav-btn" stylesheets="@../../Styles/OfficeHours.css" text="Menu" textFill="#FFFFFF">
             <items>
                 <MenuItem fx:id="dashboardItem" mnemonicParsing="false" text="Dashboard" />
                 <MenuItem fx:id="officehoursItem" mnemonicParsing="false" text="Office Hours" />
@@ -62,9 +62,12 @@
                     <Insets right="15.0" />
                 </HBox.margin>
             </Button>
-         <Button fx:id="ListAllBtn" mnemonicParsing="false" prefHeight="34.0" prefWidth="93.0" styleClass="new-button" stylesheets="@../../Styles/OfficeHours.css" text="List All 📝" />
+         <Button fx:id="ListAllBtn" mnemonicParsing="false" prefHeight="34.0" prefWidth="93.0" styleClass="new-button" stylesheets="@../../Styles/OfficeHours.css" text="List All 📝">
+            <HBox.margin>
+               <Insets right="40.0" />
+            </HBox.margin></Button>
          <VBox.margin>
-            <Insets left="20.0" right="20.0" />
+            <Insets />
          </VBox.margin>
         </HBox>
         <HBox prefHeight="37.0" prefWidth="600.0" styleClass="action-buttons" stylesheets="@../../Styles/OfficeHours.css">

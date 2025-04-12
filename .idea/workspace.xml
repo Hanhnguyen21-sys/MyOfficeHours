@@ -5,11 +5,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b34a287-10b1-4bb5-844a-1e798f22fb78" name="Changes" comment="">
-
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/README.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Dashboard/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Dashboard/DashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Schedule/ScheduleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Schedule/ScheduleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Schedule/ScheduleListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Schedule/ScheduleListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Models/Schedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Models/Schedule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Database/officehours.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Database/schedule.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Database/timeSlots.db" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Courses/Course.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Courses/Course.fxml" afterDir="false" />
-
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Courses/CourseList.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Courses/CourseList.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Dashboard/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Dashboard/Dashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/OfficeHours/OfficeHours.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/OfficeHours/OfficeHours.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/OfficeHours/OfficeHoursList.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/OfficeHours/OfficeHoursList.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Schedule/Schedule.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Schedule/Schedule.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Schedule/ScheduleList.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Schedule/ScheduleList.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/TimeSlots/TimeSlots.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/TimeSlots/TimeSlots.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/TimeSlots/TimeSlotsList.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/TimeSlots/TimeSlotsList.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Database/officehours.db" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Database/officehours.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Database/schedule.db" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Database/schedule.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Database/timeSlots.db" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Database/timeSlots.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/Courses/Course.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Fxml/Courses/Course.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/Courses/CourseList.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Fxml/Courses/CourseList.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/Dashboard/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Fxml/Dashboard/Dashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/OfficeHours/OfficeHours.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Fxml/OfficeHours/OfficeHours.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/OfficeHours/OfficeHoursList.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Fxml/OfficeHours/OfficeHoursList.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/Schedule/Schedule.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Fxml/Schedule/Schedule.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/Schedule/ScheduleList.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Fxml/Schedule/ScheduleList.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/TimeSlots/TimeSlots.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Fxml/TimeSlots/TimeSlots.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Fxml/TimeSlots/TimeSlotsList.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Fxml/TimeSlots/TimeSlotsList.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/s25/cs151/application/Controllers/Dashboard/DashboardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/s25/cs151/application/Controllers/Dashboard/DashboardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/s25/cs151/application/Controllers/Schedule/ScheduleListController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/s25/cs151/application/Controllers/Schedule/ScheduleListController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/s25/cs151/application/Models/Schedule.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/s25/cs151/application/Models/Schedule.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,12 +67,12 @@
     &quot;assignee&quot;: &quot;Hanhnguyen21-sys&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Hanhnguyen21-sys/MyOfficeHours.git&quot;,
-    &quot;accountId&quot;: &quot;943f3342-5ce4-4203-a6bc-9897295d34b9&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Hanhnguyen21-sys/MyOfficeHours.git",
+    "accountId": "6f7519b5-649a-4752-93c4-c1c43ba9b696"
   }
-}</component>
+}]]></component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
@@ -58,7 +87,6 @@
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="2uvsWr6jSX9JvOWfczVRxykXkgZ" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="abbreviatePackageNames" value="true" />
     <option name="autoscrollFromSource" value="true" />
@@ -72,17 +100,28 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Main.executor": "Run",
+    "Maven.Project_Group17 [clean,compile].executor": "Run",
+    "Maven.Project_Group17 [javafx:run].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "modifyViewSize",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
     "jdk.selected.JAVA_MODULE": "zulu-23",
+    "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/nguyennguyen/Desktop/MyOfficeHours",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs.mocha.mocha_node_package_dir": "",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.importing"
+    "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Maven.Project_Group17 [javafx:run]">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="s25.cs151.application.Main" />
       <module name="Project_Group17" />
@@ -90,6 +129,86 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Project_Group17 [clean,compile]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="compile" />
+              </list>
+            </option>
+            <option name="multimoduleDir" />
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="Project_Group17 [javafx:run]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="javafx:run" />
+              </list>
+            </option>
+            <option name="multimoduleDir" />
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="Unnamed" type="mocha-javascript-test-runner" nameIsGenerated="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <mocha-package />
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <ui>bdd</ui>
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Maven.Project_Group17 [javafx:run]" />
+      <item itemvalue="Maven.Project_Group17 [clean,compile]" />
+      <item itemvalue="Mocha.Unnamed" />
+    </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -103,11 +222,11 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="8b34a287-10b1-4bb5-844a-1e798f22fb78" name="Changes" comment="" />
-      <created>1744420497714</created>
+      <created>1744432116477</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1744420497714</updated>
-      <workItem from="1744420501237" duration="4054000" />
+      <updated>1744432116477</updated>
+      <workItem from="1744432117496" duration="6222000" />
     </task>
     <servers />
   </component>
