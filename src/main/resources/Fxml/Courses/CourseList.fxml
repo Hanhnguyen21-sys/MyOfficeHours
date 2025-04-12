@@ -14,14 +14,17 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="root" prefHeight="419.0" prefWidth="656.0" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.Courses.CourseListController">
+<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.Courses.CourseListController">
 
     <!-- Left Panel Sidebar -->
     <VBox layoutY="1.0" prefHeight="400.0" prefWidth="180.0" styleClass="left-sidebar" stylesheets="@../../Styles/OfficeHours.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 800;" text="My Office Hours" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 800;" text="My Office Hours">
+         <VBox.margin>
+            <Insets left="10.0" top="20.0" />
+         </VBox.margin></Text>
         <Line endX="29.792892456054688" endY="7.748603820800781E-7" startX="-100.0" />
         <!-- Navigation bar -->
-        <MenuButton fx:id="menuBtn" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" styleClass="nav-btn" stylesheets="@../../Styles/OfficeHours.css" text="Menu" textFill="#FFFFFF">
+        <MenuButton fx:id="menuBtn" mnemonicParsing="false" prefHeight="30.0" prefWidth="140.0" styleClass="nav-btn" stylesheets="@../../Styles/OfficeHours.css" text="Menu" textFill="#FFFFFF">
             <items>
                 <MenuItem fx:id="dashboardItem" mnemonicParsing="false" text="Dashboard" />
                 <MenuItem fx:id="officehoursItem" mnemonicParsing="false" text="Office Hours" />
@@ -32,7 +35,7 @@
             </items>
         </MenuButton>
     </VBox>
-    <VBox fx:id="titleSection" layoutX="164.0" layoutY="17.0" prefHeight="96.0" prefWidth="464.0">
+    <VBox fx:id="titleSection" layoutX="164.0" layoutY="17.0" prefHeight="140.0" prefWidth="600.0">
         <Label styleClass="page-header" stylesheets="@../../Styles/OfficeHours.css" text="Courses List" />
         <HBox fx:id="breadcrumb" prefHeight="32.0" prefWidth="502.0" styleClass="breadcrumb-container" stylesheets="@../../Styles/OfficeHours.css">
             <Label fx:id="dashboardLabel" onMouseClicked="#switchToDashboard" styleClass="breadcrumb-item" stylesheets="@../../Styles/OfficeHours.css" text="Dashboard" />
@@ -60,8 +63,11 @@
                 </HBox.margin>
             </Button>
          <Button fx:id="ListAllBtn" mnemonicParsing="false" prefHeight="34.0" prefWidth="93.0" styleClass="new-button" stylesheets="@../../Styles/OfficeHours.css" text="List All 📝" />
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding>
         </HBox>
-        <HBox styleClass="action-buttons" stylesheets="@../../Styles/OfficeHours.css">
+        <HBox prefHeight="35.0" prefWidth="600.0" styleClass="action-buttons" stylesheets="@../../Styles/OfficeHours.css">
             <children>
                 <Label fx:id="officeHoursListLabel" onMouseClicked="#switchToOfficeHoursList" styleClass="breadcrumb-item" text="Office Hours">
                     <HBox.margin>
@@ -86,11 +92,11 @@
         </HBox>
     </VBox>
 <!--    TableView Section-->
-    <TableView fx:id="coursesTable" layoutX="164.0" layoutY="162.0" prefHeight="247.0" prefWidth="464.0" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="162.0">
+    <TableView fx:id="coursesTable" layoutX="164.0" layoutY="162.0" prefHeight="396.0" prefWidth="600.0" AnchorPane.bottomAnchor="42.0" AnchorPane.topAnchor="162.0">
         <columns>
-            <TableColumn fx:id="courseCodeColumn" prefWidth="148.4000244140625" text="Course Code" />
-            <TableColumn fx:id="courseNameColumn" prefWidth="165.20001220703125" text="Course Name" />
-            <TableColumn fx:id="sectionNumberColumn" prefWidth="153.20001220703125" text="Section Number" />
+            <TableColumn fx:id="courseCodeColumn" prefWidth="190.5" text="Course Code" />
+            <TableColumn fx:id="courseNameColumn" prefWidth="209.5" text="Course Name" />
+            <TableColumn fx:id="sectionNumberColumn" prefWidth="199.0" text="Section Number" />
         </columns>
     </TableView>
 </AnchorPane>
