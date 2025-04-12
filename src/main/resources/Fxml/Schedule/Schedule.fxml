@@ -54,9 +54,9 @@
 
         <!-- Action Buttons -->
         <HBox fx:id="actionBtn" prefHeight="8.0" prefWidth="428.0" styleClass="action-buttons" stylesheets="@../../Styles/OfficeHours.css">
-            <Button fx:id="ScheduleBtn" layoutX="445.0" layoutY="10.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="99.0" styleClass="new-button" stylesheets="@../../Styles/OfficeHours.css" text="Schedule">
+            <Button fx:id="ScheduleBtn" layoutX="15.0" layoutY="10.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" styleClass="new-button" stylesheets="@../../Styles/OfficeHours.css" text="Schedule">
                 <HBox.margin>
-                    <Insets right="15.0" />
+                    <Insets left="0.0" right="15.0" />
                 </HBox.margin>
             </Button>
             <Button fx:id="listAllBtn" layoutX="368.0" layoutY="10.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="91.0" styleClass="list-button" stylesheets="@../../Styles/OfficeHours.css" text="List All 📝">

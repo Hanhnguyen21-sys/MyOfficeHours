@@ -42,7 +42,6 @@ public class TimeSlotsListController implements Initializable {
     @FXML
     private Label coursesListLabel;
 
-
     @FXML
     private AnchorPane root;
 
@@ -52,7 +51,6 @@ public class TimeSlotsListController implements Initializable {
     private TableColumn<TimeSlots, String> fromHourColumn;
     @FXML
     private TableColumn<TimeSlots, String> toHourColumn;
-
 
     @FXML
     private MenuItem dashboardItem;
@@ -212,7 +210,7 @@ public class TimeSlotsListController implements Initializable {
      */
     private void loadCourses() {
 
-        try{
+        try {
 
             ConnectDB connectDB = new ConnectDB("jdbc:sqlite:src/main/resources/Database/timeSlots.db");
             Connection connection = connectDB.getConnection();
@@ -229,7 +227,7 @@ public class TimeSlotsListController implements Initializable {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(selectQuery);
 
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 String fromHour = resultSet.getString("fromHour");
                 String toHour = resultSet.getString("toHour");
                 timeSlotsObservableList.add(new TimeSlots(fromHour, toHour));
@@ -238,10 +236,11 @@ public class TimeSlotsListController implements Initializable {
             fromHourColumn.setCellValueFactory(new PropertyValueFactory<>("fromHour"));
             toHourColumn.setCellValueFactory(new PropertyValueFactory<>("toHour"));
 
-            //set items to tableview
+            // set items to tableview
             timeSlotsTable.setItems(timeSlotsObservableList);
 
-            // use hidden column to set order in descending prio: winter, fall, summer, spring
+            // use hidden column to set order in descending prio: winter, fall, summer,
+            // spring
             TableColumn<TimeSlots, Integer> hiddenFromHourColumn = new TableColumn<>("fromTimeSlots Hidden Order");
             hiddenFromHourColumn.setCellValueFactory(new PropertyValueFactory<>("fromTimeSlotOrder"));
 
@@ -256,14 +255,13 @@ public class TimeSlotsListController implements Initializable {
             timeSlotsTable.getColumns().add(hiddenFromHourColumn);
             timeSlotsTable.getColumns().add(hiddenToHourColumn);
 
-
             // sort ascending based on fromHour & toHour
             hiddenFromHourColumn.setSortType(TableColumn.SortType.ASCENDING);
             hiddenToHourColumn.setSortType(TableColumn.SortType.ASCENDING);
 
             // clear old sorting order & add the new one
             timeSlotsTable.getSortOrder().clear();
-            timeSlotsTable.getSortOrder().addAll(hiddenFromHourColumn,hiddenToHourColumn);
+            timeSlotsTable.getSortOrder().addAll(hiddenFromHourColumn, hiddenToHourColumn);
             timeSlotsTable.sort();
 
         } catch (SQLException e) {
@@ -271,12 +269,11 @@ public class TimeSlotsListController implements Initializable {
         }
     }
 
-
     /**
      * Switches the view to the dashboard
      */
     public void switchToDashboard() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
+        Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Dashboard/Dashboard.fxml", "Dashboard");
     }
 
@@ -285,33 +282,34 @@ public class TimeSlotsListController implements Initializable {
      */
     @FXML
     private void switchToNewOfficeHoursView() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
+        Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHours.fxml", "Office Hours");
     }
+
     /**
      * Switches to the Time Slots view
      */
     @FXML
     private void switchToTimeSlots() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
+        Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/TimeSlots/TimeSlots.fxml", "Time Slots");
     }
+
     /**
      * Switches to the Courses View
      */
     @FXML
     private void switchToCourses() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
+        Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Courses/Course.fxml", "Courses");
     }
 
     /**
      * Switches to course list view
-     *
      */
     @FXML
     private void switchToCoursesList() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
+        Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Courses/CourseList.fxml", "Courses List");
     }
 
@@ -321,7 +319,7 @@ public class TimeSlotsListController implements Initializable {
      */
     @FXML
     private void switchToOfficeHoursList() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
+        Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHoursList.fxml", "Office Hours List");
     }
 
@@ -331,14 +329,24 @@ public class TimeSlotsListController implements Initializable {
      */
     @FXML
     private void switchToTimeSlotsList() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
+        Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/TimeSlots/TimeSlotsList.fxml", "Time Slots List");
     }
+
     /**
      * Switches to the Schedule view
      */
     private void switchToSchedule() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
+        Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Schedule/Schedule.fxml", "Schedule");
+    }
+
+    /**
+     * Switches to Schedule List View
+     */
+    @FXML
+    private void switchToScheduleList() throws IOException {
+        Stage stage = (Stage) root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/Schedule/ScheduleList.fxml", "Schedule List");
     }
 }
