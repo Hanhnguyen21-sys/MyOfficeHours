@@ -64,6 +64,8 @@ public class OfficeHourController implements Initializable {
     @FXML
     private MenuItem scheduleItem;
     @FXML
+    private MenuItem searchItem;
+    @FXML
     private MenuItem reportItem;
 
 
@@ -170,6 +172,14 @@ public class OfficeHourController implements Initializable {
         scheduleItem.setOnAction(event -> {
             try {
                 switchToSchedule();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        // Handle the Search menu item click
+        searchItem.setOnAction(event -> {
+            try {
+                switchToSearch();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -338,6 +348,13 @@ public class OfficeHourController implements Initializable {
     private void switchToSchedule() throws IOException {
         Stage stage = (Stage)root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Schedule/Schedule.fxml", "Schedule");
+    }
+    /**
+     * Switches to the Search view
+     */
+    private void switchToSearch() throws IOException {
+        Stage stage = (Stage) root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/Search/SearchSchedule.fxml", "Search Schedule");
     }
     /**
      * Shows an alert dialog with the given message

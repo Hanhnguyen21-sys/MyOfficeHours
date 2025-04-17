@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -8,13 +7,14 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.Schedule.ScheduleListController">
+<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.Search.SearchController">
     <VBox layoutY="1.0" prefHeight="600.0" prefWidth="127.0" styleClass="left-sidebar" stylesheets="@../../Styles/OfficeHours.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 800;" text="My Office Hours">
          <VBox.margin>
@@ -34,39 +34,12 @@
             </items>
         </MenuButton>
     </VBox>
-    <VBox fx:id="titleSection" layoutX="162.0" layoutY="17.0" prefHeight="78.0" prefWidth="428.0" AnchorPane.leftAnchor="162.0" AnchorPane.rightAnchor="10.0">
-        <Label styleClass="page-header" stylesheets="@../../Styles/OfficeHours.css" text="Schedule List" />
+    <VBox fx:id="titleSection" layoutX="162.0" layoutY="17.0" prefHeight="71.0" prefWidth="628.0" AnchorPane.leftAnchor="162.0" AnchorPane.rightAnchor="10.0">
+        <Label styleClass="page-header" stylesheets="@../../Styles/OfficeHours.css" text="Search  Student's Schedule" />
         <HBox fx:id="breadcrumb" prefHeight="32.0" prefWidth="502.0" styleClass="breadcrumb-container" stylesheets="@../../Styles/OfficeHours.css">
             <Label fx:id="dashboardLabel" onMouseClicked="#switchToDashboard" styleClass="breadcrumb-item" stylesheets="@../../Styles/OfficeHours.css" text="Dashboard" />
             <Label styleClass="breadcrumb-separator" stylesheets="@../../Styles/OfficeHours.css" text="&gt;" />
-            <Label fx:id="scheduleLabel" styleClass="breadcrumb-item" stylesheets="@../../Styles/OfficeHours.css" text="Schedule" />
-            <Label styleClass="breadcrumb-separator" stylesheets="@../../Styles/OfficeHours.css" text="&gt;" />
-            <Label style="-fx-font-weight: 600;" stylesheets="@../../Styles/OfficeHours.css" text="List All">
-                <styleClass>
-                    <String fx:value="breadcrumb-item" />
-                    <String fx:value="active" />
-                </styleClass>
-            </Label>
-        </HBox>
-
-        <!-- Action Buttons -->
-        <HBox fx:id="actionBtn" prefHeight="45.0" prefWidth="621.0" styleClass="action-buttons" stylesheets="@../../Styles/OfficeHours.css">
-            <Button fx:id="ScheduleBtn" layoutX="445.0" layoutY="10.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="99.0" styleClass="list-button" stylesheets="@../../Styles/OfficeHours.css" text="Schedule">
-                <HBox.margin>
-                    <Insets left="15.0" right="15.0" />
-                </HBox.margin>
-            </Button>
-            <Button fx:id="listAllBtn" layoutX="368.0" layoutY="10.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="91.0" styleClass="new-button" stylesheets="@../../Styles/OfficeHours.css" text="List All 📝">
-                <HBox.margin>
-                    <Insets right="400.0" />
-                </HBox.margin>
-            </Button>
-            <padding>
-                <Insets bottom="5.0" top="5.0" />
-            </padding>
-         <VBox.margin>
-            <Insets right="5.0" />
-         </VBox.margin>
+            <Label fx:id="searchscheduleLabel" style="-fx-text-fill: #133E87;" styleClass="breadcrumb-item" stylesheets="@../../Styles/OfficeHours.css" text="Search" />
         </HBox>
     </VBox>
 
@@ -84,4 +57,39 @@
             <TableView fx:constant="UNCONSTRAINED_RESIZE_POLICY" />
         </columnResizePolicy>
     </TableView>
+    <HBox layoutX="203.0" layoutY="85.0" prefHeight="45.0" prefWidth="530.0">
+        <Label prefHeight="22.0" prefWidth="115.0" style="-fx-font-weight: bold;" text="Student's Name">
+           <opaqueInsets>
+               <Insets />
+           </opaqueInsets>
+           <HBox.margin>
+               <Insets right="5.0" top="8.0" />
+           </HBox.margin>
+           <padding>
+               <Insets left="8.0" top="5.0" />
+           </padding>
+        </Label>
+        <TextField fx:id="searchStudent" prefHeight="30.0" prefWidth="316.0">
+           <opaqueInsets>
+               <Insets />
+           </opaqueInsets>
+           <HBox.margin>
+               <Insets right="10.0" top="8.0" />
+           </HBox.margin>
+        </TextField>
+        <Button fx:id="searchBtn" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #133E87; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16; -fx-background-radius: 5;" text="Search">
+           <opaqueInsets>
+               <Insets />
+           </opaqueInsets>
+           <HBox.margin>
+               <Insets right="10.0" top="8.0" />
+           </HBox.margin>
+        </Button>
+    </HBox>
+   <HBox layoutX="403.0" layoutY="518.0" prefHeight="40.0" prefWidth="200.0" styleClass="buttons-container" stylesheets="@../../Styles/OfficeHours.css">
+      <children>
+         <Button fx:id="deleteBtn" mnemonicParsing="false" prefHeight="31.0" prefWidth="110.0" styleClass="cancel-button" stylesheets="@../../Styles/OfficeHours.css" text="Delete" />
+         <Button fx:id="editBtn" mnemonicParsing="false" styleClass="save-button" stylesheets="@../../Styles/OfficeHours.css" text="Edit" />
+      </children>
+   </HBox>
 </AnchorPane>

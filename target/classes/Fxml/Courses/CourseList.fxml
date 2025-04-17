@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.Courses.CourseListController">
+<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.Courses.CourseListController">
 
     <!-- Left Panel Sidebar -->
     <VBox layoutY="1.0" prefHeight="400.0" prefWidth="180.0" styleClass="left-sidebar" stylesheets="@../../Styles/OfficeHours.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -31,6 +31,7 @@
             <MenuItem fx:id="timeslotsItem" mnemonicParsing="false" text="Time Slots" />
             <MenuItem fx:id="coursesItem" mnemonicParsing="false" text="Courses" />
                 <MenuItem fx:id="scheduleItem" mnemonicParsing="false" text="Schedule" />
+            <MenuItem fx:id="searchItem" mnemonicParsing="false" text="Search" />
                 <MenuItem fx:id="reportItem" mnemonicParsing="false" text="Report" />
             </items>
         </MenuButton>
@@ -82,7 +83,7 @@
                     </HBox.margin></Label>
                 <Label fx:id="coursesListLabel" onMouseClicked="#switchToCoursesList" text="Courses">
                     <HBox.margin>
-                        <Insets left="80.0" right="70.0" />
+                        <Insets left="80.0" right="130.0" />
                     </HBox.margin>
                <styleClass>
                   <String fx:value="breadcrumb-item" />

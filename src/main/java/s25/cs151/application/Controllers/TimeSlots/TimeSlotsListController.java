@@ -63,6 +63,8 @@ public class TimeSlotsListController implements Initializable {
     @FXML
     private MenuItem scheduleItem;
     @FXML
+    private MenuItem searchItem;
+    @FXML
     private MenuItem reportItem;
 
     ObservableList<TimeSlots> timeSlotsObservableList = FXCollections.observableArrayList();
@@ -138,6 +140,15 @@ public class TimeSlotsListController implements Initializable {
         scheduleItem.setOnAction(e -> {
             try {
                 switchToSchedule();
+            } catch (IOException ex) {
+                System.err.println("Error switching to new office hours view: " + ex.getMessage());
+                ex.printStackTrace();
+                throw new RuntimeException(ex);
+            }
+        });
+        searchItem.setOnAction(e -> {
+            try {
+                switchToSearch();
             } catch (IOException ex) {
                 System.err.println("Error switching to new office hours view: " + ex.getMessage());
                 ex.printStackTrace();
@@ -340,5 +351,12 @@ public class TimeSlotsListController implements Initializable {
     private void switchToSchedule() throws IOException {
         Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Schedule/Schedule.fxml", "Schedule");
+    }
+    /**
+     * Switches to the Search view
+     */
+    private void switchToSearch() throws IOException {
+        Stage stage = (Stage) root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/Search/SearchSchedule.fxml", "Search Schedule");
     }
 }

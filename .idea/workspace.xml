@@ -5,11 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b34a287-10b1-4bb5-844a-1e798f22fb78" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Courses/CourseListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Courses/CourseListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Courses/CoursesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Courses/CoursesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Dashboard/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Dashboard/DashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/OfficeHours/OfficeHourController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/OfficeHours/OfficeHourController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/OfficeHours/OfficeHoursListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/OfficeHours/OfficeHoursListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Schedule/ScheduleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Schedule/ScheduleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Schedule/ScheduleListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Schedule/ScheduleListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/TimeSlots/TimeSlotsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/TimeSlots/TimeSlotsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/TimeSlots/TimeSlotsListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/TimeSlots/TimeSlotsListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Courses/Course.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Courses/Course.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Courses/CourseList.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Courses/CourseList.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Dashboard/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Dashboard/Dashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/OfficeHours/OfficeHours.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/OfficeHours/OfficeHours.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/OfficeHours/OfficeHoursList.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/OfficeHours/OfficeHoursList.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Schedule/Schedule.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Schedule/Schedule.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Schedule/ScheduleList.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Schedule/ScheduleList.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/TimeSlots/TimeSlots.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/TimeSlots/TimeSlots.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/TimeSlots/TimeSlotsList.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/TimeSlots/TimeSlotsList.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,12 +53,12 @@
     &quot;assignee&quot;: &quot;Hanhnguyen21-sys&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Hanhnguyen21-sys/MyOfficeHours.git",
-    "accountId": "943f3342-5ce4-4203-a6bc-9897295d34b9"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Hanhnguyen21-sys/MyOfficeHours.git&quot;,
+    &quot;accountId&quot;: &quot;943f3342-5ce4-4203-a6bc-9897295d34b9&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
@@ -68,30 +83,35 @@
     <option name="sortByType" value="true" />
     <option name="sortKey" value="BY_TYPE" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Project_Group17 [clean,compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Project_Group17 [javafx:run].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;zulu-23&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/nguyennguyen/Desktop/MyOfficeHours&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs.mocha.mocha_node_package_dir&quot;: &quot;&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.importing&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Maven.Project_Group17 [clean,compile].executor": "Run",
+    "Maven.Project_Group17 [javafx:run].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "jdk.selected.JAVA_MODULE": "zulu-23",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/nguyennguyen/Desktop/MyOfficeHours/src/main/resources/Fxml/Search",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs.mocha.mocha_node_package_dir": "",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/Fxml/Search" />
+    </key>
+  </component>
   <component name="RunManager" selected="Maven.Project_Group17 [javafx:run]">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="s25.cs151.application.Main" />
