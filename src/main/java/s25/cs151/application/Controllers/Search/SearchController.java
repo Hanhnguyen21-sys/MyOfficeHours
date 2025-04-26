@@ -213,9 +213,9 @@ public class SearchController implements Initializable {
 
     // Below is search functionality
     private void performSearch() {
-        searchObservableList.clear();            // old search
+        searchObservableList.clear();
         String searchText = searchStudent.getText().trim();
-        loadSearchedSchedules(searchText);       // reuse your existing method
+        loadSearchedSchedules(searchText);
     }
 
 
@@ -276,7 +276,7 @@ public class SearchController implements Initializable {
                 scheduleTable.getColumns().add(hiddenFromHourColumn);
                 scheduleTable.getColumns().add(hiddenToHourColumn);
 
-                // sort ascending based on fromHour & toHour
+                // sort descending based on fromHour & toHour
                 dateColumn.setSortType(TableColumn.SortType.DESCENDING);
                 hiddenFromHourColumn.setSortType(TableColumn.SortType.DESCENDING);
                 hiddenToHourColumn.setSortType(TableColumn.SortType.DESCENDING);
