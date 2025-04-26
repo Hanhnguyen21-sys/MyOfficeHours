@@ -21,7 +21,7 @@
 
 <!-- Anchor Pane -->
 
-<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.Schedule.ScheduleController">
+<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.Schedule.ScheduleController">
 
 
     <VBox layoutY="1.0" prefHeight="400.0" prefWidth="180.0" styleClass="left-sidebar" stylesheets="@../../Styles/OfficeHours.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -38,6 +38,7 @@
                 <MenuItem fx:id="timeslotsItem" mnemonicParsing="false" text="Time Slots" />
                 <MenuItem fx:id="coursesItem" mnemonicParsing="false" text="Courses" />
                 <MenuItem fx:id="scheduleItem" mnemonicParsing="false" text="Schedule" />
+            <MenuItem fx:id="searchItem" mnemonicParsing="false" text="Search" />
                 <MenuItem fx:id="reportItem" mnemonicParsing="false" text="Report" />
             </items>
         </MenuButton>
@@ -64,7 +65,7 @@
             </Button>
             <Button fx:id="listAllBtn" layoutX="368.0" layoutY="10.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="91.0" styleClass="list-button" stylesheets="@../../Styles/OfficeHours.css" text="List All 📝">
                 <HBox.margin>
-                    <Insets right="20.0" />
+                    <Insets right="400.0" />
                 </HBox.margin>
             </Button>
          <padding>

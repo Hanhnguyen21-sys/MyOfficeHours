@@ -6,6 +6,7 @@
 /Users/nguyennguyen/Desktop/MyOfficeHours/src/main/java/s25/cs151/application/Controllers/OfficeHours/OfficeHoursListController.java
 /Users/nguyennguyen/Desktop/MyOfficeHours/src/main/java/s25/cs151/application/Controllers/Schedule/ScheduleController.java
 /Users/nguyennguyen/Desktop/MyOfficeHours/src/main/java/s25/cs151/application/Controllers/Schedule/ScheduleListController.java
+/Users/nguyennguyen/Desktop/MyOfficeHours/src/main/java/s25/cs151/application/Controllers/Search/SearchController.java
 /Users/nguyennguyen/Desktop/MyOfficeHours/src/main/java/s25/cs151/application/Controllers/TimeSlots/TimeSlotsController.java
 /Users/nguyennguyen/Desktop/MyOfficeHours/src/main/java/s25/cs151/application/Controllers/TimeSlots/TimeSlotsListController.java
 /Users/nguyennguyen/Desktop/MyOfficeHours/src/main/java/s25/cs151/application/Helper/SwitchScene.java

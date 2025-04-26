@@ -17,7 +17,7 @@
 
 <!-- Anchor Pane -->
 
-<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.TimeSlots.TimeSlotsController">
+<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.TimeSlots.TimeSlotsController">
         <VBox fx:id="titleSection" layoutX="153.0" layoutY="17.0" prefHeight="80.0" prefWidth="600.0">
             <Label styleClass="page-header" stylesheets="@../../Styles/OfficeHours.css" text="Entry Time Slots" />
             <HBox fx:id="breadcrumb" prefHeight="32.0" prefWidth="502.0" styleClass="breadcrumb-container" stylesheets="@../../Styles/OfficeHours.css">
@@ -72,6 +72,7 @@
             <MenuItem fx:id="timeslotsItem" mnemonicParsing="false" text="Time Slots" />
             <MenuItem fx:id="coursesItem" mnemonicParsing="false" text="Courses" />
             <MenuItem fx:id="scheduleItem" mnemonicParsing="false" text="Schedule" />
+            <MenuItem fx:id="searchItem" mnemonicParsing="false" text="Search" />
             <MenuItem fx:id="reportItem" mnemonicParsing="false" text="Report" />
          </items>
             </MenuButton>

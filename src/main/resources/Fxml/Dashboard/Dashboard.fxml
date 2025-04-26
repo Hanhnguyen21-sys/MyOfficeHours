@@ -19,7 +19,7 @@
 
 <!-- Anchor Pane -->
 
-<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.Dashboard.DashboardController">
+<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.Dashboard.DashboardController">
 
 
     <!-- Left Panel with Navigation Bar -->
@@ -48,6 +48,11 @@
                </toggleGroup>
             </RadioMenuItem>
                <RadioMenuItem fx:id="scheduleItem" mnemonicParsing="false" text="Schedule" toggleGroup="$myGroup" />
+            <RadioMenuItem fx:id="searchItem" mnemonicParsing="false" text="Search">
+               <toggleGroup>
+                  <ToggleGroup fx:id="myGroup3" />
+               </toggleGroup>
+            </RadioMenuItem>
                <RadioMenuItem fx:id="reportItem" mnemonicParsing="false" text="Report" toggleGroup="$myGroup" />
            </items>
        </MenuButton>
@@ -78,20 +83,27 @@
                <Insets bottom="5.0" top="5.0" />
            </padding>
        </HBox>
-      <HBox fx:id="actionBtn1" layoutX="10.0" layoutY="50.0" prefHeight="21.0" prefWidth="502.0" styleClass="dashboard-nav-container" stylesheets="@../../Styles/Dashboard.css">
+      <HBox fx:id="actionBtn2" prefHeight="21.0" prefWidth="502.0" styleClass="dashboard-nav-container" stylesheets="@../../Styles/Dashboard.css">
          <padding>
             <Insets bottom="5.0" top="5.0" />
          </padding>
          <children>
-              <Button fx:id="scheduleBtn" minWidth="170.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="154.0" styleClass="dashboard-nav-buttons" stylesheets="@../../Styles/Dashboard.css" text="Schedule ➕" textAlignment="CENTER" />
-              <Button fx:id="reportBtn1" minWidth="170.0" mnemonicParsing="false" styleClass="dashboard-nav-buttons" stylesheets="@../../Styles/Dashboard.css" text="Report ⚠" textAlignment="CENTER">
+            <Button fx:id="scheduleBtn" minWidth="170.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="163.0" styleClass="dashboard-nav-buttons" stylesheets="@../../Styles/Dashboard.css" text="Schedule ➕">
                <HBox.margin>
-                  <Insets right="220.0" />
-               </HBox.margin></Button>
+                  <Insets />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="searchBtn" layoutY="20.0" minWidth="150.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="300.0" styleClass="dashboard-nav-buttons" stylesheets="@../../Styles/Dashboard.css" text="Search">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="reportBtn" layoutY="20.0" minWidth="150.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="300.0" styleClass="dashboard-nav-buttons" stylesheets="@../../Styles/Dashboard.css" text="Report ⚠">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Button>
          </children>
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
       </HBox>
    </VBox>
 

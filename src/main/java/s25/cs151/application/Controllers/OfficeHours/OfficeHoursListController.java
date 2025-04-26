@@ -68,7 +68,10 @@ public class OfficeHoursListController implements Initializable {
     private MenuItem coursesItem;
     @FXML
     private MenuItem scheduleItem;
-
+    @FXML
+    private MenuItem searchItem;
+    @FXML
+    private MenuItem reportItem;
     ObservableList<OfficeHours> officeHoursObservableList = FXCollections.observableArrayList();
 
     @Override
@@ -210,6 +213,13 @@ public class OfficeHoursListController implements Initializable {
                 throw new RuntimeException(e);
             }
         });
+        searchItem.setOnAction(event -> {
+            try {
+                switchToSearch();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     /**
@@ -285,7 +295,7 @@ public class OfficeHoursListController implements Initializable {
 
     /**
      * Shows an alert dialog with the given message
-     * 
+     *
      * @param message to be sent to user
      */
     private void showAlert(String message) {
@@ -376,4 +386,12 @@ public class OfficeHoursListController implements Initializable {
         Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Schedule/Schedule.fxml", "Schedule");
     }
+    /**
+     * Switches to the Search view
+     */
+    private void switchToSearch() throws IOException {
+        Stage stage = (Stage) root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/Search/SearchSchedule.fxml", "Search Schedule");
+    }
+
 }

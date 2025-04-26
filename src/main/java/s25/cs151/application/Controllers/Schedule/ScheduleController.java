@@ -57,6 +57,8 @@ public class ScheduleController implements Initializable {
     @FXML
     private MenuItem scheduleItem;
     @FXML
+    private MenuItem searchItem;
+    @FXML
     private MenuItem reportItem;
 
 
@@ -177,6 +179,21 @@ public class ScheduleController implements Initializable {
                 throw new RuntimeException(e);
             }
         });
+        // Handle the Courses menu item click
+        searchItem.setOnAction(event -> {
+            try {
+                switchToSearch();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        scheduleItem.setOnAction(event -> {
+            try {
+                switchToSchedule();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -277,6 +294,20 @@ public class ScheduleController implements Initializable {
     private void switchToListAllView() throws IOException {
         Stage stage = (Stage)root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Schedule/ScheduleList.fxml", "Schedule List");
+    }
+    /**
+     * Switches to the Search view
+     */
+    private void switchToSearch() throws IOException {
+        Stage stage = (Stage) root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/Search/SearchSchedule.fxml", "Search Schedule");
+    }
+    /**
+     * Switches to the Schedule view
+     */
+    private void switchToSchedule() throws IOException {
+        Stage stage = (Stage) root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/Schedule/Schedule.fxml", "Schedule");
     }
 
 }

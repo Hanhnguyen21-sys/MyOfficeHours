@@ -60,6 +60,8 @@ public class CoursesController implements Initializable{
     @FXML
     private MenuItem scheduleItem;
     @FXML
+    private MenuItem searchItem;
+    @FXML
     private MenuItem reportItem;
 
 
@@ -152,6 +154,13 @@ public class CoursesController implements Initializable{
 
         // Handle the Courses menu item click
         coursesItem.setOnAction(e -> resetForm());
+        searchItem.setOnAction(event -> {
+            try {
+                switchToSearch();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     public void handleSaveButton() {
@@ -267,5 +276,12 @@ public class CoursesController implements Initializable{
     private void switchToSchedule() throws IOException {
         Stage stage = (Stage)root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Schedule/Schedule.fxml", "Schedule");
+    }
+    /**
+     * Switches to the Search view
+     */
+    private void switchToSearch() throws IOException {
+        Stage stage = (Stage) root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/Search/SearchSchedule.fxml", "Search Schedule");
     }
 }

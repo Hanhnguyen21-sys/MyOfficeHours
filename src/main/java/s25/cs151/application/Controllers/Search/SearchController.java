@@ -1,32 +1,22 @@
-package s25.cs151.application.Controllers.Dashboard;
+package s25.cs151.application.Controllers.Search;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import s25.cs151.application.Helper.SwitchScene;
+import s25.cs151.application.Models.Schedule;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class DashboardController implements Initializable {
-    @FXML
-    public AnchorPane root;
+public class SearchController implements Initializable {
 
     @FXML
-    private Button officeHoursBtn;
-    @FXML
-    private Button timeSlotsBtn;
-    @FXML
-    private Button coursesBtn;
-    @FXML
-    private Button scheduleBtn;
-    @FXML
-    private Button reportBtn;
-
+    private AnchorPane root;
     @FXML
     private MenuItem dashboardItem;
     @FXML
@@ -41,52 +31,42 @@ public class DashboardController implements Initializable {
     private MenuItem searchItem;
     @FXML
     private MenuItem reportItem;
+    @FXML
+    private TableView<Schedule> scheduleTable;
+    @FXML
+    private TableColumn<Schedule, String> studentNameColumn;
+    @FXML
+    private TableColumn<Schedule, String> dateColumn;
+    @FXML
+    private TableColumn<Schedule, String> timeColumn;
+    @FXML
+    private TableColumn<Schedule, String> courseColumn;
+    @FXML
+    private TableColumn<Schedule, String> reasonColumn;
+    @FXML
+    private TableColumn<Schedule, String> commentColumn;
+    @FXML
+    private Label dashboardLabel;
+    @FXML
+    private TextField searchStudent;
+    @FXML
+    private Button searchBtn;
+    @FXML
+    private Button deleteBtn;
+    @FXML
+    private Button editBtn;
 
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Set up navigation handlers
+    public void initialize(URL location, ResourceBundle resources) {
         setupNavigationHandlers();
     }
 
-    private void setupNavigationHandlers(){
-        // 3 BUTTONS + 2 BUTTONS TO BE IMPLEMENTED
-        // "Office Hours" button is used to show up the office hour page
-        officeHoursBtn.setOnMouseClicked(event -> {
-            try {
-                switchToOfficeHours();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
 
-        // "Time Slots" button is used to show up the time slots page
-        timeSlotsBtn.setOnAction(e -> {
-            try {
-                switchToTimeSlots();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        });
 
-        // "Courses" button is used to show up the courses page
-        coursesBtn.setOnAction(event -> {
-            try {
-                switchToCourses();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-        scheduleBtn.setOnAction(event -> {
-            try {
-                switchToSchedule();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-        // 4 MENU ITEMS + 2 MENU ITEMS TO BE IMPLEMENTED
-        // Handle the Dashboard menu item click
-        dashboardItem.setOnAction(event -> {
+    private void setupNavigationHandlers() {
+
+
+        // switch back to dashboard when Dashboard label is clicked
+        dashboardLabel.setOnMouseClicked(event -> {
             try {
                 switchToDashboard();
             } catch (IOException e) {
@@ -94,7 +74,22 @@ public class DashboardController implements Initializable {
             }
         });
 
-        // Handle the Office Hours menu item click
+        // Handle all menu items click
+        dashboardItem.setOnAction(event -> {
+            try {
+                switchToDashboard();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        scheduleItem.setOnAction(event -> {
+            try {
+                switchToSchedule();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
         officehoursItem.setOnAction(event -> {
             try {
                 switchToOfficeHours();
@@ -103,7 +98,6 @@ public class DashboardController implements Initializable {
             }
         });
 
-        // Handle the Time Slots menu item click
         timeslotsItem.setOnAction(event -> {
             try {
                 switchToTimeSlots();
@@ -112,18 +106,9 @@ public class DashboardController implements Initializable {
             }
         });
 
-        // Handle the Courses menu item click
         coursesItem.setOnAction(event -> {
             try {
                 switchToCourses();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-        scheduleItem.setOnAction(event -> {
-            try {
-                switchToSchedule();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -138,21 +123,19 @@ public class DashboardController implements Initializable {
     }
 
 
-    // Method declarations for switching views
     /**
-     * Switches to the dashboard page
+     * Switches the view to the dashboard
      */
     public void switchToDashboard() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
+        Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Dashboard/Dashboard.fxml", "Dashboard");
     }
 
     /**
-     * Switches to the Office Hours view
+     * Switches to the office hours view
      */
     private void switchToOfficeHours() throws IOException {
-        // Load the Office Hours FXML
-        Stage stage = (Stage)root.getScene().getWindow();
+        Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHours.fxml", "Office Hours");
     }
 
@@ -160,7 +143,7 @@ public class DashboardController implements Initializable {
      * Switches to the Time Slots view
      */
     private void switchToTimeSlots() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
+        Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/TimeSlots/TimeSlots.fxml", "Time Slots");
     }
 
@@ -168,11 +151,15 @@ public class DashboardController implements Initializable {
      * Switches to the Courses view
      */
     private void switchToCourses() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
+        Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Courses/Course.fxml", "Courses");
     }
+
+    /**
+     * Switches to the Schedule view
+     */
     private void switchToSchedule() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
+        Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Schedule/Schedule.fxml", "Schedule");
     }
     /**
