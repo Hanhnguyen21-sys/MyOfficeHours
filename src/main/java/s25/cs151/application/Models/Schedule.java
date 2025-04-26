@@ -1,9 +1,12 @@
 package s25.cs151.application.Models;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.StringProperty;
+import javafx.beans.property.IntegerProperty;
 
 public class Schedule {
+    private final IntegerProperty id;
     private final StringProperty studentName;
     private final StringProperty date;
     private final StringProperty time;
@@ -11,7 +14,8 @@ public class Schedule {
     private final StringProperty reason;
     private final StringProperty comment;
 
-    public Schedule(String studentName, String date, String time, String course, String reason, String comment) {
+    public Schedule(int id, String studentName, String date, String time, String course, String reason, String comment) {
+        this.id = new SimpleIntegerProperty(id);
         this.studentName = new SimpleStringProperty(studentName);
         this.date = new SimpleStringProperty(date);
         this.time = new SimpleStringProperty(time);
@@ -21,6 +25,11 @@ public class Schedule {
     }
 
     // Getters for properties
+
+    public int getId() { return id.get(); }
+    public IntegerProperty idProperty() { return id; }
+
+
     public StringProperty studentNameProperty() {
         return studentName;
     }

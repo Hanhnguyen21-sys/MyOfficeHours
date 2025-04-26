@@ -185,6 +185,7 @@ public class ScheduleListController implements Initializable {
                 ResultSet resultSet = statement.executeQuery(selectQuery);
 
                 while (resultSet.next()) {
+                    int id = resultSet.getInt("id");
                     String studentName = resultSet.getString("studentName");
                     String date = resultSet.getString("date");
                     String time = resultSet.getString("time");
@@ -192,7 +193,7 @@ public class ScheduleListController implements Initializable {
                     String reason = resultSet.getString("reason");
                     String comment = resultSet.getString("comment");
 
-                    Schedule schedule = new Schedule(studentName, date, time, course, reason, comment);
+                    Schedule schedule = new Schedule(id, studentName, date, time, course, reason, comment);
                     scheduleObservableList.add(schedule);
                 }
 

@@ -6,12 +6,22 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.cell.PropertyValueFactory;
 import s25.cs151.application.Helper.SwitchScene;
 import s25.cs151.application.Models.Schedule;
+import s25.cs151.application.Models.TimeSlots;
+import s25.cs151.application.Models.ConnectDB;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
+import java.sql.*;
 
 public class SearchController implements Initializable {
 
@@ -56,8 +66,16 @@ public class SearchController implements Initializable {
     @FXML
     private Button editBtn;
 
+    private ObservableList<Schedule> searchObservableList = FXCollections.observableArrayList();
+
     public void initialize(URL location, ResourceBundle resources) {
+        setupTableColumns();
         setupNavigationHandlers();
+        loadSearchedSchedules("");        // show all schedules prior to search
+
+        searchBtn.setOnAction(e -> performSearch());
+        searchStudent.setOnAction(e -> performSearch());
+        deleteBtn.setOnAction(e -> deleteSelected());
     }
 
 
@@ -168,6 +186,110 @@ public class SearchController implements Initializable {
     private void switchToSearch() throws IOException {
         Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Search/SearchSchedule.fxml", "Search Schedule");
+    }
+
+    /**
+     * Delete Entry
+     */
+
+    private void deleteSelected() {
+        // Schedule selectedEntry = scheduleTable.getSelectionModel().getSelectedItem(); // selected entry
+
+        // null handling
+        //delete from DB using selectedEntry's id
+        //add confirmation
+        // remove
+    }
+
+
+    private void setupTableColumns() {
+        studentNameColumn.setCellValueFactory(cellData -> cellData.getValue().studentNameProperty());
+        dateColumn.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
+        timeColumn.setCellValueFactory(cellData -> cellData.getValue().timeProperty());
+        courseColumn.setCellValueFactory(cellData -> cellData.getValue().courseProperty());
+        reasonColumn.setCellValueFactory(cellData -> cellData.getValue().reasonProperty());
+        commentColumn.setCellValueFactory(cellData -> cellData.getValue().commentProperty());
+    }
+
+    // Below is search functionality
+    private void performSearch() {
+        searchObservableList.clear();            // old search
+        String searchText = searchStudent.getText().trim();
+        loadSearchedSchedules(searchText);       // reuse your existing method
+    }
+
+
+    private void loadSearchedSchedules(String searchText)
+    {
+        ConnectDB connectDB = new ConnectDB("jdbc:sqlite:src/main/resources/Database/schedule.db");
+        Connection connection = connectDB.getConnection();
+
+        if (connection != null) {
+            try {
+
+                Statement createstatement = connection.createStatement();
+                String createTable = "CREATE TABLE IF NOT EXISTS schedule ("
+                        + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                        + "studentName TEXT, "
+                        + "date TEXT, "
+                        + "time TEXT, "
+                        + "course TEXT, "
+                        + "reason TEXT, "
+                        + "comment TEXT)";
+                // create a table
+                createstatement.executeUpdate(createTable);
+
+                Statement statement = connection.createStatement();
+                String selectQuery =
+                        "SELECT * " +
+                                "FROM   schedule " +
+                                "WHERE  studentName LIKE '%" + searchText + "%' COLLATE NOCASE";
+                ResultSet resultSet = statement.executeQuery(selectQuery);
+
+                while (resultSet.next()) {
+                    int id = resultSet.getInt("id");
+                    String studentName = resultSet.getString("studentName");
+                    String date = resultSet.getString("date");
+                    String time = resultSet.getString("time");
+                    String course = resultSet.getString("course");
+                    String reason = resultSet.getString("reason");
+                    String comment = resultSet.getString("comment");
+
+                    Schedule schedule = new Schedule(id, studentName, date, time, course, reason, comment);
+                    searchObservableList.add(schedule);
+                }
+
+                dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+                scheduleTable.setItems(searchObservableList);
+
+                // use hidden column for time sorting
+                TableColumn<Schedule, Integer> hiddenFromHourColumn = new TableColumn<>("fromTimeSlots Hidden Order");
+                hiddenFromHourColumn.setCellValueFactory(new PropertyValueFactory<>("fromTimeOrder"));
+
+                TableColumn<Schedule, Integer> hiddenToHourColumn = new TableColumn<>("toTimeSlots Hidden Order");
+                hiddenToHourColumn.setCellValueFactory(new PropertyValueFactory<>("toTimeOrder"));
+
+                // hide from user
+                hiddenFromHourColumn.setVisible(false);
+                hiddenToHourColumn.setVisible(false);
+
+                scheduleTable.getColumns().add(hiddenFromHourColumn);
+                scheduleTable.getColumns().add(hiddenToHourColumn);
+
+                // sort ascending based on fromHour & toHour
+                dateColumn.setSortType(TableColumn.SortType.DESCENDING);
+                hiddenFromHourColumn.setSortType(TableColumn.SortType.DESCENDING);
+                hiddenToHourColumn.setSortType(TableColumn.SortType.DESCENDING);
+
+                // clear old sorting order & add the new one
+                scheduleTable.getSortOrder().clear();
+                scheduleTable.getSortOrder().addAll(dateColumn, hiddenFromHourColumn, hiddenToHourColumn);
+                scheduleTable.sort();
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
 }
