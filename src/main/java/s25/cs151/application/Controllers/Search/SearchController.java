@@ -20,8 +20,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
 import java.util.ResourceBundle;
-import java.sql.*;
+import java.util.Optional;
 
 public class SearchController implements Initializable {
 
@@ -67,23 +68,20 @@ public class SearchController implements Initializable {
     private Button editBtn;
 
     private ObservableList<Schedule> searchObservableList = FXCollections.observableArrayList();
+    private final String DB_URL = "jdbc:sqlite:src/main/resources/Database/schedule.db";
 
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
         setupTableColumns();
         setupNavigationHandlers();
-        loadSearchedSchedules("");        // show all schedules prior to search
+        loadSearchedSchedules("");
 
         searchBtn.setOnAction(e -> performSearch());
         searchStudent.setOnAction(e -> performSearch());
         deleteBtn.setOnAction(e -> deleteSelected());
     }
 
-
-
     private void setupNavigationHandlers() {
-
-
-        // switch back to dashboard when Dashboard label is clicked
         dashboardLabel.setOnMouseClicked(event -> {
             try {
                 switchToDashboard();
@@ -92,7 +90,6 @@ public class SearchController implements Initializable {
             }
         });
 
-        // Handle all menu items click
         dashboardItem.setOnAction(event -> {
             try {
                 switchToDashboard();
@@ -140,67 +137,87 @@ public class SearchController implements Initializable {
         });
     }
 
-
-    /**
-     * Switches the view to the dashboard
-     */
     public void switchToDashboard() throws IOException {
         Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Dashboard/Dashboard.fxml", "Dashboard");
     }
 
-    /**
-     * Switches to the office hours view
-     */
     private void switchToOfficeHours() throws IOException {
         Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHours.fxml", "Office Hours");
     }
 
-    /**
-     * Switches to the Time Slots view
-     */
     private void switchToTimeSlots() throws IOException {
         Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/TimeSlots/TimeSlots.fxml", "Time Slots");
     }
 
-    /**
-     * Switches to the Courses view
-     */
     private void switchToCourses() throws IOException {
         Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Courses/Course.fxml", "Courses");
     }
 
-    /**
-     * Switches to the Schedule view
-     */
     private void switchToSchedule() throws IOException {
         Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Schedule/Schedule.fxml", "Schedule");
     }
-    /**
-     * Switches to the Search view
-     */
+
     private void switchToSearch() throws IOException {
         Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Search/SearchSchedule.fxml", "Search Schedule");
     }
 
-    /**
-     * Delete Entry
-     */
-
     private void deleteSelected() {
-        // Schedule selectedEntry = scheduleTable.getSelectionModel().getSelectedItem(); // selected entry
+        Schedule selectedSchedule = scheduleTable.getSelectionModel().getSelectedItem();
 
-        // null handling
-        //delete from DB using selectedEntry's id
-        //add confirmation
-        // remove
+        if (selectedSchedule == null) {
+            showInfoAlert("No Selection", "Please select a schedule entry to delete.");
+            return;
+        }
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirm Deletion");
+        alert.setHeaderText("Delete Schedule Entry");
+        alert.setContentText("Are you sure you want to delete the schedule for " +
+                selectedSchedule.getStudentName() + " on " + selectedSchedule.getDate() + "?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            if (deleteScheduleFromDB(selectedSchedule.getId())) {
+                searchObservableList.remove(selectedSchedule);
+                showInfoAlert("Success", "Schedule deleted successfully.");
+            } else {
+                showErrorAlert("Deletion Failed", "Could not delete the schedule from the database.");
+            }
+        }
     }
 
+    private boolean deleteScheduleFromDB(int scheduleId) {
+        String sql = "DELETE FROM schedule WHERE id = ?";
+        ConnectDB connectDB = new ConnectDB(DB_URL);
+        Connection conn = connectDB.getConnection();
+
+        if (conn == null) {
+            showErrorAlert("Database Error", "Failed to connect to the database for deletion.");
+            return false;
+        }
+
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, scheduleId);
+            int affectedRows = pstmt.executeUpdate();
+            return affectedRows > 0;
+        } catch (SQLException e) {
+            showErrorAlert("Database Error", "Error deleting schedule: " + e.getMessage());
+            return false;
+        } finally {
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException ex) {
+                System.err.println("Error closing connection: " + ex.getMessage());
+            }
+        }
+    }
 
     private void setupTableColumns() {
         studentNameColumn.setCellValueFactory(cellData -> cellData.getValue().studentNameProperty());
@@ -211,23 +228,19 @@ public class SearchController implements Initializable {
         commentColumn.setCellValueFactory(cellData -> cellData.getValue().commentProperty());
     }
 
-    // Below is search functionality
     private void performSearch() {
         searchObservableList.clear();
         String searchText = searchStudent.getText().trim();
         loadSearchedSchedules(searchText);
     }
 
-
-    private void loadSearchedSchedules(String searchText)
-    {
-        ConnectDB connectDB = new ConnectDB("jdbc:sqlite:src/main/resources/Database/schedule.db");
+    private void loadSearchedSchedules(String searchText) {
+        searchObservableList.clear();
+        ConnectDB connectDB = new ConnectDB(DB_URL);
         Connection connection = connectDB.getConnection();
 
         if (connection != null) {
-            try {
-
-                Statement createstatement = connection.createStatement();
+            try (Statement createstatement = connection.createStatement()) {
                 String createTable = "CREATE TABLE IF NOT EXISTS schedule ("
                         + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
                         + "studentName TEXT, "
@@ -236,15 +249,24 @@ public class SearchController implements Initializable {
                         + "course TEXT, "
                         + "reason TEXT, "
                         + "comment TEXT)";
-                // create a table
                 createstatement.executeUpdate(createTable);
+            } catch (SQLException e) {
+                showErrorAlert("Database Error", "Failed to ensure schedule table exists: " + e.getMessage());
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    /* ignore */ }
+                return;
+            }
 
-                Statement statement = connection.createStatement();
-                String selectQuery =
-                        "SELECT * " +
-                                "FROM   schedule " +
-                                "WHERE  studentName LIKE '%" + searchText + "%' COLLATE NOCASE";
-                ResultSet resultSet = statement.executeQuery(selectQuery);
+            String selectQuery = "SELECT id, studentName, date, time, course, reason, comment " +
+                    "FROM   schedule " +
+                    "WHERE  studentName LIKE ? COLLATE NOCASE " +
+                    "ORDER BY date DESC, time DESC";
+
+            try (PreparedStatement pstmt = connection.prepareStatement(selectQuery)) {
+                pstmt.setString(1, "%" + searchText + "%");
+                ResultSet resultSet = pstmt.executeQuery();
 
                 while (resultSet.next()) {
                     int id = resultSet.getInt("id");
@@ -258,38 +280,36 @@ public class SearchController implements Initializable {
                     Schedule schedule = new Schedule(id, studentName, date, time, course, reason, comment);
                     searchObservableList.add(schedule);
                 }
-
-                dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
                 scheduleTable.setItems(searchObservableList);
 
-                // use hidden column for time sorting
-                TableColumn<Schedule, Integer> hiddenFromHourColumn = new TableColumn<>("fromTimeSlots Hidden Order");
-                hiddenFromHourColumn.setCellValueFactory(new PropertyValueFactory<>("fromTimeOrder"));
-
-                TableColumn<Schedule, Integer> hiddenToHourColumn = new TableColumn<>("toTimeSlots Hidden Order");
-                hiddenToHourColumn.setCellValueFactory(new PropertyValueFactory<>("toTimeOrder"));
-
-                // hide from user
-                hiddenFromHourColumn.setVisible(false);
-                hiddenToHourColumn.setVisible(false);
-
-                scheduleTable.getColumns().add(hiddenFromHourColumn);
-                scheduleTable.getColumns().add(hiddenToHourColumn);
-
-                // sort descending based on fromHour & toHour
-                dateColumn.setSortType(TableColumn.SortType.DESCENDING);
-                hiddenFromHourColumn.setSortType(TableColumn.SortType.DESCENDING);
-                hiddenToHourColumn.setSortType(TableColumn.SortType.DESCENDING);
-
-                // clear old sorting order & add the new one
-                scheduleTable.getSortOrder().clear();
-                scheduleTable.getSortOrder().addAll(dateColumn, hiddenFromHourColumn, hiddenToHourColumn);
-                scheduleTable.sort();
-
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                showErrorAlert("Database Error", "Failed to load schedules: " + e.getMessage());
+            } finally {
+                try {
+                    if (connection != null)
+                        connection.close();
+                } catch (SQLException ex) {
+                    System.err.println("Error closing connection: " + ex.getMessage());
+                }
             }
+        } else {
+            showErrorAlert("Database Error", "Failed to connect to the database.");
         }
     }
 
+    private void showErrorAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    private void showInfoAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 }
