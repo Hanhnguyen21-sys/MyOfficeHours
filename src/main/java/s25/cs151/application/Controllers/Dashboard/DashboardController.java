@@ -26,6 +26,8 @@ public class DashboardController implements Initializable {
     private Button scheduleBtn;
     @FXML
     private Button reportBtn;
+    @FXML
+    private Button searchBtn;
 
     @FXML
     private MenuItem dashboardItem;
@@ -80,6 +82,14 @@ public class DashboardController implements Initializable {
         scheduleBtn.setOnAction(event -> {
             try {
                 switchToSchedule();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        searchBtn.setOnAction(event -> {
+            try {
+                switchToSearch();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
