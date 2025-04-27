@@ -2,10 +2,10 @@ Name of application: Faculty's Office Hours Manager
 Version: 0.6
 
 Who did what
-- Nguyen Nguyen: Designed and implemented Schedule UI, along with implementation for saving schedules to database.
-- Meghana Indukuri: Fixed bugs in UI and implemented sorting + ReadME.
-- Misbah Syed: Implemented navigation and organization for Dashboard and the application as a whole.
-- Oliver Majano: Implemented UI for the schedule list and displayed the schedule data.
+- Nguyen Nguyen: Design UI for search page and dashboard (when adding a button for Search Office Hours Schedule)
+- Meghana Indukuri: Search page (show list of schedule of searched student)
+- Misbah Syed: Populate 10 office hours for at least 4 students + Read me + Test + Integrate and submission
+- Oliver Majano: Delete Office Hour Schedule (From table view and Database)
 
 Any other instruction that users need to know:
 N/A

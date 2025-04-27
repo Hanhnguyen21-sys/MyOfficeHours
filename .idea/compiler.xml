@@ -9,9 +9,6 @@
         <module name="Project_Group17" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Project_Group17" target="23" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

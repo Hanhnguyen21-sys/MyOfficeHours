@@ -6,16 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8b34a287-10b1-4bb5-844a-1e798f22fb78" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Dashboard/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Dashboard/DashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Schedule/ScheduleListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Schedule/ScheduleListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Search/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Controllers/Search/SearchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Models/Schedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/s25/cs151/application/Models/Schedule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Database/schedule.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Database/schedule.db" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Database/schedule.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/s25/cs151/application/Controllers/Search/SearchController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/s25/cs151/application/Controllers/Search/SearchController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/README.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Database/schedule.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Database/schedule.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
@@ -213,6 +207,7 @@
       <workItem from="1744432117496" duration="6222000" />
       <workItem from="1745644266251" duration="1611000" />
       <workItem from="1745645893126" duration="2887000" />
+      <workItem from="1745714763034" duration="770000" />
     </task>
     <servers />
   </component>
