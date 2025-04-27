@@ -1,5 +1,5 @@
 Name of application: Faculty's Office Hours Manager
-Version: 0.6
+Version: 0.7
 
 Who did what
 - Nguyen Nguyen: Design UI for search page and dashboard (when adding a button for Search Office Hours Schedule)
