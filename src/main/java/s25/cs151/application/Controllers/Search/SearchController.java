@@ -281,6 +281,32 @@ public class SearchController implements Initializable {
                     searchObservableList.add(schedule);
                 }
                 scheduleTable.setItems(searchObservableList);
+                dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+                scheduleTable.setItems(searchObservableList);
+
+                // use hidden column for time sorting
+                TableColumn<Schedule, Integer> hiddenFromHourColumn = new TableColumn<>("fromTimeSlots Hidden Order");
+                hiddenFromHourColumn.setCellValueFactory(new PropertyValueFactory<>("fromTimeOrder"));
+
+                TableColumn<Schedule, Integer> hiddenToHourColumn = new TableColumn<>("toTimeSlots Hidden Order");
+                hiddenToHourColumn.setCellValueFactory(new PropertyValueFactory<>("toTimeOrder"));
+
+                // hide from user
+                hiddenFromHourColumn.setVisible(false);
+                hiddenToHourColumn.setVisible(false);
+
+                scheduleTable.getColumns().add(hiddenFromHourColumn);
+                scheduleTable.getColumns().add(hiddenToHourColumn);
+
+                // sort descending based on fromHour & toHour
+                dateColumn.setSortType(TableColumn.SortType.DESCENDING);
+                hiddenFromHourColumn.setSortType(TableColumn.SortType.DESCENDING);
+                hiddenToHourColumn.setSortType(TableColumn.SortType.DESCENDING);
+
+                // clear old sorting order & add the new one
+                scheduleTable.getSortOrder().clear();
+                scheduleTable.getSortOrder().addAll(dateColumn, hiddenFromHourColumn, hiddenToHourColumn);
+                scheduleTable.sort();
 
             } catch (SQLException e) {
                 showErrorAlert("Database Error", "Failed to load schedules: " + e.getMessage());
