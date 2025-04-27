@@ -61,4 +61,16 @@ Navigation:
     Click "Save" to add the schedule
     Click "List All" to view the schedule
 
+    To Search Schedule:
+        - Click the "Search" tab
+        - Search Student Name
+    Click "Enter" to search
+    View the schedule
+
+    To Delete from Schedule:
+        - Click the "Search" tab
+        - Click Entry
+    Click on Delete Button
+
+
 
