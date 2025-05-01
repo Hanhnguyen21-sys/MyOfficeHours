@@ -21,6 +21,7 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class CourseListController implements Initializable {
+
     @FXML
     private Label dashboardLabel;
     @FXML
@@ -66,7 +67,8 @@ public class CourseListController implements Initializable {
     private MenuItem scheduleItem;
     @FXML
     private MenuItem searchItem;
-
+    @FXML
+    private MenuItem editScheduleItem;
     ObservableList<Courses> coursesObservableList = FXCollections.observableArrayList();
 
     @Override
@@ -211,6 +213,13 @@ public class CourseListController implements Initializable {
                 throw new RuntimeException(e);
             }
         });
+        editScheduleItem.setOnAction(event -> {
+            try {
+                switchToEditSchedule();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     /**
@@ -344,6 +353,13 @@ public class CourseListController implements Initializable {
     private void switchToSearch() throws IOException {
         Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Search/SearchSchedule.fxml", "Search Schedule");
+    }
+    /**
+     * Switches to the Edit view
+     */
+    private void switchToEditSchedule() throws IOException {
+        Stage stage = (Stage) root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/Edit/EditSchedule.fxml", "Edit Schedule");
     }
 
 }

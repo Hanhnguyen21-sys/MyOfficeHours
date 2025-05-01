@@ -11,7 +11,6 @@ import javafx.stage.Stage;
 import s25.cs151.application.Helper.SwitchScene;
 import s25.cs151.application.Models.ConnectDB;
 import s25.cs151.application.Models.Schedule;
-import s25.cs151.application.Models.TimeSlots;
 
 import java.io.IOException;
 import java.net.URL;
@@ -65,7 +64,8 @@ public class ScheduleListController implements Initializable {
     private MenuItem searchItem;
     @FXML
     private MenuItem reportItem;
-
+    @FXML
+    private MenuItem editScheduleItem;
 
 
     private ObservableList<Schedule> scheduleObservableList = FXCollections.observableArrayList();
@@ -155,6 +155,13 @@ public class ScheduleListController implements Initializable {
         searchItem.setOnAction(event -> {
             try {
                 switchToCourses();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        editScheduleItem.setOnAction(event -> {
+            try {
+                switchToEditSchedule();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -275,5 +282,12 @@ public class ScheduleListController implements Initializable {
     private void switchToSearch() throws IOException {
         Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Search/SearchSchedule.fxml", "Search Schedule");
+    }
+    /**
+     * Switches to the Edit view
+     */
+    private void switchToEditSchedule() throws IOException {
+        Stage stage = (Stage) root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/Edit/EditSchedule.fxml", "Edit Schedule");
     }
 }
