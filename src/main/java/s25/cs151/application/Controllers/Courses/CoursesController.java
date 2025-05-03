@@ -23,6 +23,7 @@ import java.util.ResourceBundle;
 
 public class CoursesController implements Initializable{
 
+
     @FXML
     private AnchorPane root;
 
@@ -63,7 +64,8 @@ public class CoursesController implements Initializable{
     private MenuItem searchItem;
     @FXML
     private MenuItem reportItem;
-
+    @FXML
+    private MenuItem editScheduleItem;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -157,6 +159,13 @@ public class CoursesController implements Initializable{
         searchItem.setOnAction(event -> {
             try {
                 switchToSearch();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        editScheduleItem.setOnAction(event -> {
+            try {
+                switchToEditSchedule();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -283,5 +292,12 @@ public class CoursesController implements Initializable{
     private void switchToSearch() throws IOException {
         Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Search/SearchSchedule.fxml", "Search Schedule");
+    }
+    /**
+     * Switches to the Edit view
+     */
+    private void switchToEditSchedule() throws IOException {
+        Stage stage = (Stage) root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/Edit/EditSchedule.fxml", "Edit Schedule");
     }
 }

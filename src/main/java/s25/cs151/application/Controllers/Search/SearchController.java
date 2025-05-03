@@ -1,30 +1,25 @@
 package s25.cs151.application.Controllers.Search;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.control.cell.PropertyValueFactory;
 import s25.cs151.application.Helper.SwitchScene;
-import s25.cs151.application.Models.Schedule;
-import s25.cs151.application.Models.TimeSlots;
 import s25.cs151.application.Models.ConnectDB;
+import s25.cs151.application.Models.Schedule;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.PreparedStatement;
-import java.util.ResourceBundle;
+import java.sql.*;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 public class SearchController implements Initializable {
+
 
     @FXML
     private AnchorPane root;
@@ -42,6 +37,8 @@ public class SearchController implements Initializable {
     private MenuItem searchItem;
     @FXML
     private MenuItem reportItem;
+    @FXML
+    private MenuItem editScheduleItem;
     @FXML
     private TableView<Schedule> scheduleTable;
     @FXML
@@ -64,8 +61,7 @@ public class SearchController implements Initializable {
     private Button searchBtn;
     @FXML
     private Button deleteBtn;
-    @FXML
-    private Button editBtn;
+
 
     private ObservableList<Schedule> searchObservableList = FXCollections.observableArrayList();
     private final String DB_URL = "jdbc:sqlite:src/main/resources/Database/schedule.db";
@@ -135,8 +131,21 @@ public class SearchController implements Initializable {
                 throw new RuntimeException(e);
             }
         });
+        editScheduleItem.setOnAction(event -> {
+            try {
+                switchToEditSchedule();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
-
+    /**
+     * Switches to the Edit view
+     */
+    private void switchToEditSchedule() throws IOException {
+        Stage stage = (Stage) root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/Edit/EditSchedule.fxml", "Edit Schedule");
+    }
     public void switchToDashboard() throws IOException {
         Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Dashboard/Dashboard.fxml", "Dashboard");
@@ -166,6 +175,7 @@ public class SearchController implements Initializable {
         Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Search/SearchSchedule.fxml", "Search Schedule");
     }
+
 
     private void deleteSelected() {
         Schedule selectedSchedule = scheduleTable.getSelectionModel().getSelectedItem();

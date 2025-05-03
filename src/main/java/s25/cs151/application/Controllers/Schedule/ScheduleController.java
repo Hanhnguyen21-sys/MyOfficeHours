@@ -1,11 +1,8 @@
 package s25.cs151.application.Controllers.Schedule;
 
-import com.jfoenix.controls.JFXTimePicker;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import s25.cs151.application.Helper.SwitchScene;
@@ -60,6 +57,8 @@ public class ScheduleController implements Initializable {
     private MenuItem searchItem;
     @FXML
     private MenuItem reportItem;
+    @FXML
+    private MenuItem editScheduleItem;
 
 
     public void initialize(URL location, ResourceBundle resources) {
@@ -194,6 +193,13 @@ public class ScheduleController implements Initializable {
                 throw new RuntimeException(e);
             }
         });
+        editScheduleItem.setOnAction(event -> {
+            try {
+                switchToEditSchedule();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -309,5 +315,11 @@ public class ScheduleController implements Initializable {
         Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Schedule/Schedule.fxml", "Schedule");
     }
-
+    /**
+     * Switches to the Edit view
+     */
+    private void switchToEditSchedule() throws IOException {
+        Stage stage = (Stage) root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/Edit/EditSchedule.fxml", "Edit Schedule");
+    }
 }

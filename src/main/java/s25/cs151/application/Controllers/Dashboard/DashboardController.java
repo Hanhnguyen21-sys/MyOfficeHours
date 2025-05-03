@@ -3,7 +3,7 @@ package s25.cs151.application.Controllers.Dashboard;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.RadioMenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import s25.cs151.application.Helper.SwitchScene;
@@ -13,9 +13,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable {
-    @FXML
-    public AnchorPane root;
 
+    @FXML
+    private AnchorPane root;
+
+    @FXML
+    private Button editScheduleBtn;
     @FXML
     private Button officeHoursBtn;
     @FXML
@@ -30,19 +33,21 @@ public class DashboardController implements Initializable {
     private Button searchBtn;
 
     @FXML
-    private MenuItem dashboardItem;
+    private RadioMenuItem dashboardItem;
     @FXML
-    private MenuItem officehoursItem;
+    private RadioMenuItem officehoursItem;
     @FXML
-    private MenuItem timeslotsItem;
+    private RadioMenuItem timeslotsItem;
     @FXML
-    private MenuItem coursesItem;
+    private RadioMenuItem coursesItem;
     @FXML
-    private MenuItem scheduleItem;
+    private RadioMenuItem scheduleItem;
     @FXML
-    private MenuItem searchItem;
+    private RadioMenuItem searchItem;
     @FXML
-    private MenuItem reportItem;
+    private RadioMenuItem reportItem;
+    @FXML
+    private RadioMenuItem editScheduleItem;
 
 
     @Override
@@ -145,6 +150,14 @@ public class DashboardController implements Initializable {
                 throw new RuntimeException(e);
             }
         });
+        editScheduleBtn.setOnAction(event -> {
+            try {
+                switchToEditSchedule();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
     }
 
 
@@ -192,5 +205,13 @@ public class DashboardController implements Initializable {
         Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Search/SearchSchedule.fxml", "Search Schedule");
     }
+    /**
+     * Switches to the Edit view
+     */
+    private void switchToEditSchedule() throws IOException {
+        Stage stage = (Stage) root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/Edit/EditSchedule.fxml", "Edit Schedule");
+    }
+
 
 }

@@ -23,4 +23,6 @@ module com.example.project_group17 {
     opens s25.cs151.application.Controllers.Schedule to javafx.fxml;
     exports s25.cs151.application.Controllers.Search;
     opens s25.cs151.application.Controllers.Search to javafx.fxml;
+    exports s25.cs151.application.Controllers.Edit;
+    opens s25.cs151.application.Controllers.Edit to javafx.fxml;
 }

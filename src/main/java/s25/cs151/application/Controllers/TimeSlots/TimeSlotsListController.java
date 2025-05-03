@@ -66,6 +66,8 @@ public class TimeSlotsListController implements Initializable {
     private MenuItem searchItem;
     @FXML
     private MenuItem reportItem;
+    @FXML
+    private MenuItem editScheduleItem;
 
     ObservableList<TimeSlots> timeSlotsObservableList = FXCollections.observableArrayList();
 
@@ -214,6 +216,13 @@ public class TimeSlotsListController implements Initializable {
                 throw new RuntimeException(e);
             }
         });
+        editScheduleItem.setOnAction(event -> {
+            try {
+                switchToEditSchedule();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     /**
@@ -358,5 +367,12 @@ public class TimeSlotsListController implements Initializable {
     private void switchToSearch() throws IOException {
         Stage stage = (Stage) root.getScene().getWindow();
         SwitchScene.switchScene(stage, "/Fxml/Search/SearchSchedule.fxml", "Search Schedule");
+    }
+    /**
+     * Switches to the Edit view
+     */
+    private void switchToEditSchedule() throws IOException {
+        Stage stage = (Stage) root.getScene().getWindow();
+        SwitchScene.switchScene(stage, "/Fxml/Edit/EditSchedule.fxml", "Edit Schedule");
     }
 }
