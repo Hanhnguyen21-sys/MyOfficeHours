@@ -3,6 +3,7 @@ package s25.cs151.application.Controllers.Edit;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -66,7 +67,8 @@ public class EditScheduleController implements Initializable {
 
     private ObservableList<Schedule> searchObservableList = FXCollections.observableArrayList();
     private final String DB_URL = "jdbc:sqlite:src/main/resources/Database/schedule.db";
-
+    ConnectDB connectDB = new ConnectDB(DB_URL);
+    Connection connection = connectDB.getConnection();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setupTableColumns();
@@ -76,6 +78,14 @@ public class EditScheduleController implements Initializable {
         searchBtn.setOnAction(e -> performSearch());
         searchStudent.setOnAction(e -> performSearch());
         deleteBtn.setOnAction(e -> deleteSelected());
+        editBtn.setOnAction(e->{
+            Schedule schedule = scheduleTable.getSelectionModel().getSelectedItem();
+            try {
+                editStudentSchedule(schedule);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
     }
 
     private void setupNavigationHandlers() {
@@ -139,6 +149,56 @@ public class EditScheduleController implements Initializable {
                 throw new RuntimeException(e);
             }
         });
+    }
+    private void editStudentSchedule(Schedule schedule) throws IOException {
+        //load fxml of edit dialog
+        // Load the FXML file
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/Fxml/Edit/PopupEdit.fxml"));
+        DialogPane dialogPane = loader.load();
+
+        if(schedule!=null){
+            Dialog<ButtonType> dialog = new Dialog<>();
+            dialog.setTitle("Edit Schedule");
+            dialog.setHeaderText("Edit Schedule Information");
+            dialog.setDialogPane(dialogPane);
+            PopupEditController controller = loader.getController();
+            controller.setSchedule(schedule);
+            Optional<ButtonType> result = dialog.showAndWait();
+
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                // Update the schedule object with values from the form
+                controller.updateSchedule();
+//
+                // Save updated data to database
+                updateToDatabase(schedule);
+            }
+        }
+        else{
+            showInfoAlert("No Selection", "Please select a schedule entry to delete.");
+        }
+    }
+    private void updateToDatabase(Schedule schedule) {
+        if(connection!=null){
+            try{
+                String updateQuery ="UPDATE schedule SET studentName = ?, date = ?, time = ?, course =?, reason =?, comment =? WHERE id = ?";
+                PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);
+                preparedStatement.setString(1,schedule.getStudentName());
+                preparedStatement.setString(2,schedule.getDate());
+                preparedStatement.setString(3,schedule.getTime());
+                preparedStatement.setString(4,schedule.getCourse());
+                preparedStatement.setString(5,schedule.getReason());
+                preparedStatement.setString(6,schedule.getComment());
+                preparedStatement.setInt(7,schedule.getId());
+                int updatedRow = preparedStatement.executeUpdate();
+                if (updatedRow>0){
+                    showInfoAlert("Success", "Update Successfully!");
+                }
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
     /**
      * Switches to the Edit view
