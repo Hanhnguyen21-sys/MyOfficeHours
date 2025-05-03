@@ -23,7 +23,28 @@ public class Schedule {
         this.reason = new SimpleStringProperty(reason);
         this.comment = new SimpleStringProperty(comment);
     }
-
+    //setters
+    public void setId(int value) {
+        id.set(value);
+    }
+    public void setName(String value) {
+        studentName.set(value);
+    }
+    public void setTime(String value) {
+        time.set(value);
+    }
+    public void setDate(String value) {
+        date.set(value);
+    }
+    public void setCourse(String value) {
+        course.set(value);
+    }
+    public void setReason(String value) {
+        reason.set(value);
+    }
+    public void setComment(String value) {
+        comment.set(value);
+    }
     // Getters for properties
 
     public int getId() { return id.get(); }
