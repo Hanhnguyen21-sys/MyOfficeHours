@@ -4,7 +4,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.RadioMenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import s25.cs151.application.Controllers.Helpers.*;
@@ -14,9 +14,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable {
-    @FXML
-    public AnchorPane root;
 
+    @FXML
+    private AnchorPane root;
+
+    @FXML
+    private Button editScheduleBtn;
     @FXML
     private Button officeHoursBtn;
     @FXML
@@ -31,21 +34,24 @@ public class DashboardController implements Initializable {
     private Button searchBtn;
 
     @FXML
-    private MenuItem dashboardItem;
+    private RadioMenuItem dashboardItem;
     @FXML
-    private MenuItem officehoursItem;
+    private RadioMenuItem officehoursItem;
     @FXML
-    private MenuItem timeslotsItem;
+    private RadioMenuItem timeslotsItem;
     @FXML
-    private MenuItem coursesItem;
+    private RadioMenuItem coursesItem;
     @FXML
-    private MenuItem scheduleItem;
+    private RadioMenuItem scheduleItem;
     @FXML
-    private MenuItem searchItem;
-    @FXML
-    private MenuItem reportItem;
+    private RadioMenuItem searchItem;
     @FXML
     private Stage stage;
+    @FXML
+    private RadioMenuItem reportItem;
+    @FXML
+    private RadioMenuItem editScheduleItem;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -63,6 +69,7 @@ public class DashboardController implements Initializable {
         coursesBtn.setOnAction(e -> switchTo(new CoursesSwitcher(stage)));
         scheduleBtn.setOnAction(e -> switchTo(new ScheduleSwitcher(stage)));
         searchBtn.setOnAction(e -> switchTo(new SearchSwitcher(stage)));
+        editScheduleBtn.setOnAction(e -> switchTo(new EditScheduleSwitcher(stage)));
 
         // Menu Items
         dashboardItem.setOnAction(e -> switchTo(new DashboardSwitcher(stage)));
@@ -71,6 +78,8 @@ public class DashboardController implements Initializable {
         coursesItem.setOnAction(e -> switchTo(new CoursesSwitcher(stage)));
         scheduleItem.setOnAction(e -> switchTo(new ScheduleSwitcher(stage)));
         searchItem.setOnAction(e -> switchTo(new SearchSwitcher(stage)));
+        editScheduleItem.setOnAction(e -> switchTo(new EditScheduleSwitcher(stage)));
+
     }
 
     private void switchTo(SceneSwitcher switcher) {

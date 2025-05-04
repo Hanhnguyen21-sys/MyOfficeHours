@@ -68,6 +68,9 @@ public class TimeSlotsController implements Initializable {
     private MenuItem reportItem;
     @FXML
     private Stage stage;
+    @FXML
+    private MenuItem editScheduleItem;
+
 
 
     @Override
@@ -124,7 +127,9 @@ public class TimeSlotsController implements Initializable {
         coursesItem.setOnAction(event -> switchTo(new CoursesSwitcher(stage)));
         scheduleItem.setOnAction(event -> switchTo(new ScheduleSwitcher(stage)));
         searchItem.setOnAction(event -> switchTo(new SearchSwitcher(stage)));
+        editScheduleItem.setOnAction(e -> switchTo(new EditScheduleSwitcher(stage)));
     }
+
 
     private void switchTo(SceneSwitcher switcher) {
         try {
@@ -205,4 +210,5 @@ public class TimeSlotsController implements Initializable {
         startComboBox.setValue("");
         endComboBox.setValue("");
     }
+
 }

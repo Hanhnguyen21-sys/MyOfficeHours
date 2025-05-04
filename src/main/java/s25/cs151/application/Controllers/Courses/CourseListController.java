@@ -22,6 +22,7 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class CourseListController implements Initializable {
+
     @FXML
     private Label dashboardLabel;
     @FXML
@@ -69,6 +70,8 @@ public class CourseListController implements Initializable {
     private MenuItem searchItem;
     @FXML
     private Stage stage;
+    @FXML
+    private MenuItem editScheduleItem;
 
     ObservableList<Courses> coursesObservableList = FXCollections.observableArrayList();
 
@@ -114,7 +117,9 @@ public class CourseListController implements Initializable {
         coursesItem.setOnAction(e -> switchTo(new CoursesSwitcher(stage)));
         scheduleItem.setOnAction(e -> switchTo(new ScheduleSwitcher(stage)));
         searchItem.setOnAction(e -> switchTo(new SearchSwitcher(stage)));
+        editScheduleItem.setOnAction(e -> switchTo(new EditScheduleSwitcher(stage)));
     }
+
 
     private void switchTo(SceneSwitcher switcher) {
         try {

@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.Search.SearchController">
+<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.Edit.EditScheduleController">
     <VBox layoutY="1.0" prefHeight="600.0" prefWidth="127.0" styleClass="left-sidebar" stylesheets="@../../Styles/OfficeHours.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: 800;" text="My Office Hours">
          <VBox.margin>
@@ -29,18 +29,18 @@
                 <MenuItem fx:id="timeslotsItem" mnemonicParsing="false" text="Time Slots" />
                 <MenuItem fx:id="coursesItem" mnemonicParsing="false" text="Courses" />
                 <MenuItem fx:id="scheduleItem" mnemonicParsing="false" text="Schedule" />
-            <MenuItem fx:id="editScheduleItem" mnemonicParsing="false" text="EditSchedule" />
             <MenuItem fx:id="searchItem" mnemonicParsing="false" text="Search" />
+            <MenuItem fx:id="editScheduleItem" mnemonicParsing="false" text="Edit Schedule" />
                 <MenuItem fx:id="reportItem" mnemonicParsing="false" text="Report" />
             </items>
         </MenuButton>
     </VBox>
     <VBox fx:id="titleSection" layoutX="162.0" layoutY="17.0" prefHeight="71.0" prefWidth="628.0" AnchorPane.leftAnchor="162.0" AnchorPane.rightAnchor="10.0">
-        <Label styleClass="page-header" stylesheets="@../../Styles/OfficeHours.css" text="Search  Student's Schedule" />
+        <Label styleClass="page-header" stylesheets="@../../Styles/OfficeHours.css" text="Edit Schedule" />
         <HBox fx:id="breadcrumb" prefHeight="32.0" prefWidth="502.0" styleClass="breadcrumb-container" stylesheets="@../../Styles/OfficeHours.css">
-            <Label fx:id="dashboardLabel"  styleClass="breadcrumb-item" stylesheets="@../../Styles/OfficeHours.css" text="Dashboard" />
+            <Label fx:id="dashboardLabel" styleClass="breadcrumb-item" stylesheets="@../../Styles/OfficeHours.css" text="Dashboard" />
             <Label styleClass="breadcrumb-separator" stylesheets="@../../Styles/OfficeHours.css" text="&gt;" />
-            <Label fx:id="searchscheduleLabel" style="-fx-text-fill: #133E87;" styleClass="breadcrumb-item" stylesheets="@../../Styles/OfficeHours.css" text="Search" />
+            <Label fx:id="editLabel" style="-fx-text-fill: #133E87;" styleClass="breadcrumb-item" stylesheets="@../../Styles/OfficeHours.css" text="Edit Schedule" />
         </HBox>
     </VBox>
 
@@ -90,6 +90,7 @@
    <HBox layoutX="403.0" layoutY="518.0" prefHeight="40.0" prefWidth="200.0" styleClass="buttons-container" stylesheets="@../../Styles/OfficeHours.css">
       <children>
          <Button fx:id="deleteBtn" mnemonicParsing="false" prefHeight="31.0" prefWidth="110.0" styleClass="cancel-button" stylesheets="@../../Styles/OfficeHours.css" text="Delete" />
+         <Button fx:id="editBtn" mnemonicParsing="false" styleClass="save-button" stylesheets="@../../Styles/OfficeHours.css" text="Edit" />
       </children>
    </HBox>
 </AnchorPane>

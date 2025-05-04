@@ -72,6 +72,8 @@ public class OfficeHoursListController implements Initializable {
     @FXML
     private MenuItem searchItem;
     @FXML
+    private MenuItem editScheduleItem;
+    @FXML
     private MenuItem reportItem;
 
     ObservableList<OfficeHours> officeHoursObservableList = FXCollections.observableArrayList();
@@ -121,6 +123,8 @@ public class OfficeHoursListController implements Initializable {
         coursesItem.setOnAction(e -> switchTo(new CoursesSwitcher(stage)));
         scheduleItem.setOnAction(e -> switchTo(new ScheduleSwitcher(stage)));
         searchItem.setOnAction(e -> switchTo(new SearchSwitcher(stage)));
+        editScheduleItem.setOnAction(e -> switchTo(new EditScheduleSwitcher(stage)));
+
     }
 
     private void switchTo(SceneSwitcher switcher) {
@@ -217,16 +221,5 @@ public class OfficeHoursListController implements Initializable {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
-    /**
-     * Switches to the edit office hours form view
-     *
-     * @param officeHours The office hours entry to edit
-
-    private void switchToEditOfficeHoursView(OfficeHours officeHours) throws IOException {
-        Stage stage = (Stage) root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHours.fxml", "Edit Office Hours");
-    }
-    */
 
 }

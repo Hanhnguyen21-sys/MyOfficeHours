@@ -4,11 +4,9 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import s25.cs151.application.Controllers.Helpers.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import s25.cs151.application.Controllers.Helpers.SceneSwitcher;
-import s25.cs151.application.Controllers.Helpers.SwitchScene;
+import s25.cs151.application.Controllers.Helpers.*;
 import s25.cs151.application.Models.ConnectDB;
 
 import java.io.IOException;
@@ -72,7 +70,8 @@ public class OfficeHourController implements Initializable {
     private MenuItem reportItem;
     @FXML
     private Stage stage;
-
+    @FXML
+    private MenuItem editScheduleItem;
 
     private String[] semester = { "Spring", "Summer", "Fall", "Winter" };
 
@@ -89,8 +88,6 @@ public class OfficeHourController implements Initializable {
         // Set up navigation handlers
         setupNavigationHandlers();
 
-        // Set up form action buttons
-        setupFormActions();
     }
 
     private void setupNavigationHandlers() {
@@ -110,6 +107,7 @@ public class OfficeHourController implements Initializable {
         coursesItem.setOnAction(event -> switchTo(new CoursesSwitcher(stage)));
         scheduleItem.setOnAction(event -> switchTo(new ScheduleSwitcher(stage)));
         searchItem.setOnAction(event -> switchTo(new SearchSwitcher(stage)));
+        editScheduleItem.setOnAction(e -> switchTo(new EditScheduleSwitcher(stage)));
     }
 
     private void switchTo(SceneSwitcher switcher) {
@@ -119,12 +117,6 @@ public class OfficeHourController implements Initializable {
             System.err.println("Error switching to view: " + e.getMessage());
             e.printStackTrace();
         }
-    }
-
-
-    // Sets up form action buttons (cancel, list all, new)
-    private void setupFormActions() {
-        // ... existing button setup code ...
     }
 
     /**

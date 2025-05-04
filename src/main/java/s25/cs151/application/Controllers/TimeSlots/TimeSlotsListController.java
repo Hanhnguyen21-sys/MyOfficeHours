@@ -69,6 +69,9 @@ public class TimeSlotsListController implements Initializable {
     private MenuItem reportItem;
     @FXML
     private Stage stage;
+    @FXML
+    private MenuItem editScheduleItem;
+
 
     ObservableList<TimeSlots> timeSlotsObservableList = FXCollections.observableArrayList();
 
@@ -114,6 +117,7 @@ public class TimeSlotsListController implements Initializable {
         coursesItem.setOnAction(e -> switchTo(new CoursesSwitcher(stage)));
         scheduleItem.setOnAction(e -> switchTo(new ScheduleSwitcher(stage)));
         searchItem.setOnAction(e -> switchTo(new SearchSwitcher(stage)));
+        editScheduleItem.setOnAction(e -> switchTo(new EditScheduleSwitcher(stage)));
     }
 
     private void switchTo(SceneSwitcher switcher) {
@@ -188,4 +192,5 @@ public class TimeSlotsListController implements Initializable {
             throw new RuntimeException(e);
         }
     }
+
 }

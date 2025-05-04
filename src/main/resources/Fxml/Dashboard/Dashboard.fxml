@@ -53,6 +53,11 @@
                   <ToggleGroup fx:id="myGroup3" />
                </toggleGroup>
             </RadioMenuItem>
+            <RadioMenuItem fx:id="editScheduleItem" mnemonicParsing="false" text="Edit Schedule">
+               <toggleGroup>
+                  <ToggleGroup fx:id="myGroup4" />
+               </toggleGroup>
+            </RadioMenuItem>
                <RadioMenuItem fx:id="reportItem" mnemonicParsing="false" text="Report" toggleGroup="$myGroup" />
            </items>
        </MenuButton>
@@ -60,7 +65,7 @@
 
 
     <!-- Top Panel with Title and Navigation Buttons-->
-   <VBox fx:id="titleSection" layoutX="153.0" layoutY="17.0" prefHeight="75.0" prefWidth="600.0">
+   <VBox fx:id="titleSection" layoutX="153.0" layoutY="17.0" prefHeight="181.0" prefWidth="600.0">
 
        <!-- Page Title -->
        <Label styleClass="page-header" stylesheets="@../../Styles/Dashboard.css" text="Dashboard" />
@@ -105,16 +110,18 @@
             </Button>
          </children>
       </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" />
+      <Button fx:id="editScheduleBtn" minWidth="150.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="169.0" styleClass="dashboard-nav-buttons" stylesheets="@../../Styles/Dashboard.css" text="Edit Schedule " />
    </VBox>
 
     <!-- Dashboard Content-->
 
-   <HBox layoutX="153.0" layoutY="199.0" prefHeight="380.0" prefWidth="600.0" styleClass="dashboard-content-container" stylesheets="@../../Styles/Dashboard.css">
+   <HBox layoutX="155.0" layoutY="226.0" prefHeight="342.0" prefWidth="600.0" styleClass="dashboard-content-container" stylesheets="@../../Styles/Dashboard.css">
 
        <children>
       
            <!-- Right Side of Dashboard Content with Search Bar and Table of Appointments -->
-           <VBox prefHeight="370.0" prefWidth="350.0" styleClass="dashboard-partition-content-container" stylesheets="@../../Styles/Dashboard.css">
+           <VBox prefHeight="305.0" prefWidth="361.0" styleClass="dashboard-partition-content-container" stylesheets="@../../Styles/Dashboard.css">
                <children>
                    <TreeTableView prefHeight="359.0" prefWidth="321.0" styleClass="tree-table" stylesheets="@../../Styles/Dashboard.css">
                        <columns>

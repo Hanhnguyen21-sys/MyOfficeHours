@@ -35,6 +35,7 @@
             <MenuItem fx:id="coursesItem" mnemonicParsing="false" text="Courses" />
             <MenuItem fx:id="scheduleItem" mnemonicParsing="false" text="Schedule" />
             <MenuItem fx:id="searchItem" mnemonicParsing="false" text="Search" />
+            <MenuItem fx:id="editScheduleItem" mnemonicParsing="false" text="Edit Schedule" />
             <MenuItem fx:id="reportItem" mnemonicParsing="false" text="Report" />
          </items>
             </MenuButton>

@@ -20,6 +20,7 @@ import java.util.ResourceBundle;
  */
 public class CoursesController implements Initializable {
 
+
     @FXML
     private AnchorPane root;
 
@@ -61,6 +62,9 @@ public class CoursesController implements Initializable {
     private MenuItem reportItem;
     @FXML
     private Stage stage;
+    @FXML
+    private MenuItem editScheduleItem;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -86,6 +90,7 @@ public class CoursesController implements Initializable {
         coursesItem.setOnAction(e -> resetForm());
         scheduleItem.setOnAction(e -> switchTo(new ScheduleSwitcher(stage)));
         searchItem.setOnAction(e -> switchTo(new SearchSwitcher(stage)));
+        editScheduleItem.setOnAction(e -> switchTo(new EditScheduleSwitcher(stage)));
     }
 
     private void switchTo(SceneSwitcher switcher) {
@@ -176,3 +181,4 @@ public class CoursesController implements Initializable {
         sectionNumber.setText("");
     }
 }
+

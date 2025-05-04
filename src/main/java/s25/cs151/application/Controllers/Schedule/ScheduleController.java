@@ -1,5 +1,6 @@
 package s25.cs151.application.Controllers.Schedule;
 
+
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -60,6 +61,8 @@ public class ScheduleController implements Initializable {
     private MenuItem reportItem;
     @FXML
     private Stage stage;
+    @FXML
+    private MenuItem editScheduleItem;
 
 
     public void initialize(URL location, ResourceBundle resources) {
@@ -136,6 +139,8 @@ public class ScheduleController implements Initializable {
         coursesItem.setOnAction(event -> switchTo(new CoursesSwitcher(stage)));
         scheduleItem.setOnAction(event -> resetForm());
         searchItem.setOnAction(event -> switchTo(new SearchSwitcher(stage)));
+        editScheduleItem.setOnAction(e -> switchTo(new EditScheduleSwitcher(stage)));
+
     }
 
     private void switchTo(SceneSwitcher switcher) {

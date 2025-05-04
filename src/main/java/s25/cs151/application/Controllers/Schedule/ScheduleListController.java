@@ -67,6 +67,9 @@ public class ScheduleListController implements Initializable {
     private MenuItem reportItem;
     @FXML
     private Stage stage;
+    @FXML
+    private MenuItem editScheduleItem;
+
 
     private ObservableList<Schedule> scheduleObservableList = FXCollections.observableArrayList();
 
@@ -103,7 +106,9 @@ public class ScheduleListController implements Initializable {
         coursesItem.setOnAction(event -> switchTo(new CoursesSwitcher(stage)));
         scheduleItem.setOnAction(event -> switchTo(new ScheduleSwitcher(stage)));
         searchItem.setOnAction(event -> switchTo(new SearchSwitcher(stage)));
+        editScheduleItem.setOnAction(e -> switchTo(new EditScheduleSwitcher(stage)));
     }
+
 
     private void switchTo(SceneSwitcher switcher) {
         try {
