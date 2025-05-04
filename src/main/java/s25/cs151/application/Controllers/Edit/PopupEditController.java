@@ -105,6 +105,11 @@ public class PopupEditController implements Initializable {
         }
         schedule.setTime(timeSlotComboBox.getValue());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        if(dateField.getValue()==null)
+        {
+            showAlert("Please fill in required field: Schedule Date");
+            return false;
+        }
         schedule.setDate(dateField.getValue().format(formatter));
         schedule.setCourse(courseComboBox.getValue());
         schedule.setComment(commentField.getText());
