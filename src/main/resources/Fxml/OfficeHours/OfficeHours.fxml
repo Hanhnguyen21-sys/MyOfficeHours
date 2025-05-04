@@ -121,7 +121,7 @@
         <VBox fx:id="titleSection" layoutX="153.0" layoutY="17.0" prefHeight="0.0" prefWidth="600.0">
             <Label styleClass="page-header" stylesheets="@../../Styles/OfficeHours.css" text="Entry Office Hours" />
             <HBox fx:id="breadcrumb" prefHeight="32.0" prefWidth="502.0" styleClass="breadcrumb-container" stylesheets="@../../Styles/OfficeHours.css">
-                <Label fx:id="dashboardLabel" onMouseClicked="#switchToDashboard" styleClass="breadcrumb-item" stylesheets="@../../Styles/OfficeHours.css" text="Dashboard" />
+                <Label fx:id="dashboardLabel"  styleClass="breadcrumb-item" stylesheets="@../../Styles/OfficeHours.css" text="Dashboard" />
                 <Label styleClass="breadcrumb-separator" stylesheets="@../../Styles/OfficeHours.css" text="&gt;" />
                 <Label style="-fx-font-weight: 600;" stylesheets="@../../Styles/OfficeHours.css" text="Office Hours">
                     <styleClass>

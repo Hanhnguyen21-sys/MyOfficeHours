@@ -1,11 +1,15 @@
 Name of application: Faculty's Office Hours Manager
-Version: 0.7
+Version: 0.8
 
 Who did what
-- Nguyen Nguyen: Design UI for search page and dashboard (when adding a button for Search Office Hours Schedule)
-- Meghana Indukuri: Search page (show list of schedule of searched student)
-- Misbah Syed: Populate 10 office hours for at least 4 students + Read me + Test + Integrate and submission
-- Oliver Majano: Delete Office Hour Schedule (From table view and Database)
+- Nguyen Nguyen: Design UI dashboard when adding edit schedule
+- Meghana Indukuri: Project integration + Populate requirements  + MVC patterns + Debugging
+- Misbah Syed: ReadMe +  Polymorphism (Since we have to mention the polymorphism used in the project in ReadMe) Project integration
+- Oliver Majano: Implement edit schedule method
+
+
+Polymorphism Usage:
+
 
 Any other instruction that users need to know:
 N/A

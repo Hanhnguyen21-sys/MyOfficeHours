@@ -40,9 +40,9 @@
     <VBox fx:id="titleSection" layoutX="164.0" layoutY="17.0" prefHeight="140.0" prefWidth="600.0">
         <Label styleClass="page-header" stylesheets="@../../Styles/OfficeHours.css" text="Time Slots List" />
         <HBox fx:id="breadcrumb" prefHeight="32.0" prefWidth="502.0" styleClass="breadcrumb-container" stylesheets="@../../Styles/OfficeHours.css">
-            <Label fx:id="dashboardLabel" onMouseClicked="#switchToDashboard" styleClass="breadcrumb-item" stylesheets="@../../Styles/OfficeHours.css" text="Dashboard" />
+            <Label fx:id="dashboardLabel" styleClass="breadcrumb-item" stylesheets="@../../Styles/OfficeHours.css" text="Dashboard" />
             <Label styleClass="breadcrumb-separator" stylesheets="@../../Styles/OfficeHours.css" text="&gt;" />
-            <Label fx:id="timeSlotsLabel" onMouseClicked="#switchToTimeSlots" styleClass="breadcrumb-item" stylesheets="@../../Styles/OfficeHours.css" text="Time Slots" />
+            <Label fx:id="timeSlotsLabel" styleClass="breadcrumb-item" stylesheets="@../../Styles/OfficeHours.css" text="Time Slots" />
          <Label layoutX="73.0" layoutY="10.0" styleClass="breadcrumb-separator" stylesheets="@../../Styles/OfficeHours.css" text="&gt;" />
          <Label layoutX="87.0" layoutY="10.0" stylesheets="@../../Styles/OfficeHours.css" text="List All">
             <styleClass>
@@ -74,11 +74,11 @@
         </HBox>
         <HBox prefHeight="37.0" prefWidth="600.0" styleClass="action-buttons" stylesheets="@../../Styles/OfficeHours.css">
             <children>
-                <Label fx:id="officeHoursListLabel" onMouseClicked="#switchToOfficeHoursList" styleClass="breadcrumb-item" text="Office Hours">
+                <Label fx:id="officeHoursListLabel" styleClass="breadcrumb-item" text="Office Hours">
                     <HBox.margin>
                         <Insets />
                     </HBox.margin></Label>
-                <Label fx:id="timeSlotsListLabel" onMouseClicked="#switchToTimeSlotsList" text="Time Slots">
+                <Label fx:id="timeSlotsListLabel" text="Time Slots">
                     <HBox.margin>
                         <Insets left="80.0" />
                     </HBox.margin>
@@ -86,7 +86,7 @@
                   <String fx:value="active" />
                   <String fx:value="breadcrumb-item" />
                </styleClass></Label>
-                <Label fx:id="coursesListLabel" onMouseClicked="#switchToCoursesList" styleClass="breadcrumb-item" text="Courses">
+                <Label fx:id="coursesListLabel" styleClass="breadcrumb-item" text="Courses">
                     <HBox.margin>
                         <Insets left="80.0" right="130.0" />
                     </HBox.margin></Label>

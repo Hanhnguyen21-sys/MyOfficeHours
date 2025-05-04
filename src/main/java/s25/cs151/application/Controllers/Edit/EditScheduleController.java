@@ -1,5 +1,6 @@
 package s25.cs151.application.Controllers.Edit;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -9,7 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import s25.cs151.application.Helper.SwitchScene;
+import s25.cs151.application.Controllers.Helpers.*;
 import s25.cs151.application.Models.ConnectDB;
 import s25.cs151.application.Models.Schedule;
 
@@ -61,16 +62,22 @@ public class EditScheduleController implements Initializable {
     private Button searchBtn;
     @FXML
     private Button deleteBtn;
-    // TODO: Implementation for editBtn
     @FXML
     private Button editBtn;
+    @FXML
+    private Stage stage;
 
     private ObservableList<Schedule> searchObservableList = FXCollections.observableArrayList();
     private final String DB_URL = "jdbc:sqlite:src/main/resources/Database/schedule.db";
     ConnectDB connectDB = new ConnectDB(DB_URL);
     Connection connection = connectDB.getConnection();
     @Override
+
     public void initialize(URL location, ResourceBundle resources) {
+        Platform.runLater(() -> {
+            stage = (Stage) root.getScene().getWindow();
+        });
+
         setupTableColumns();
         setupNavigationHandlers();
         loadSearchedSchedules("");
@@ -89,66 +96,25 @@ public class EditScheduleController implements Initializable {
     }
 
     private void setupNavigationHandlers() {
-        dashboardLabel.setOnMouseClicked(event -> {
-            try {
-                switchToDashboard();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
 
-        dashboardItem.setOnAction(event -> {
-            try {
-                switchToDashboard();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-        scheduleItem.setOnAction(event -> {
-            try {
-                switchToSchedule();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
+        dashboardLabel.setOnMouseClicked(event -> switchTo(new DashboardSwitcher(stage)));
 
-        officehoursItem.setOnAction(event -> {
-            try {
-                switchToOfficeHours();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
+        dashboardItem.setOnAction(e -> switchTo(new DashboardSwitcher(stage)));
+        officehoursItem.setOnAction(e -> switchTo(new OfficeHoursSwitcher(stage)));
+        timeslotsItem.setOnAction(e -> switchTo(new TimeSlotsSwitcher(stage)));
+        coursesItem.setOnAction(e -> switchTo(new CoursesSwitcher(stage)));
+        scheduleItem.setOnAction(e -> switchTo(new ScheduleSwitcher(stage)));
+        searchItem.setOnAction(e -> switchTo(new SearchSwitcher(stage)));
+        editScheduleItem.setOnAction(e -> switchTo(new EditScheduleSwitcher(stage)));
 
-        timeslotsItem.setOnAction(event -> {
-            try {
-                switchToTimeSlots();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
+    }
 
-        coursesItem.setOnAction(event -> {
-            try {
-                switchToCourses();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-        searchItem.setOnAction(event -> {
-            try {
-                switchToSearch();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-        editScheduleItem.setOnAction(event -> {
-            try {
-                switchToEditSchedule();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
+    private void switchTo(SceneSwitcher switcher) {
+        try {
+            switcher.switchScene();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     private void editStudentSchedule(Schedule schedule) throws IOException {
         //load fxml of edit dialog
@@ -170,13 +136,12 @@ public class EditScheduleController implements Initializable {
             if (result.isPresent() && result.get() == ButtonType.OK) {
                 // Update the schedule object with values from the form
                 controller.updateSchedule();
-//
                 // Save updated data to database
                 updateToDatabase(schedule);
             }
         }
         else{
-            showInfoAlert("No Selection", "Please select a schedule entry to delete.");
+            showInfoAlert("No Selection", "Please select a schedule entry to edit.");
         }
     }
     private void updateToDatabase(Schedule schedule) {
@@ -194,47 +159,12 @@ public class EditScheduleController implements Initializable {
                 int updatedRow = preparedStatement.executeUpdate();
                 if (updatedRow>0){
                     showInfoAlert("Success", "Update Successfully!");
+                    performSearch();
                 }
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         }
-    }
-    /**
-     * Switches to the Edit view
-     */
-    private void switchToEditSchedule() throws IOException {
-        Stage stage = (Stage) root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/Edit/EditSchedule.fxml", "Edit Schedule");
-    }
-    public void switchToDashboard() throws IOException {
-        Stage stage = (Stage) root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/Dashboard/Dashboard.fxml", "Dashboard");
-    }
-
-    private void switchToOfficeHours() throws IOException {
-        Stage stage = (Stage) root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHours.fxml", "Office Hours");
-    }
-
-    private void switchToTimeSlots() throws IOException {
-        Stage stage = (Stage) root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/TimeSlots/TimeSlots.fxml", "Time Slots");
-    }
-
-    private void switchToCourses() throws IOException {
-        Stage stage = (Stage) root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/Courses/Course.fxml", "Courses");
-    }
-
-    private void switchToSchedule() throws IOException {
-        Stage stage = (Stage) root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/Schedule/Schedule.fxml", "Schedule");
-    }
-
-    private void switchToSearch() throws IOException {
-        Stage stage = (Stage) root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/Search/SearchSchedule.fxml", "Search Schedule");
     }
 
     private void deleteSelected() {

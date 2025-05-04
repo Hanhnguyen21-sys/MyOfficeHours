@@ -1,11 +1,12 @@
 package s25.cs151.application.Controllers.OfficeHours;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import s25.cs151.application.Helper.SwitchScene;
+import s25.cs151.application.Controllers.Helpers.*;
 import s25.cs151.application.Models.ConnectDB;
 
 import java.io.IOException;
@@ -68,12 +69,18 @@ public class OfficeHourController implements Initializable {
     @FXML
     private MenuItem reportItem;
     @FXML
+    private Stage stage;
+    @FXML
     private MenuItem editScheduleItem;
 
     private String[] semester = { "Spring", "Summer", "Fall", "Winter" };
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Platform.runLater(() -> {
+            stage = (Stage) root.getScene().getWindow();
+        });
+
         // Initialize semester choices and set default value
         semesterCombo.getItems().addAll(semester);
         semesterCombo.setValue("Spring");
@@ -83,117 +90,34 @@ public class OfficeHourController implements Initializable {
 
     }
 
-    // Sets up navigation between different views
     private void setupNavigationHandlers() {
-        // 4 BUTTONS + 1 DASHBOARD LABEL + CANCEL BUTTON + SAVE BUTTON
-        // "Office Hours" button is used to show up the form
-        officeHoursBtn.setOnAction(e -> {
-            try {
-                switchToNewOfficeHoursView();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        });
 
-        // "Time Slots" button is used to show up the time slots page
-        timeSlotsBtn.setOnAction(e -> {
-            try {
-                switchToTimeSlots();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        });
+        officeHoursBtn.setOnAction(e -> resetForm());
+        timeSlotsBtn.setOnAction(e -> switchTo(new TimeSlotsSwitcher(stage)));
+        CoursesBtn.setOnAction(e -> switchTo(new CoursesSwitcher(stage)));
+        listAllBtn.setOnAction(e -> switchTo(new OfficeHoursListSwitcher(stage)));
 
-        // "Courses" button is used to show up the courses page
-        CoursesBtn.setOnAction(e -> {
-            try {
-                switchToCourses();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        });
-
-        // "List All" button is used to show up table containing all office hours
-        listAllBtn.setOnAction(e -> {
-            try {
-                switchToListAllView();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        });
-
-        // switch back to dashboard when Dashboard label is clicked
-        dashboardLabel.setOnMouseClicked(event -> {
-            try {
-                switchToDashboard();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-        // "Cancel" button is used to refresh the form
+        dashboardLabel.setOnMouseClicked(event -> switchTo(new DashboardSwitcher(stage)));
         cancelBtn.setOnAction(e -> resetForm());
-
-        // "Save" button is used to save input data to database
         saveBtn.setOnAction(e -> handleSaveButton());
 
-        // 4 MENU ITEMS + 2 MENU ITEMS TO BE IMPLEMENTED
-        // Handle the Dashboard menu item click
-        dashboardItem.setOnAction(event -> {
-            try {
-                switchToDashboard();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-        // Handle the Office Hours menu item click
+        dashboardItem.setOnAction(event -> switchTo(new DashboardSwitcher(stage)));
         officehoursItem.setOnAction(e -> resetForm());
-
-        // Handle the Time Slots menu item click
-        timeslotsItem.setOnAction(event -> {
-            try {
-                switchToTimeSlots();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-        // Handle the Courses menu item click
-        coursesItem.setOnAction(event -> {
-            try {
-                switchToCourses();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-        // Handle the Courses menu item click
-        scheduleItem.setOnAction(event -> {
-            try {
-                switchToSchedule();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-        // Handle the Search menu item click
-        searchItem.setOnAction(event -> {
-            try {
-                switchToSearch();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-        editScheduleItem.setOnAction(event -> {
-            try {
-                switchToEditSchedule();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
+        timeslotsItem.setOnAction(event -> switchTo(new TimeSlotsSwitcher(stage)));
+        coursesItem.setOnAction(event -> switchTo(new CoursesSwitcher(stage)));
+        scheduleItem.setOnAction(event -> switchTo(new ScheduleSwitcher(stage)));
+        searchItem.setOnAction(event -> switchTo(new SearchSwitcher(stage)));
+        editScheduleItem.setOnAction(e -> switchTo(new EditScheduleSwitcher(stage)));
     }
 
-
+    private void switchTo(SceneSwitcher switcher) {
+        try {
+            switcher.switchScene();
+        } catch (IOException e) {
+            System.err.println("Error switching to view: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Handles saving of office hours entry.
@@ -310,62 +234,6 @@ public class OfficeHourController implements Initializable {
         friCheck.setSelected(false);
     }
 
-    /**
-     * Switches the view to the dashboard
-     */
-    public void switchToDashboard() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/Dashboard/Dashboard.fxml", "Dashboard");
-    }
-    /**
-     * Switches to the office hours view
-     */
-    private void switchToNewOfficeHoursView() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHours.fxml", "Office Hours");
-    }
-    /**
-     * Switches to the Time Slots view
-     */
-    private void switchToTimeSlots() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/TimeSlots/TimeSlots.fxml", "Time Slots");
-    }
-    /**
-     * Switches to the Courses View
-     */
-    private void switchToCourses() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/Courses/Course.fxml", "Courses");
-    }
-    /**
-     * Switches to the list all view showing all office hours entries
-     */
-    private void switchToListAllView() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHoursList.fxml", "Office Hours List");
-    }
-    /**
-     * Switches to the Schedule view
-     */
-    private void switchToSchedule() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/Schedule/Schedule.fxml", "Schedule");
-    }
-    /**
-     * Switches to the Search view
-     */
-    private void switchToSearch() throws IOException {
-        Stage stage = (Stage) root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/Search/SearchSchedule.fxml", "Search Schedule");
-    }
-    /**
-     * Switches to the Edit view
-     */
-    private void switchToEditSchedule() throws IOException {
-        Stage stage = (Stage) root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/Edit/EditSchedule.fxml", "Edit Schedule");
-    }
     /**
      * Shows an alert dialog with the given message
      */

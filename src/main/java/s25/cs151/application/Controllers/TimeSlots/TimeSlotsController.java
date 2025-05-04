@@ -1,12 +1,13 @@
 package s25.cs151.application.Controllers.TimeSlots;
 
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import s25.cs151.application.Helper.SwitchScene;
+import s25.cs151.application.Controllers.Helpers.*;
 import s25.cs151.application.Models.ConnectDB;
 
 import java.io.IOException;
@@ -66,11 +67,18 @@ public class TimeSlotsController implements Initializable {
     @FXML
     private MenuItem reportItem;
     @FXML
+    private Stage stage;
+    @FXML
     private MenuItem editScheduleItem;
+
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        Platform.runLater(() -> {
+            stage = (Stage) root.getScene().getWindow();
+        });
+
         //show example for users to know the format of time slot
         startComboBox.setValue("10:00 AM");
         endComboBox.setValue("11:30 AM");
@@ -98,51 +106,14 @@ public class TimeSlotsController implements Initializable {
     // Sets up navigation between different views
     private void setupNavigationHandlers() {
 
-        // 4 BUTTONS + 1 DASHBOARD LABEL + CANCEL BUTTON + SAVE BUTTON
-        // "Office Hours" button is used to show up the form
-        officeHoursBtn.setOnAction(e -> {
-            try {
-                switchToOfficeHours();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        });
-
-        // "Time Slots" button is used to reset the time slots page
+        officeHoursBtn.setOnAction(e -> switchTo(new OfficeHoursSwitcher(stage)));
         timeSlotsBtn.setOnAction(e -> resetForm());
+        CoursesBtn.setOnAction(e -> switchTo(new CoursesSwitcher(stage)));
+        listAllBtn.setOnAction(e -> switchTo(new TimeSlotsListSwitcher(stage)));
 
-        // "Courses" button is used to show up the courses page
-        CoursesBtn.setOnAction(e -> {
-            try {
-                switchToCourses();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        });
-
-        // "List All" button is used to show up table containing all time slots
-        listAllBtn.setOnMouseClicked(e->{
-            try{
-                switchToAllList();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        });
-
-        // switch back to dashboard when Dashboard label is clicked
-        dashboardLabel.setOnMouseClicked(event -> {
-            try {
-                switchToDashboard();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-        // "Cancel" button is used to refresh the form
-        cancelBtn.setOnAction(e->resetForm());
-
-        // "Save" button is used to save input data to database
-        saveBtn.setOnAction(e-> {
+        dashboardLabel.setOnMouseClicked(event -> switchTo(new DashboardSwitcher(stage)));
+        cancelBtn.setOnAction(e -> resetForm());
+        saveBtn.setOnAction(e -> {
             try {
                 handleSaveButton();
             } catch (ParseException ex) {
@@ -150,57 +121,23 @@ public class TimeSlotsController implements Initializable {
             }
         });
 
-        // 4 MENU ITEMS + 2 MENU ITEMS TO BE IMPLEMENTED
-        // Handle the Dashboard menu item click
-        dashboardItem.setOnAction(event -> {
-            try {
-                switchToDashboard();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
+        dashboardItem.setOnAction(event -> switchTo(new DashboardSwitcher(stage)));
+        officehoursItem.setOnAction(e -> switchTo(new OfficeHoursSwitcher(stage)));
+        timeslotsItem.setOnAction(event -> resetForm());
+        coursesItem.setOnAction(event -> switchTo(new CoursesSwitcher(stage)));
+        scheduleItem.setOnAction(event -> switchTo(new ScheduleSwitcher(stage)));
+        searchItem.setOnAction(event -> switchTo(new SearchSwitcher(stage)));
+        editScheduleItem.setOnAction(e -> switchTo(new EditScheduleSwitcher(stage)));
+    }
 
-        // Handle the Office Hours menu item click
-        officehoursItem.setOnAction(event -> {
-            try {
-                switchToOfficeHours();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
 
-        // Handle the Time Slots menu item click
-        timeslotsItem.setOnAction(e -> resetForm());
-
-        // Handle the Courses menu item click
-        coursesItem.setOnAction(event -> {
-            try {
-                switchToCourses();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-        scheduleItem.setOnAction(event -> {
-            try {
-                switchToSchedule();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-        searchItem.setOnAction(event -> {
-            try {
-                switchToSearch();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-        editScheduleItem.setOnAction(event -> {
-            try {
-                switchToEditSchedule();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
+    private void switchTo(SceneSwitcher switcher) {
+        try {
+            switcher.switchScene();
+        } catch (IOException e) {
+            System.err.println("Error switching to view: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     public void handleSaveButton() throws ParseException {
@@ -273,53 +210,5 @@ public class TimeSlotsController implements Initializable {
         startComboBox.setValue("");
         endComboBox.setValue("");
     }
-    /**
-     * Switches the view to the dashboard
-     */
-    public void switchToDashboard() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/Dashboard/Dashboard.fxml", "Dashboard");
-    }
-    /**
-     * Switches to the office hours view
-     */
-    private void switchToOfficeHours() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/OfficeHours/OfficeHours.fxml", "Office Hours");
-    }
-    /**
-     * Switches to the Courses View
-     */
-    private void switchToCourses() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/Courses/Course.fxml", "Courses");
-    }
-    /**
-     * Switches to the list view showing all time slots entries
-     */
-    private void switchToAllList() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/TimeSlots/TimeSlotsList.fxml", "Time Slots List");
-    }
-    /**
-     * Switches to the Schedule view
-     */
-    private void switchToSchedule() throws IOException {
-        Stage stage = (Stage)root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/Schedule/Schedule.fxml", "Schedule");
-    }
-    /**
-     * Switches to the Search view
-     */
-    private void switchToSearch() throws IOException {
-        Stage stage = (Stage) root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/Search/SearchSchedule.fxml", "Search Schedule");
-    }
-    /**
-     * Switches to the Edit view
-     */
-    private void switchToEditSchedule() throws IOException {
-        Stage stage = (Stage) root.getScene().getWindow();
-        SwitchScene.switchScene(stage, "/Fxml/Edit/EditSchedule.fxml", "Edit Schedule");
-    }
+
 }
