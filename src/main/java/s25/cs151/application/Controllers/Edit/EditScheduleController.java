@@ -136,13 +136,12 @@ public class EditScheduleController implements Initializable {
             if (result.isPresent() && result.get() == ButtonType.OK) {
                 // Update the schedule object with values from the form
                 controller.updateSchedule();
-//
                 // Save updated data to database
                 updateToDatabase(schedule);
             }
         }
         else{
-            showInfoAlert("No Selection", "Please select a schedule entry to delete.");
+            showInfoAlert("No Selection", "Please select a schedule entry to edit.");
         }
     }
     private void updateToDatabase(Schedule schedule) {
@@ -160,6 +159,7 @@ public class EditScheduleController implements Initializable {
                 int updatedRow = preparedStatement.executeUpdate();
                 if (updatedRow>0){
                     showInfoAlert("Success", "Update Successfully!");
+                    performSearch();
                 }
             } catch (Exception e) {
                 throw new RuntimeException(e);
