@@ -1,6 +1,7 @@
 package s25.cs151.application.Controllers.TimeSlots;
 
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -71,6 +72,10 @@ public class TimeSlotsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        Platform.runLater(() -> {
+            stage = (Stage) root.getScene().getWindow();
+        });
+
         //show example for users to know the format of time slot
         startComboBox.setValue("10:00 AM");
         endComboBox.setValue("11:30 AM");

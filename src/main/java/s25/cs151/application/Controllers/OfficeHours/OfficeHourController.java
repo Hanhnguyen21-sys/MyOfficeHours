@@ -1,5 +1,6 @@
 package s25.cs151.application.Controllers.OfficeHours;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -77,6 +78,10 @@ public class OfficeHourController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Platform.runLater(() -> {
+            stage = (Stage) root.getScene().getWindow();
+        });
+
         // Initialize semester choices and set default value
         semesterCombo.getItems().addAll(semester);
         semesterCombo.setValue("Spring");

@@ -1,5 +1,6 @@
 package s25.cs151.application.Controllers.Schedule;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -71,6 +72,10 @@ public class ScheduleListController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Platform.runLater(() -> {
+            stage = (Stage) root.getScene().getWindow();
+        });
+
         setupTableColumns();
         setupNavigationHandlers();
         loadSchedules();

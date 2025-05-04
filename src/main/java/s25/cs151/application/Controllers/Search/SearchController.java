@@ -1,5 +1,6 @@
 package s25.cs151.application.Controllers.Search;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -72,6 +73,10 @@ public class SearchController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        Platform.runLater(() -> {
+            stage = (Stage) root.getScene().getWindow();
+        });
+
         setupTableColumns();
         setupNavigationHandlers();
         loadSearchedSchedules("");
