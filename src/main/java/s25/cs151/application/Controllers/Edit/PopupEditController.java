@@ -8,6 +8,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import s25.cs151.application.Models.ConnectDB;
 import s25.cs151.application.Models.Schedule;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
+
 
 import java.net.URL;
 import java.sql.Connection;
@@ -92,13 +96,27 @@ public class PopupEditController implements Initializable {
         reasonField.setText(schedule.getReason());
     }
     //update the values that users enter to schedule object
-    public void updateSchedule(){
+    public boolean updateSchedule(){
         schedule.setName(studentName.getText());
+        if(studentName.getText().isEmpty())
+        {
+            showAlert("Please fill in required field: Student Name");
+            return false;
+        }
         schedule.setTime(timeSlotComboBox.getValue());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         schedule.setDate(dateField.getValue().format(formatter));
         schedule.setCourse(courseComboBox.getValue());
         schedule.setComment(commentField.getText());
         schedule.setReason(reasonField.getText());
+        return true;
+    }
+
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

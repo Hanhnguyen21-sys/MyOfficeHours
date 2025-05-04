@@ -13,6 +13,12 @@ import javafx.stage.Stage;
 import s25.cs151.application.Controllers.Helpers.*;
 import s25.cs151.application.Models.ConnectDB;
 import s25.cs151.application.Models.Schedule;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.DialogPane;
+import javafx.scene.control.ButtonType;
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -131,14 +137,22 @@ public class EditScheduleController implements Initializable {
             dialog.setDialogPane(dialogPane);
             PopupEditController controller = loader.getController();
             controller.setSchedule(schedule);
+            Button okButton = (Button) dialog.getDialogPane().lookupButton(ButtonType.OK);
+            okButton.addEventFilter(ActionEvent.ACTION, event -> {
+                // name empty case
+                if (!controller.updateSchedule()) {
+                    event.consume();    // keep dialog open
+                }
+            });
+
+
             Optional<ButtonType> result = dialog.showAndWait();
 
+
             if (result.isPresent() && result.get() == ButtonType.OK) {
-                // Update the schedule object with values from the form
-                controller.updateSchedule();
-                // Save updated data to database
                 updateToDatabase(schedule);
             }
+
         }
         else{
             showInfoAlert("No Selection", "Please select a schedule entry to edit.");
