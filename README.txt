@@ -4,11 +4,17 @@ Version: 0.8
 Who did what
 - Nguyen Nguyen: Design UI dashboard when adding edit schedule
 - Meghana Indukuri: Project integration + Populate requirements  + MVC patterns + Debugging
-- Misbah Syed: ReadMe +  Polymorphism (Since we have to mention the polymorphism used in the project in ReadMe) Project integration
+- Misbah Syed: ReadMe +  Polymorphism implementation
 - Oliver Majano: Implement edit schedule method
 
 
 Polymorphism Usage:
+Parent interface - SceneSwitcher
+Concrete child classes (12 total) - CourseListSwitcher, CoursesSwitcher, DashboardSwitcher, EditScheduleSwitcher, OfficeHoursListSwitcher, OfficeHoursSwitcher, ScheduleListSwitcher, ScheduleSwitcher, SearchSwitcher, SwitchScene, TimeSlotsListSwitcher, TimeSlotsSwitcher
+    - Polymorphism is implemented through the use of the SceneSwitcher interface.
+    - Multiple scene-switching classes implement the same interface but define their own specific scene transitions.
+    - The Controller classes use the SceneSwitcher interface as a common type to invoke scene changes without needing to know which specific subclass is being used.
+    - Polymorphism allows for flexible and extensible scene navigation logic in the project.
 
 
 Any other instruction that users need to know:
@@ -75,6 +81,12 @@ Navigation:
         - Click the "Search" tab
         - Click Entry
     Click on Delete Button
+
+    To Edit Schedule:
+        - Click on the "Edit Schedule" tab
+        - Click on Entry
+        - Click "Edit"
+        - Click on "Ok" after changes are made
 
 
 
