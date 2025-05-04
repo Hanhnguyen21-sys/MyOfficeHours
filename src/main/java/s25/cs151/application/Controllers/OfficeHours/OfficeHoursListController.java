@@ -1,5 +1,6 @@
 package s25.cs151.application.Controllers.OfficeHours;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -32,13 +33,13 @@ public class OfficeHoursListController implements Initializable {
     private Label officeHoursLabel;
 
     @FXML
-    private Button officeHourBtn;
+    private Button OfficeHourBtn;
     @FXML
-    private Button timeslotsBtn;
+    private Button TimeslotsBtn;
     @FXML
     private Button CoursesBtn;
     @FXML
-    private Button listAllBtn;
+    private Button ListAllBtn;
 
     @FXML
     private Label officeHoursListLabel;
@@ -79,6 +80,9 @@ public class OfficeHoursListController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Platform.runLater(() -> {
+            stage = (Stage) root.getScene().getWindow();
+        });
         // Set up table columns and button actions
         setupTableColumns();
         setupButtonActions();
@@ -99,10 +103,10 @@ public class OfficeHoursListController implements Initializable {
      */
     private void setupButtonActions() {
 
-        officeHourBtn.setOnAction(e -> switchTo(new OfficeHoursSwitcher(stage)));
-        timeslotsBtn.setOnAction(e -> switchTo(new TimeSlotsSwitcher(stage)));
+        OfficeHourBtn.setOnAction(e -> switchTo(new OfficeHoursSwitcher(stage)));
+        TimeslotsBtn.setOnAction(e -> switchTo(new TimeSlotsSwitcher(stage)));
         CoursesBtn.setOnAction(e -> switchTo(new CoursesSwitcher(stage)));
-        listAllBtn.setOnAction(e -> switchTo(new OfficeHoursListSwitcher(stage)));
+        ListAllBtn.setOnAction(e -> switchTo(new OfficeHoursListSwitcher(stage)));
 
         dashboardLabel.setOnMouseClicked(event -> switchTo(new DashboardSwitcher(stage)));
         officeHoursLabel.setOnMouseClicked(event -> switchTo(new OfficeHoursSwitcher(stage)));

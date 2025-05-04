@@ -34,7 +34,7 @@ public class TimeSlotsListController implements Initializable {
     @FXML
     private Button CoursesBtn;
     @FXML
-    private Button listAllBtn;
+    private Button ListAllBtn;
 
     @FXML
     private Label officeHoursListLabel;
@@ -99,7 +99,7 @@ public class TimeSlotsListController implements Initializable {
         OfficeHourBtn.setOnAction(e -> switchTo(new OfficeHoursSwitcher(stage)));
         TimeslotsBtn.setOnAction(e -> switchTo(new TimeSlotsSwitcher(stage)));
         CoursesBtn.setOnAction(e -> switchTo(new CoursesSwitcher(stage)));
-        listAllBtn.setOnAction(e -> switchTo(new TimeSlotsListSwitcher(stage)));
+        ListAllBtn.setOnAction(e -> switchTo(new TimeSlotsListSwitcher(stage)));
 
         dashboardLabel.setOnMouseClicked(event -> switchTo(new DashboardSwitcher(stage)));
         timeSlotsLabel.setOnMouseClicked(event -> switchTo(new TimeSlotsSwitcher(stage)));

@@ -8,10 +8,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import s25.cs151.application.Controllers.Helpers.*;
 import javafx.stage.Stage;
-import s25.cs151.application.Controllers.Helpers.SceneSwitcher;
-import s25.cs151.application.Controllers.Helpers.SwitchScene;
+import s25.cs151.application.Controllers.Helpers.*;
 import s25.cs151.application.Models.ConnectDB;
 import s25.cs151.application.Models.Courses;
 
@@ -30,13 +28,13 @@ public class CourseListController implements Initializable {
     private Label coursesLabel;
 
     @FXML
-    private Button officeHourBtn;
+    private Button OfficeHourBtn;
     @FXML
-    private Button timeslotsBtn;
+    private Button TimeslotsBtn;
     @FXML
     private Button CoursesBtn;
     @FXML
-    private Button listAllBtn;
+    private Button ListAllBtn;
 
     @FXML
     private Label officeHoursListLabel;
@@ -99,10 +97,10 @@ public class CourseListController implements Initializable {
      * Sets up event handlers for all buttons and MenuItems
      */
     private void setupNavigationHandlers() {
-        officeHourBtn.setOnAction(e -> switchTo(new OfficeHoursSwitcher(stage)));
-        timeslotsBtn.setOnAction(e -> switchTo(new TimeSlotsSwitcher(stage)));
+        OfficeHourBtn.setOnAction(e -> switchTo(new OfficeHoursSwitcher(stage)));
+        TimeslotsBtn.setOnAction(e -> switchTo(new TimeSlotsSwitcher(stage)));
         CoursesBtn.setOnAction(e -> switchTo(new CoursesSwitcher(stage)));
-        listAllBtn.setOnAction(e -> switchTo(new CourseListSwitcher(stage)));
+        ListAllBtn.setOnAction(e -> switchTo(new CourseListSwitcher(stage)));
 
         dashboardLabel.setOnMouseClicked(event -> switchTo(new DashboardSwitcher(stage)));
         coursesLabel.setOnMouseClicked(event -> switchTo(new CoursesSwitcher(stage)));
