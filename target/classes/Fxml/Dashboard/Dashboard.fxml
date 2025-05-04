@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Imports -->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
+
+<!-- Anchor Pane -->
+
+<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.Controllers.Dashboard.DashboardController">
+
+
+    <!-- Left Panel with Navigation Bar -->
+    <VBox layoutY="1.0" prefHeight="600.0" prefWidth="110.0" styleClass="left-panel" stylesheets="@../../Styles/Dashboard.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="My Office Hours">
+         <VBox.margin>
+            <Insets left="5.0" top="20.0" />
+         </VBox.margin></Text>
+       <Line endX="29.792892456054688" endY="7.748603820800781E-7" startX="-100.0" />
+       <MenuButton fx:id="menuBtn" mnemonicParsing="false" prefHeight="26.0" prefWidth="140.0" styleClass="menu-btn" stylesheets="@../../Styles/Dashboard.css" text="Menu" textFill="#FFFFFF">
+           <items>
+               <RadioMenuItem fx:id="dashboardItem" mnemonicParsing="false" text="Dashboard">
+                   <toggleGroup>
+                       <ToggleGroup fx:id="myGroup" />
+                   </toggleGroup>
+               </RadioMenuItem>
+               <RadioMenuItem fx:id="officehoursItem" mnemonicParsing="false" text="Office Hours" toggleGroup="$myGroup" />
+            <RadioMenuItem fx:id="timeslotsItem" mnemonicParsing="false" text="Time Slots">
+               <toggleGroup>
+                  <ToggleGroup fx:id="myGroup2" />
+               </toggleGroup>
+            </RadioMenuItem>
+            <RadioMenuItem fx:id="coursesItem" mnemonicParsing="false" text="Courses">
+               <toggleGroup>
+                  <ToggleGroup fx:id="myGroup1" />
+               </toggleGroup>
+            </RadioMenuItem>
+               <RadioMenuItem fx:id="scheduleItem" mnemonicParsing="false" text="Schedule" toggleGroup="$myGroup" />
+            <RadioMenuItem fx:id="searchItem" mnemonicParsing="false" text="Search">
+               <toggleGroup>
+                  <ToggleGroup fx:id="myGroup3" />
+               </toggleGroup>
+            </RadioMenuItem>
+               <RadioMenuItem fx:id="reportItem" mnemonicParsing="false" text="Report" toggleGroup="$myGroup" />
+           </items>
+       </MenuButton>
+   </VBox>
+
+
+    <!-- Top Panel with Title and Navigation Buttons-->
+   <VBox fx:id="titleSection" layoutX="153.0" layoutY="17.0" prefHeight="75.0" prefWidth="600.0">
+
+       <!-- Page Title -->
+       <Label styleClass="page-header" stylesheets="@../../Styles/Dashboard.css" text="Dashboard" />
+
+       <!-- Large Navigation Buttons-->
+       <HBox fx:id="actionBtn" prefHeight="21.0" prefWidth="502.0" styleClass="dashboard-nav-container" stylesheets="@../../Styles/Dashboard.css">
+           <Button fx:id="officeHoursBtn" minWidth="170.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="163.0" styleClass="dashboard-nav-buttons" stylesheets="@../../Styles/Dashboard.css" text="Office Hours 🗓">
+            <HBox.margin>
+               <Insets />
+            </HBox.margin></Button>
+         <Button fx:id="timeSlotsBtn" layoutY="20.0" minWidth="150.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="300.0" styleClass="dashboard-nav-buttons" stylesheets="@../../Styles/Dashboard.css" text="Time Slots ⏰">
+            <HBox.margin>
+               <Insets />
+            </HBox.margin></Button>
+         <Button fx:id="coursesBtn" layoutY="20.0" minWidth="150.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="300.0" styleClass="dashboard-nav-buttons" stylesheets="@../../Styles/Dashboard.css" text="Courses 📖">
+            <HBox.margin>
+               <Insets right="10.0" />
+            </HBox.margin></Button>
+           <padding>
+               <Insets bottom="5.0" top="5.0" />
+           </padding>
+       </HBox>
+      <HBox fx:id="actionBtn2" prefHeight="21.0" prefWidth="502.0" styleClass="dashboard-nav-container" stylesheets="@../../Styles/Dashboard.css">
+         <padding>
+            <Insets bottom="5.0" top="5.0" />
+         </padding>
+         <children>
+            <Button fx:id="scheduleBtn" minWidth="170.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="163.0" styleClass="dashboard-nav-buttons" stylesheets="@../../Styles/Dashboard.css" text="Schedule ➕">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="searchBtn" layoutY="20.0" minWidth="150.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="300.0" styleClass="dashboard-nav-buttons" stylesheets="@../../Styles/Dashboard.css" text="Search">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="reportBtn" layoutY="20.0" minWidth="150.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="300.0" styleClass="dashboard-nav-buttons" stylesheets="@../../Styles/Dashboard.css" text="Report ⚠">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </VBox>
+
+    <!-- Dashboard Content-->
+
+   <HBox layoutX="153.0" layoutY="199.0" prefHeight="380.0" prefWidth="600.0" styleClass="dashboard-content-container" stylesheets="@../../Styles/Dashboard.css">
+
+       <children>
+      
+           <!-- Right Side of Dashboard Content with Search Bar and Table of Appointments -->
+           <VBox prefHeight="370.0" prefWidth="350.0" styleClass="dashboard-partition-content-container" stylesheets="@../../Styles/Dashboard.css">
+               <children>
+                   <TreeTableView prefHeight="359.0" prefWidth="321.0" styleClass="tree-table" stylesheets="@../../Styles/Dashboard.css">
+                       <columns>
+                            <TreeTableColumn prefWidth="100.79998338222504" style="-fx-background-color: #e8e8e8; -fx-border-color: #cccccc; -fx-border-width: 0 1 1 0;" text="Student Name" />
+                            <TreeTableColumn prefWidth="61.60004425048828" style="-fx-background-color: #e8e8e8; -fx-border-color: #cccccc; -fx-border-width: 0 1 1 0;" text="Time Slot" />
+                            <TreeTableColumn prefWidth="73.60003662109375" style="-fx-background-color: #e8e8e8; -fx-border-color: #cccccc; -fx-border-width: 0 1 1 0;" text="Course" />
+                            <TreeTableColumn prefWidth="83.99995422363281" style="-fx-background-color: #e8e8e8; -fx-border-color: #cccccc; -fx-border-width: 0 1 1 0;" text="Reason" />
+                       </columns>
+                   </TreeTableView>
+               </children>
+           </VBox>
+
+           <!-- Left Side of Dashboard Content with Calendar and Notifications -->
+           <VBox prefHeight="370.0" prefWidth="254.0" styleClass="dashboard-partition-content-container" stylesheets="@../../Styles/Dashboard.css">
+
+           <children>
+
+               <!-- Notifications -->
+              <Label styleClass="dashboard-label" stylesheets="@../../Styles/Dashboard.css" text="Notifications" />
+              <Pane prefHeight="326.0" prefWidth="225.0" styleClass="notifications" stylesheets="@../../Styles/Dashboard.css" />
+           </children></VBox>
+       </children>
+   </HBox>
+</AnchorPane>
